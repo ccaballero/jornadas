@@ -1,0 +1,16 @@
+syntax: glob
+*~
+*.swp
+*.orig
+*.tmp.
+.svn
+*.bak
+*.log
+.cache/
+.settings/
+.buildpath
+.gitgnore
+.project
+.htaccess
+library/Zend
+

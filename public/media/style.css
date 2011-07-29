@@ -1,0 +1,86 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    margin: 0pt;
+    padding: 0pt;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+img {
+    border: 0pt;
+}
+
+header, nav, footer, article, section {
+    display: block;
+    margin: 0pt auto;
+}
+
+header, nav, footer {
+    width: 960px;
+}
+
+article, section {
+    width: 940px;
+    padding: 0px 10px 10px 10px;
+}
+
+header nav, article, section, footer nav {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+header h1 {
+    font-size: 2.6em;
+    margin: 1.0em 0em 0.2em 0em;
+    text-shadow: 0.1em 0.1em 0.1em #aaaaaa;
+}
+
+header nav {
+    -moz-border-radius: 0.6em 0.6em 0em 0em;
+}
+
+footer nav {
+    -moz-border-radius: 0em 0em 0.6em 0.6em;
+}
+
+header nav ul, footer nav ul {
+    list-style: none outside none;
+}
+
+header nav ul li, footer nav ul li {
+    display: inline;
+}
+
+header nav ul li a, footer nav ul li a {
+    padding: 0.3em;
+    display: inline-block;
+}
+
+header nav ul li a {
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header nav ul li a.active {
+    background-color: #aaaaaa;
+}
+
+article, section {
+    min-height: 3.0em;
+}
+
+footer nav {
+    margin-top: 1.0em;
+    text-align: right;
+}
+
+footer nav ul {
+    padding: 0em 1.0em 0em 0em;
+}
