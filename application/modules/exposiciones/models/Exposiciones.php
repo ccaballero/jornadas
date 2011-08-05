@@ -2,7 +2,7 @@
 
 class Exposiciones extends Jornadas_Models_Table
 {
-    protected $_name = 'exposiciones';
+    protected $_name = 'expositions';
     protected $_primary = 'ident';
 
     protected $_dependentTables = array(
@@ -10,11 +10,21 @@ class Exposiciones extends Jornadas_Models_Table
     );
     protected $_referenceMap = array(
         'Expositor'             => array(
-            'columns'           => 'expositor',
+            'columns'           => 'exponent',
             'refTableClass'     => 'Usuarios',
             'refColumns'        => 'ident',
             'onDelete'          => self::CASCADE,
             'onUpdate'          => self::RESTRICT
         ),
     );
+
+    public function selectWithExponents() {
+        $select = $this->select();
+        $select->setIntegrityCheck(false);
+        return $this->fetchAll(
+            $select->from('expositions', array('expositions.*', 'users.username', 'users.fullname'))
+                   ->join('users', 'users.ident = expositions.exponent')
+                   ->order('expositions.title ASC')
+            );
+    }
 }

@@ -1,15 +1,26 @@
+INSERT INTO `users` (`ident`, `role`, `username`, `fullname`, `password`, `email`, `tsregister`) VALUES
+( 1, 'exponent',    'lorgio',   'Ing. Lorgio Alexander Lazarte Zurita', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'lorgi51@gmail.com', 1312522087),
+( 2, 'exponent',    'alvaro',   'Ing. Alvaro Andrade Sejas', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'admin@ehacking.com.bo', 1312522087),
+( 3, 'exponent',    'efrain',   'Efraín Fernando Luna Mamani', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'iteluna@gmail.com', 1312522087),
+( 4, 'exponent',    'luis',     'Lic. Luis Alberto Coronado', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'asdf1', 1312522087),
+( 5, 'exponent',    'vladimir', 'Msc. Costas Jáuregui Vladimir', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'asdf2', 1312522087),
+( 6, 'exponent',    'jorge',    'Msc. Ing. Orellana Araoz Jorge Walter', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'asdf3', 1312522087),
+( 7, 'exponent',    'gonzalo',  'Gonzalo Nina Mamani', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'lorddemon@gmail.com', 1312522087),
+( 8, 'participant', 'carlos',   'Carlos Eduardo Caballero Burgoa', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'cijkb.j@gmail.com', 1312522087),
+( 9, 'participant', 'baudilio', 'Baudilio Huanca Alconz', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'klb.imfo642@gmail.com', 1312522087),
+(10, 'participant', 'edgar',    'Edgar Valencia', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'rhcparthasfrozen@gmail.com', 1312522087),
+(11, 'participant', 'eduardo',  'Eduardo Soliz Valdez', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'eduardoscesi@gmail.com', 1312522087);
 
-INSERT INTO `usuarios` (`ident`, `nombre`, `rol`, `correo`, `clave`, `registro`) VALUES
-(1, 'Carlos Caballero', 'expositor', 'cijkb.j@gmail.com', '63ca26f56c5730ede6b21c7b681b917e2fb37765', CURRENT_TIMESTAMP()),
-(2, 'Baudilio Huanca', 'expositor', 'klb.imfo642@gmail.com', '63ca26f56c5730ede6b21c7b681b917e2fb37765', CURRENT_TIMESTAMP()),
-(3, 'Edgar Valencia', 'participante', 'rhcparthasfrozen@gmail.com', '63ca26f56c5730ede6b21c7b681b917e2fb37765', CURRENT_TIMESTAMP()),
-(4, 'Eduardo Soliz', 'participante', 'eduardoscesi@gmail.com', '63ca26f56c5730ede6b21c7b681b917e2fb37765', CURRENT_TIMESTAMP());
+INSERT INTO `expositions` (`ident`, `title`, `exponent`, `tsregister`) VALUES
+(1, 'Analisis Forense en sistemas windows', 1, 1312522087),
+(2, 'ISO 27001 Orientado a Entidades Financieras', 2, 1312522087),
+(3, 'ITIL 27000', 3, 1312522087),
+(4, 'Seguridad y configuracion de Servidores', 4, 1312522087),
+(5, 'Seguridad Web', 5, 1312522087),
+(6, 'Seguridad en Redes', 6, 1312522087),
+(7, 'Cuidado Nos atacan Desde Dentro', 7, 1312522087);
 
-INSERT INTO `exposiciones` (`ident`, `titulo`, `expositor`) VALUES
-(1, 'Exposicion 1', 1),
-(2, 'Exposicion 2', 1),
-(3, 'Exposicion 3', 2);
-
+/*
 INSERT INTO `exposiciones_inscripciones` (`participante`, `exposicion`, `registro`) VALUES
 (3, 1, CURRENT_TIMESTAMP()), (3, 2, CURRENT_TIMESTAMP());
 
@@ -28,3 +39,4 @@ INSERT INTO `noticias_comentarios` (`exposicion`, `noticia`, `autor`, `registro`
 (2, 4, 2, CURRENT_TIMESTAMP(), 'Bien'),
 (2, 4, 3, CURRENT_TIMESTAMP(), 'Que poderoso'),
 (2, 4, 1, CURRENT_TIMESTAMP(), 'Super!! +1');
+*/

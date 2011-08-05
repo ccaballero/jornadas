@@ -1,12 +1,40 @@
-body {
+body, input {
     font-family: "Courier New", Courier, monospace;
+}
+
+body {
     margin: 0pt;
     padding: 0pt;
+}
+
+input[type='text'], input[type='password'] {
+    width: 30.0em;
+}
+
+dt {
+    float: left;
+    width: 14.5em;
+    height: 2.0em;
+    text-align: right;
+}
+
+dd {
+    min-height: 2.0em;
+    margin-left: 15.0em;
+}
+
+dd li {
+    list-style: none outside none;
 }
 
 a {
     color: #ffffff;
     text-decoration: none;
+}
+
+a:focus {
+    background-color: #7f7fff;
+    outline: none;
 }
 
 img {
@@ -22,9 +50,27 @@ header, nav, footer {
     width: 960px;
 }
 
+#main {
+    min-height: 24.0em;
+}
+
 article, section {
     width: 940px;
-    padding: 0px 10px 10px 10px;
+    padding: 0.1em 10px 0.5em 10px;
+    font-size: 0.90em;
+}
+
+section p {
+    line-height: 1.0em;
+}
+
+section td, section tr {
+    padding: 0;
+    margin: 0;
+}
+
+section td {
+    padding-right: 1.0em;
 }
 
 header nav, article, section, footer nav {
@@ -64,16 +110,13 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #7f7fff;
+    outline: none;
 }
 
 header nav ul li a.active {
-    background-color: #aaaaaa;
-}
-
-article, section {
-    min-height: 3.0em;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 footer nav {
@@ -84,3 +127,15 @@ footer nav {
 footer nav ul {
     padding: 0em 1.0em 0em 0em;
 }
+
+.red { color: #ff7f7f; }
+.blue { color: #7f7fff; }
+.green { color: #7fff7f; }
+.yellow { color: #ffff7f; }
+.magenta { color: #ff7fff; }
+.cyan { color: #7fffff; }
+.white { color: #ffffff }
+.gray { color: #7f7f7f; }
+
+.bold { font-weight: bold; }
+.form { margin: 15.0em; }

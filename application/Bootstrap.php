@@ -30,6 +30,33 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $router;
     }
 
+    protected function _initSession() {
+        Zend_Session::start();
+    }
+
+    protected function _initTranslate() {
+        $translate = new Zend_Translate(array(
+            'adapter' => 'csv',
+            'content' => APPLICATION_PATH . '/../i18n/es.csv',
+            'locale'  => 'es',
+            'delimiter' => ','
+        ));
+
+        // PHP's settings for encoding
+        mb_internal_encoding('UTF-8');
+        mb_http_output('UTF-8');
+
+        // Set for localization
+        setlocale(LC_CTYPE, 'en_US.UTF8');
+        Zend_Locale::setDefault('en_US.UTF8');
+
+        Zend_Registry::set('Zend_Translate', $translate);
+        Zend_Form::setDefaultTranslator($translate);
+        Zend_Validate_Abstract::setDefaultTranslator($translate);
+
+        return $translate;
+    }
+
     protected function _initView() {
         $renderer = new Zend_Controller_Action_Helper_ViewRenderer();
         $renderer->setViewSuffix('php');

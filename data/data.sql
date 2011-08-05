@@ -1,30 +1,34 @@
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
-    `rol`              enum('expositor', 'participante')                           NOT NULL DEFAULT 'participante',
-    `correo`           varchar(128)                                                NOT NULL,
-    `nombre`           varchar(128)                                                NOT NULL DEFAULT '',
-    `clave`            varchar(40)                                                 NOT NULL DEFAULT '',
-    `avatar`           boolean                                                     NOT NULL DEFAULT FALSE,
-    `registro`         int unsigned                                                NOT NULL DEFAULT 0,
+    `role`             enum('exponent', 'participant')                             NOT NULL DEFAULT 'participant',
+    `fullname`         varchar(1024)                                               NOT NULL DEFAULT '',
+    `username`         varchar(128)                                                NOT NULL,
+    `password`         varchar(40)                                                 NOT NULL,
+    `email`            varchar(128)                                                NOT NULL DEFAULT '',
+    `avatar`           boolean                                                     NOT NULL DEFAULT false,
+    `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
+    `tslastlogin`      int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
-    UNIQUE INDEX (`correo`)
+    UNIQUE INDEX (`username`),
+    UNIQUE INDEX (`email`)
 ) DEFAULT CHARACTER SET UTF8;
 
-DROP TABLE IF EXISTS `exposiciones`;
-CREATE TABLE `exposiciones` (
+DROP TABLE IF EXISTS `expositions`;
+CREATE TABLE `expositions` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
-    `titulo`           varchar(128)                                                NOT NULL,
-    `contenido`        text                                                        NOT NULL DEFAULT '',
-    `avatar`           boolean                                                     NOT NULL DEFAULT FALSE,
-    `registro`         int unsigned                                                NOT NULL DEFAULT 0,
-    `expositor`        int unsigned                                                NOT NULL,
+    `title`            varchar(128)                                                NOT NULL,
+    `abstract`         text                                                        NOT NULL DEFAULT '',
+    `avatar`           boolean                                                     NOT NULL DEFAULT false,
+    `exponent`         int unsigned                                                NOT NULL,
+    `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
+    `tslastlogin`      int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
-    INDEX (`expositor`),
-    FOREIGN KEY (`expositor`) REFERENCES `usuarios`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
+    INDEX (`exponent`),
+    FOREIGN KEY (`exponent`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
 
-DROP TABLE IF EXISTS `exposiciones_inscripciones`;
+/*DROP TABLE IF EXISTS `exposiciones_inscripciones`;
 CREATE TABLE `exposiciones_inscripciones` (
     `participante`     int unsigned                                                NOT NULL,
     `exposicion`       int unsigned                                                NOT NULL,
@@ -67,3 +71,4 @@ CREATE TABLE `noticias_comentarios` (
     INDEX (`noticia`, `exposicion`),
     FOREIGN KEY (`noticia`, `exposicion`) REFERENCES `noticias`(`ident`, `exposicion`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
+*/
