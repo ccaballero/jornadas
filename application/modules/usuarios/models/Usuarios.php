@@ -2,7 +2,7 @@
 
 class Usuarios extends Jornadas_Models_Table
 {
-    protected $_name = 'users';
+    protected $_name = 'usuarios';
     protected $_primary = 'ident';
     protected $_rowClass = 'Usuarios_Usuario';
 

@@ -51,7 +51,7 @@ header, nav, footer {
 }
 
 #main {
-    min-height: 24.0em;
+    min-height: 25.0em;
 }
 
 article, section {
@@ -61,7 +61,7 @@ article, section {
 }
 
 section p {
-    line-height: 1.0em;
+    line-height: 1.25em;
 }
 
 section td, section tr {
@@ -71,6 +71,10 @@ section td, section tr {
 
 section td {
     padding-right: 1.0em;
+}
+
+section a:hover {
+    text-decoration: underline;
 }
 
 header nav, article, section, footer nav {

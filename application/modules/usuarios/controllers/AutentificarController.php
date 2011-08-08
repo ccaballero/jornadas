@@ -50,7 +50,7 @@ class Usuarios_AutentificarController extends Jornadas_Controllers_Action
             if ($form->isValid($request->getPost())) {
                 $dbAdapter = Zend_Db_Table::getDefaultAdapter();
                 $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
-                $authAdapter->setTableName('users')
+                $authAdapter->setTableName('usuarios')
                             ->setIdentityColumn('username')
                             ->setCredentialColumn('password')
                             ->setCredentialTreatment("SHA1(MD5(?))");

@@ -2,7 +2,7 @@
 
 class Exposiciones extends Jornadas_Models_Table
 {
-    protected $_name = 'expositions';
+    protected $_name = 'exposiciones';
     protected $_primary = 'ident';
 
     protected $_dependentTables = array(
@@ -22,9 +22,13 @@ class Exposiciones extends Jornadas_Models_Table
         $select = $this->select();
         $select->setIntegrityCheck(false);
         return $this->fetchAll(
-            $select->from('expositions', array('expositions.*', 'users.username', 'users.fullname'))
-                   ->join('users', 'users.ident = expositions.exponent')
-                   ->order('expositions.title ASC')
+            $select->from('exposiciones', array('exposiciones.*', 'usuarios.username', 'usuarios.fullname'))
+                   ->join('usuarios', 'usuarios.ident = exposiciones.exponent')
+                   ->order('exposiciones.title ASC')
             );
+    }
+
+    public function findByUrl($url) {
+        return $this->fetchRow($this->select()->where('url = ?', $url));
     }
 }

@@ -11,3 +11,5 @@
 "'%localPart%' can not be matched against quoted-string format",
 "'%localPart%' is no valid local part for email address '%value%'",
 "'%value%' exceeds the allowed length","'%value%' excede el tamaño disponible"
+"No token was provided to match against","Vuelva a intentar, por favor"
+"The two given tokens do not match","Vuelva a intentar, por favor"

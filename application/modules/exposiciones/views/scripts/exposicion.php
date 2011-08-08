@@ -5,5 +5,5 @@
     <td><?php echo $this->exposicion->username ?></td>
     <td>4096</td>
     <td><?php echo $this->timestamp($this->exposicion->tsregister) ?></td>
-    <td><span class="blue"><?php echo $this->exposicion->title ?></span></td>
+    <td><a class="blue" href="<?php echo $this->url(array('exposicion' => $this->exposicion->url), 'exposiciones_exposicion_ver') ?>"><?php echo $this->exposicion->title ?></a></td>
 </tr>

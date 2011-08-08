@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
     `role`             enum('exponent', 'participant')                             NOT NULL DEFAULT 'participant',
     `fullname`         varchar(1024)                                               NOT NULL DEFAULT '',
@@ -14,9 +14,10 @@ CREATE TABLE `users` (
     UNIQUE INDEX (`email`)
 ) DEFAULT CHARACTER SET UTF8;
 
-DROP TABLE IF EXISTS `expositions`;
-CREATE TABLE `expositions` (
+DROP TABLE IF EXISTS `exposiciones`;
+CREATE TABLE `exposiciones` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
+    `url`              varchar(128)                                                NOT NULL,
     `title`            varchar(128)                                                NOT NULL,
     `abstract`         text                                                        NOT NULL DEFAULT '',
     `avatar`           boolean                                                     NOT NULL DEFAULT false,
@@ -24,8 +25,9 @@ CREATE TABLE `expositions` (
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
     `tslastlogin`      int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
+    UNIQUE INDEX (`url`),
     INDEX (`exponent`),
-    FOREIGN KEY (`exponent`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
+    FOREIGN KEY (`exponent`) REFERENCES `usuarios`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
 
 /*DROP TABLE IF EXISTS `exposiciones_inscripciones`;

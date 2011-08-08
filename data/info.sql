@@ -1,4 +1,4 @@
-INSERT INTO `users` (`ident`, `role`, `username`, `fullname`, `password`, `email`, `tsregister`) VALUES
+INSERT INTO `usuarios` (`ident`, `role`, `username`, `fullname`, `password`, `email`, `tsregister`) VALUES
 ( 1, 'exponent',    'lorgio',   'Ing. Lorgio Alexander Lazarte Zurita', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'lorgi51@gmail.com', 1312522087),
 ( 2, 'exponent',    'alvaro',   'Ing. Alvaro Andrade Sejas', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'admin@ehacking.com.bo', 1312522087),
 ( 3, 'exponent',    'efrain',   'Efraín Fernando Luna Mamani', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'iteluna@gmail.com', 1312522087),
@@ -11,14 +11,16 @@ INSERT INTO `users` (`ident`, `role`, `username`, `fullname`, `password`, `email
 (10, 'participant', 'edgar',    'Edgar Valencia', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'rhcparthasfrozen@gmail.com', 1312522087),
 (11, 'participant', 'eduardo',  'Eduardo Soliz Valdez', 'e3bfefac763882f82a67fc0cdc42d284ad01d36a', 'eduardoscesi@gmail.com', 1312522087);
 
-INSERT INTO `expositions` (`ident`, `title`, `exponent`, `tsregister`) VALUES
-(1, 'Analisis Forense en sistemas windows', 1, 1312522087),
-(2, 'ISO 27001 Orientado a Entidades Financieras', 2, 1312522087),
-(3, 'ITIL 27000', 3, 1312522087),
-(4, 'Seguridad y configuracion de Servidores', 4, 1312522087),
-(5, 'Seguridad Web', 5, 1312522087),
-(6, 'Seguridad en Redes', 6, 1312522087),
-(7, 'Cuidado Nos atacan Desde Dentro', 7, 1312522087);
+INSERT INTO `exposiciones` (`ident`, `url`, `title`, `exponent`, `tsregister`) VALUES
+(1, 'analisis-forense-en-sistema-windows', 'Análisis Forense en sistemas windows', 1, 1312522087),
+(2, 'iso-27001-orientado-a-entidades-financieras', 'ISO 27001 Orientado a Entidades Financieras', 2, 1312522087),
+(3, 'itil-27000', 'ITIL 27000', 3, 1312522087),
+(4, 'seguridad-y-configuracion-de-servidores', 'Seguridad y configuración de Servidores', 4, 1312522087),
+(5, 'seguridad-web', 'Seguridad Web', 5, 1312522087),
+(6, 'seguridad-en-redes', 'Seguridad en Redes', 6, 1312522087),
+(7, 'cuidado-nos-atacan-desde-dentro', 'Cuidado Nos atacan Desde Dentro', 7, 1312522087);
+
+UPDATE `exposiciones` SET `abstract` = 'Normalmente las empresas garantizan la seguridad de sus datos mediante la aplicación de  dispositivos que ayudan a cuidar su frontera hacia Internet previniendo posibles ataques externos, pero muchas veces se olvidan de brindar seguridad al interior de la empresa. Dentro de la red local de la empresa la información que circula por las redes Informáticas es bastante critica, si un atacante llega a tener acceso a la red puede realizar ataques desde denegación de servicio hasta robo de datos permitiendo la fuga de información. En la conferencia se hablara de las vulnerabilidades que atrae una mala o nula implementación de medidas de seguridad Interna, como los riesgos de fuga de información y las medidas para mitigarlos.' WHERE ident = 7;
 
 /*
 INSERT INTO `exposiciones_inscripciones` (`participante`, `exposicion`, `registro`) VALUES
