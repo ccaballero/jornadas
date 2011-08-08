@@ -15,8 +15,10 @@
             </nav>
         </header>
         <section id="main">
-            <?php echo $this->placeholder('messages') ?>
-            <?php echo $this->layout()->content ?>
+            <p>
+                <?php echo $this->placeholder('messages') ?>
+                <?php echo $this->layout()->content ?>
+            </p>
         </section>
         <footer>
             <nav>

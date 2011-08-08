@@ -63,6 +63,12 @@ class Usuarios_AutentificarController extends Jornadas_Controllers_Action
                 if ($result->isValid()) {
                     $user = $authAdapter->getResultRowObject();
                     $auth->getStorage()->write($user);
+                    $this->_helper->flashMessenger->addMessage(array(
+                        'pwd' => '~',
+                        'cmd' => 'su ' . $user->username,
+                        'su' => true,
+                        'user' => 'guest',
+                    ));
                     $this->_helper->redirector('index', 'index', 'portada');
                 }
                 $form->getElement('username')->addErrorMessage('Información incorrecta')->markAsError();

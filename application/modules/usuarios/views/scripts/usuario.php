@@ -5,5 +5,5 @@
     <td><?php echo $this->usuario->username ?></td>
     <td>4096</td>
     <td><?php echo $this->timestamp($this->usuario->tsregister) ?></td>
-    <td><span class="blue"><?php echo $this->usuario->username ?></span></td>
+    <td><a class="blue" href="<?php echo $this->url(array('usuario' => $this->usuario->username), 'usuarios_usuario_ver') ?>"><?php echo $this->usuario->username ?></a></td>
 </tr>
