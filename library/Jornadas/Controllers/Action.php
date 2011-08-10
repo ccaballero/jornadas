@@ -21,6 +21,15 @@ class Jornadas_Controllers_Action extends Zend_Controller_Action
             $this->view->user = $this->user;
         }
 
+        $db = Zend_Db_Table::getDefaultAdapter();
+        $db->insert('visitas', array(
+            'application_env' => $_SERVER['APPLICATION_ENV'],
+            'user_agent' => $_SERVER['HTTP_USER_AGENT'],
+            'remote_addr' => $_SERVER['REMOTE_ADDR'],
+            'request_uri' => $_SERVER['REQUEST_URI'],
+            'tsregister' => time(),
+        ));
+
         $this->view->addHelperPath(APPLICATION_PATH . '/../library/Jornadas/Views/Helpers', 'Jornadas_Views_Helpers');
 
         $this->view->route = $this->getFrontController()->getRouter()->getCurrentRouteName();

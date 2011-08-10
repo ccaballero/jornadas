@@ -9,10 +9,11 @@
     </head>
     <body>
         <header>
-            <h1>jornadas de seguridad</h1>
+            <h1 id="banner">jornadas de seguridad</h1>
             <nav>
                 <?php echo $this->placeholder('menu') ?>
             </nav>
+            <div id="logo"></div>
         </header>
         <section id="main">
             <p>

@@ -50,18 +50,36 @@ header, nav, footer {
     width: 960px;
 }
 
+header {
+    position: relative;
+}
+
+#logo {
+    position: absolute;
+    width: 128px;
+    height: 127px;
+    top: -1.6em;
+    left: 0.5em;
+    background-image: url('/media/usuario-short.png');
+}
+
+#banner {
+    margin-left: 150px;
+}
+
 #main {
     min-height: 25.0em;
 }
 
 article, section {
     width: 940px;
-    padding: 0.1em 10px 0.5em 10px;
-    font-size: 0.90em;
+    padding: 1.0em 10px 0.5em 10px;
+    font-size: 0.912em;
 }
 
 section p {
     line-height: 1.25em;
+    margin: 0em 0em;
 }
 
 section td, section tr {
@@ -132,14 +150,14 @@ footer nav ul {
     padding: 0em 1.0em 0em 0em;
 }
 
-.red { color: #ff7f7f; }
-.blue { color: #7f7fff; }
-.green { color: #7fff7f; }
+.red { color: #ff4f4f; }
+.blue { color: #4f4fff; }
+.green { color: #4fff4f; }
 .yellow { color: #ffff7f; }
-.magenta { color: #ff7fff; }
-.cyan { color: #7fffff; }
+.magenta { color: #ff4fff; }
+.cyan { color: #4fffff; }
 .white { color: #ffffff }
-.gray { color: #7f7f7f; }
+.gray { color: #4f4f4f; }
 
 .bold { font-weight: bold; }
 .form { margin: 15.0em; }

@@ -5,7 +5,5 @@
     'user' => $this->user,
 )) ?>
 <br />
-<span class="cyan bold form">=============================================</span>
 <span class="cyan bold form">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOGIN</span>
-<span class="cyan bold form">=============================================</span>
 <?php echo $this->form ?>

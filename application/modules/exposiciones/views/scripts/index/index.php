@@ -12,17 +12,18 @@ total <?php echo count($this->exposiciones) * 4 ?>
     <?php echo $this->partial('exposiciones/views/scripts/exposicion-short.php', array('count' => $count++, 'exposicion' => $exposicion)) ?>
 <?php } ?>
 </table>
+<br />
 <p>
-<?php foreach($this->exposiciones as $exposicion) { ?>
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '~',
-    'cmd' => 'cat ' . preg_replace('/ /', '\ ', $exposicion->title) . '/detalles',
+    'cmd' => 'cat */detalles',
     'user' => $this->user,
 )) ?>
+<?php foreach($this->exposiciones as $exposicion) { ?>
 <br />
 <?php echo $this->partial('exposiciones/views/scripts/exposicion-normal.php', array('exposicion' => $exposicion)) ?>
-<br />
 <?php } ?>
+<br />
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '~',
     'cmd' => '_',

@@ -9,8 +9,7 @@
     'user' => $this->user,
 )) ?>
 <br />
-<span class="red">NOMBRE COMPLETO: </span><?php echo $this->usuario->fullname ?>
-<br />
+<?php echo $this->partial('usuarios/views/scripts/usuario-large.php', array('usuario' => $this->usuario)) ?>
 <br />
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '/usuarios/' . $this->usuario->username,

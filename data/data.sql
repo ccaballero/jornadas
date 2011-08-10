@@ -1,3 +1,12 @@
+DROP TABLE IF EXISTS `visitas`;
+CREATE TABLE `visitas` (
+    `application_env`  text                                                        NOT NULL DEFAULT '',
+    `user_agent`       text                                                        NOT NULL DEFAULT '',
+    `remote_addr`      text                                                        NOT NULL DEFAULT '',
+    `request_uri`      text                                                        NOT NULL DEFAULT '',
+    `tsregister`       int unsigned                                                NOT NULL DEFAULT 0
+) DEFAULT CHARACTER SET UTF8;
+
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
@@ -7,6 +16,7 @@ CREATE TABLE `usuarios` (
     `password`         varchar(40)                                                 NOT NULL,
     `email`            varchar(128)                                                NOT NULL DEFAULT '',
     `avatar`           boolean                                                     NOT NULL DEFAULT false,
+    `curriculum`       text                                                        NOT NULL DEFAULT '',
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
     `tslastlogin`      int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),

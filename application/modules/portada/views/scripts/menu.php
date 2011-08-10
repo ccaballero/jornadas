@@ -1,5 +1,5 @@
 <?php $this->placeholder('menu')->captureStart() ?>
-<ul>
+<ul style="margin-left: 110px;">
     <li>
         <a class="<?php echo $this->isActive($this->route, 'portada') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'portada') ?>">inicio</a>
     </li>
