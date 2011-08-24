@@ -32,11 +32,6 @@ a {
     text-decoration: none;
 }
 
-a:focus {
-    background-color: #7f7fff;
-    outline: none;
-}
-
 img {
     border: 0pt;
 }
@@ -71,6 +66,10 @@ header {
     min-height: 25.0em;
 }
 
+header > nav, #main, footer > nav {
+    -moz-box-shadow: 0.3em 0.3em 0.45em #707070;
+}
+
 article, section {
     width: 940px;
     padding: 1.0em 10px 0.5em 10px;
@@ -91,7 +90,7 @@ section td {
     padding-right: 1.0em;
 }
 
-section a:hover {
+header nav ul li a:hover, footer nav ul li a:hover, section a:hover {
     text-decoration: underline;
 }
 
@@ -131,14 +130,10 @@ header nav ul li a {
     font-weight: bold;
 }
 
-header nav ul li a:hover {
-    background-color: #7f7f7f;
-    outline: none;
-}
-
-header nav ul li a.active {
-    background-color: #ffffff;
+a:focus, header nav ul li a.active {
+    background: -moz-linear-gradient(top, #ffffff, #aaaaaa);
     color: #000000;
+    outline: none;
 }
 
 footer nav {
