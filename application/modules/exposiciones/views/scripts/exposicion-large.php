@@ -1,3 +1,7 @@
+<div style="float: left; width: 148px; margin-left: 16px;">
+    <img src="/icon.php?size=256&hash=<?php echo sha1($this->exposicion->tsregister . ' ' . $this->exposicion->title) ?>" width="128px" alt="" title="" />
+</div>
+
 <span class="red">TÍTULO: </span><a name="<?php echo $this->exposicion->url ?>"><?php echo $this->exposicion->title ?></a>
 <br />
 <?php if (isset($this->expositor)) { ?>

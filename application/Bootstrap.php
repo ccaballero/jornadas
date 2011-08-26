@@ -66,6 +66,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view->headTitle('Jornadas de seguridad');
         $view->doctype('HTML5');
         $view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
+        $view->headScript()->appendFile('/js/jquery-1.6.2.min.js', 'text/javascript')
+                           ->appendFile('/js/jquery.countdown.min.js', 'text/javascript');
         $view->headLink()->appendStylesheet('/media/style.css');
         return $view;
     }

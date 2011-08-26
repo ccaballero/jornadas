@@ -131,7 +131,7 @@ header nav ul li a {
 }
 
 a:focus, header nav ul li a.active {
-    background: -moz-linear-gradient(top, #ffffff, #aaaaaa);
+    background: -moz-linear-gradient(top, #ffffff, #bbbbbb);
     color: #000000;
     outline: none;
 }
