@@ -3,6 +3,7 @@
     'cmd' => 'countdown &',
     'sudo' => false,
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>
 <br />
 
@@ -50,6 +51,7 @@ $(function(){
     'cmd' => 'cacaview /afiches/principal.jpg',
     'sudo' => false,
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>
 <br />
 <img src="/media/afiches/afiche-min.jpg" width="100%" alt="" title="" />
@@ -59,4 +61,5 @@ $(function(){
     'cmd' => '_',
     'sudo' => false,
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>

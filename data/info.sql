@@ -1,5 +1,5 @@
 INSERT INTO `usuarios` (`ident`, `role`, `username`, `fullname`, `hash`, `password`, `tsregister`) VALUES
-( 1, 'admin',    'admin', 'El mero mero',                          'I3L8HXSG', SHA1(MD5('I3L8HXSG')), 1312522087),
+( 1, 'admin',    'root',   'El mero mero',                         'I3L8HXSG', SHA1(MD5('asdf')), 1312522087),
 ( 2, 'exponent', 'lorgio', 'Ing. Lorgio Alexander Lazarte Zurita', '2O2UTV0A', SHA1(MD5('2O2UTV0A')), 1312522087),
 ( 3, 'exponent', 'alvaro', 'Ing. Alvaro Andrade Sejas',            'G0PHHL6Z', SHA1(MD5('G0PHHL6Z')), 1312522087),
 ( 4, 'exponent', 'efrain', 'Efraín Fernando Luna Mamani',          '2DODYW7U', SHA1(MD5('2DODYW7U')), 1312522087),

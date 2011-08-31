@@ -1,5 +1,5 @@
 <div style="float: left; width: 80px; margin-left: 10px;">
-    <img src="/icon.php?size=128&hash=<?php echo sha1($this->exposicion->tsregister . ' ' . $this->exposicion->title) ?>" width="64px" alt="" title="" />
+    <img src="/icon.php?size=128&hash=<?php echo sha1($this->exposicion->title) ?>" width="64px" alt="" title="" />
 </div>
 
 <span class="bold red">TÍTULO: </span><a class="bold" name="<?php echo $this->exposicion->url ?>"><?php echo $this->exposicion->title ?></a>
@@ -16,7 +16,7 @@
 <br />
 <span class="bold red">DESCRIPCIÓN: </span>
 <br />
-<p style="text-align:justify;"><?php echo $this->specialEscape($this->exposicion->abstract) ?>
+<p style="text-align:justify;"><?php echo $this->wrapper($this->specialEscape($this->exposicion->abstract)) ?>
 
-&nbsp;<a class="bold cyan" href="<?php echo $this->url(array('exposicion' => $this->exposicion->url), 'exposiciones_exposicion_ver') ?>">[VER MAS]</a>
+&nbsp;<a class="bold cyan" href="<?php echo $this->url(array('exposicion' => $this->exposicion->url), 'exposiciones_exposicion_ver') ?>">[VER&nbsp;MAS]</a>
 </p>

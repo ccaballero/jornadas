@@ -2,6 +2,7 @@
     'pwd' => '~',
     'cmd' => 'ls -l /exposiciones',
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>
 <br />
 total <?php echo count($this->exposiciones) * 4 ?>
@@ -18,6 +19,7 @@ total <?php echo count($this->exposiciones) * 4 ?>
     'pwd' => '~',
     'cmd' => 'cat */detalles',
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>
 <?php foreach($this->exposiciones as $exposicion) { ?>
 <div class="block">
@@ -29,4 +31,5 @@ total <?php echo count($this->exposiciones) * 4 ?>
     'pwd' => '~',
     'cmd' => '_',
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>
