@@ -7,7 +7,7 @@ class Usuarios extends Jornadas_Models_Table
     protected $_rowClass = 'Usuarios_Usuario';
 
     protected $_dependentTables = array(
-        'Exposiciones', 'Exposiciones_Inscripciones', 'Noticias', 'Noticias_Comentarios'
+        'Exposiciones',
     );
     protected $_referenceMap = array();
 
@@ -21,5 +21,9 @@ class Usuarios extends Jornadas_Models_Table
 
     public function findByUsername($username) {
         return $this->fetchRow($this->getAdapter()->quoteInto('username = ?', $username));
+    }
+
+    public function selectByRole($role) {
+        return $this->fetchAll($this->select()->where('role = ?', $role)->order('username ASC'));
     }
 }

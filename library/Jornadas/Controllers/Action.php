@@ -4,6 +4,7 @@ class Jornadas_Controllers_Action extends Zend_Controller_Action
 {
     public $auth = null;
     public $user = null;
+    public $role = null;
     public $route = null;
 
     public function preDispatch() {
@@ -21,9 +22,11 @@ class Jornadas_Controllers_Action extends Zend_Controller_Action
             $this->view->user = $this->user;
         }
 
+        $this->role = $this->user->role;
+        $this->view->role = $this->role;
+
         $db = Zend_Db_Table::getDefaultAdapter();
         $db->insert('visitas', array(
-            'application_env' => $_SERVER['APPLICATION_ENV'],
             'user_agent' => $_SERVER['HTTP_USER_AGENT'],
             'remote_addr' => $_SERVER['REMOTE_ADDR'],
             'request_uri' => $_SERVER['REQUEST_URI'],

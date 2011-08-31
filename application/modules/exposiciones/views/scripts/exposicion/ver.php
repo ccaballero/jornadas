@@ -9,7 +9,9 @@
     'user' => $this->user,
 )) ?>
 <br />
+<div class="block" style="min-height: 10.0em; border-top: 0.2em dashed #ffffff;">
 <?php echo $this->partial('exposiciones/views/scripts/exposicion-large.php', array('exposicion' => $this->exposicion, 'expositor' => $this->expositor)) ?>
+</div>
 <br />
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '/exposiciones/' . $this->exposicion->title,

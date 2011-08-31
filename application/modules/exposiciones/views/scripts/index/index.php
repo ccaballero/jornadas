@@ -20,8 +20,9 @@ total <?php echo count($this->exposiciones) * 4 ?>
     'user' => $this->user,
 )) ?>
 <?php foreach($this->exposiciones as $exposicion) { ?>
-<br />
-<?php echo $this->partial('exposiciones/views/scripts/exposicion-normal.php', array('exposicion' => $exposicion)) ?>
+<div class="block">
+    <?php echo $this->partial('exposiciones/views/scripts/exposicion-normal.php', array('exposicion' => $exposicion)) ?>
+</div>
 <?php } ?>
 <br />
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(

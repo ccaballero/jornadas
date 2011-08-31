@@ -11,14 +11,12 @@
     <span class="bold red">EXPOSITOR: </span><a class="bold" href="<?php echo $this->url(array('usuario' => $this->exposicion->username), 'usuarios_usuario_ver') ?>"><?php echo $this->exposicion->fullname ?></a>
 <?php } ?>
 
-<?php if (!empty($this->exposicion->abstract)) { ?>
+<br />
+<span class="bold red">FECHA: </span>
 <br />
 <span class="bold red">DESCRIPCIÓN: </span>
-<p style="text-align:justify;"><?php echo $this->exposicion->abstract ?>
-<?php } ?>
-
-&nbsp;<a class="bold magenta" href="<?php echo $this->url(array('exposicion' => $this->exposicion->url), 'exposiciones_exposicion_ver') ?>">[VER MAS]</a>
-</p>
-
 <br />
-<hr />
+<p style="text-align:justify;"><?php echo $this->specialEscape($this->exposicion->abstract) ?>
+
+&nbsp;<a class="bold cyan" href="<?php echo $this->url(array('exposicion' => $this->exposicion->url), 'exposiciones_exposicion_ver') ?>">[VER MAS]</a>
+</p>

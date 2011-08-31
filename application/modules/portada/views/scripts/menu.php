@@ -7,12 +7,9 @@
         <a class="<?php echo $this->isActive($this->route, 'exposiciones') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'exposiciones') ?>">exposiciones</a>
     </li>
     <li>
-        <a class="<?php echo $this->isActive($this->route, 'usuarios') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'usuarios') ?>">usuarios</a>
+        <a class="<?php echo $this->isActive($this->route, 'usuarios') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'usuarios') ?>">participantes</a>
     </li>
 <?php if ($this->auth->hasIdentity()) { ?>
-    <li>
-        <a class="<?php echo $this->isActive($this->route, 'perfil') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'perfil') ?>">perfil</a>
-    </li>
     <li>
         <a class="<?php echo $this->isActive($this->route, 'acceder') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'acceder_salir') ?>">salir</a>
     </li>
@@ -20,9 +17,9 @@
     <li>
         <a class="<?php echo $this->isActive($this->route, 'acceder') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'acceder') ?>">acceder</a>
     </li>
-    <li>
+    <?php /*<li>
         <a class="<?php echo $this->isActive($this->route, 'registro') ? 'active' : 'inactive' ?>" href="<?php echo $this->url(array(), 'registro') ?>">registrarse</a>
-    </li>
+    </li>*/ ?>
 <?php } ?>
 </ul>
 <?php $this->placeholder('menu')->captureEnd() ?>

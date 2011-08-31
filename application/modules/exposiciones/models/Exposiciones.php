@@ -5,9 +5,7 @@ class Exposiciones extends Jornadas_Models_Table
     protected $_name = 'exposiciones';
     protected $_primary = 'ident';
 
-    protected $_dependentTables = array(
-        'Exposiciones_Inscripciones', 'Noticias',
-    );
+    protected $_dependentTables = array();
     protected $_referenceMap = array(
         'Expositor'             => array(
             'columns'           => 'exponent',

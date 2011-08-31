@@ -1,6 +1,6 @@
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '~',
-    'cmd' => 'ls -l /usuarios',
+    'cmd' => 'ls -l /participantes',
     'sudo' => false,
     'user' => $this->user,
 )) ?>
@@ -12,7 +12,22 @@ total <?php echo count($this->usuarios) * 4 ?>
 <?php foreach($this->usuarios as $usuario) { ?>
     <?php echo $this->partial('usuarios/views/scripts/usuario-short.php', array('count' => $count++, 'usuario' => $usuario)) ?>
 <?php } ?>
+    <tr><td>
+
+<?php if ($this->role == 'admin') { ?>
+<tr>
+    <td>-r-xr--r--</td>
+    <td>2</td>
+    <td><?php echo $this->user->username ?></td>
+    <td><?php echo $this->user->username ?></td>
+    <td>3260</td>
+    <td><?php echo $this->timestamp(time()) ?></td>
+    <td><a class="bold yellow" href="<?php echo $this->url(array(), 'usuarios_nuevo') ?>">crear participante.sh</a></td>
+</tr>
+<?php } ?>
+
 </table>
+<br />
 <br />
 <p>
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(

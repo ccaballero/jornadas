@@ -23,7 +23,7 @@ class Usuarios_Form_Register extends Zend_Form
                  ->addValidator(new Jornadas_Controllers_Validators_UniqueUsername(), false);
 
         $email = $this->createElement('text', 'email');
-        $email->setRequired(true)
+        $email->setRequired(false)
               ->setLabel('correo electrónico:')
               ->addFilter('StringTrim')
               ->addValidator('StringLength', false, array(1, 128))
@@ -42,6 +42,6 @@ class Usuarios_Form_Register extends Zend_Form
         $this->addElement($captcha);
         $this->addElement($csrf);
 
-        $this->addElement('submit', 'submit', array('ignore' => true, 'label' => 'registrarse',));
+        $this->addElement('submit', 'submit', array('ignore' => true, 'label' => 'registrar',));
     }
 }

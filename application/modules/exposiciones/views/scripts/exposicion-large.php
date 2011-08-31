@@ -13,6 +13,6 @@
 <br />
 <span class="red">DESCRIPCIÓN: </span>
 <br />
-<?php echo $this->exposicion->abstract ?>
+<?php echo $this->specialEscape($this->exposicion->abstract) ?>
 <?php } ?>
 <br />

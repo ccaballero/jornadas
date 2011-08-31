@@ -1,6 +1,6 @@
 <?php
 
-class Application_Helpers_SpecialEscape
+class Jornadas_Views_Helpers_SpecialEscape
 {
     public function specialEscape($message) {
         $return = '';

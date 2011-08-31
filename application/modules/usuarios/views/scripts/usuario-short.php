@@ -1,9 +1,5 @@
 <tr>
-<?php if ($this->usuario->role == 'exponent') { ?>
     <td>drwxr-xr-x</td>
-<?php } else { ?>
-    <td>drwxr-xr-x</td>
-<?php } ?>
     <td>2</td>
     <td><?php echo $this->usuario->username ?></td>
     <td><?php echo $this->usuario->username ?></td>
