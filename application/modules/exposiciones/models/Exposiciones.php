@@ -22,7 +22,7 @@ class Exposiciones extends Jornadas_Models_Table
         return $this->fetchAll(
             $select->from('exposiciones', array('exposiciones.*', 'usuarios.username', 'usuarios.fullname'))
                    ->join('usuarios', 'usuarios.ident = exposiciones.exponent')
-                   ->order('exposiciones.title ASC')
+                   ->order('exposiciones.tsstart ASC')
             );
     }
 

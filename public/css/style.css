@@ -161,3 +161,7 @@ footer nav ul {
     min-height: 5.0em;
     border-bottom: 0.2em dashed #ffffff;
 }
+
+.no-decoration:hover {
+    text-decoration: none;
+}

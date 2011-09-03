@@ -12,15 +12,15 @@ INSERT INTO `usuarios` (`ident`, `role`, `username`, `fullname`, `hash`, `passwo
 /*UPDATE `usuarios` SET `curriculum` =
 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas mauris non arcu sagittis rhoncus. Donec consectetur pretium nibh id sollicitudin. Fusce sit amet neque eget dolor pellentesque congue. Sed pellentesque libero vel mauris dignissim fermentum. Vestibulum enim tortor, vestibulum ac mattis vitae, pellentesque nec neque. Aenean posuere, eros ac faucibus consectetur, tellus risus sagittis ligula, eu vulputate tellus lorem vitae dui. In rutrum fermentum nunc ac tristique. Donec cursus justo sit amet nibh egestas eu tincidunt sapien semper. Duis imperdiet nisi ut orci feugiat condimentum. Aenean et nulla nec arcu ornare accumsan eget at ligula. Sed pulvinar faucibus elementum. Aenean non ligula lorem. Maecenas gravida eros nec magna molestie placerat. Morbi volutpat, enim eu imperdiet accumsan, dolor leo convallis odio, in suscipit est urna sit amet nisl. Etiam ultrices nulla quis urna lobortis vitae euismod ipsum porttitor. Phasellus vel urna quis orci tincidunt tincidunt. Donec molestie imperdiet mauris ut commodo. Phasellus sit amet lorem nulla, et lobortis massa. Quisque hendrerit, orci tristique gravida bibendum, libero lectus sollicitudin elit, eu tristique turpis nulla eget nunc. Mauris volutpat egestas nunc sed dignissim. Duis dapibus lorem in mauris viverra pellentesque. Cras dapibus lacus eget enim dictum rutrum. In id vestibulum odio. Vestibulum placerat ornare ante, et porta lacus fringilla ac. Proin vel odio sed tortor hendrerit sollicitudin. Cras nec magna vitae felis vulputate molestie. Cras sit amet pharetra erat. Vestibulum metus arcu, cursus vel eleifend in, tincidunt non libero. ' WHERE ident = 1;*/
 
-INSERT INTO `exposiciones` (`ident`, `url`, `title`, `exponent`, `tsregister`) VALUES
-(1, 'analisis-forense-en-sistema-windows', 'Análisis Forense en sistemas windows', 2, 1312522087),
-(2, 'iso-27001-orientado-a-entidades-financieras', 'ISO 27001 Orientado a Entidades Financieras', 3, 1312522087),
-(3, 'itil-27000', 'ITIL 27000', 4, 1312522087),
-(4, 'seguridad-y-configuracion-de-servidores', 'Seguridad y configuración de Servidores', 5, 1312522087),
-(5, 'seguridad-web', 'Seguridad Web', 6, 1312522087),
-(6, 'seguridad-en-redes', 'Seguridad en Redes', 7, 1312522087),
-(7, 'cuidado-nos-atacan-desde-dentro', 'Cuidado Nos atacan Desde Dentro', 8, 1312522087),
-(8, 'politicas-de-seguridad', 'Políticas de Seguridad', 9, 1312522087);
+INSERT INTO `exposiciones` (`ident`, `url`, `title`, `exponent`, `tsstart`, `tsregister`) VALUES
+(1, 'analisis-forense-en-sistema-windows', 'Análisis forense en sistemas windows', 2, 1316109600, 1312522087),
+(2, 'iso-27001-orientado-a-entidades-financieras', 'ISO 27001 orientado a entidades financieras', 3, 1316113200, 1312522087),
+(3, 'itil-27000', 'ITIL 27000', 4, 1316120400, 1312522087),
+(4, 'seguridad-y-configuracion-de-servidores', 'Seguridad y configuración de servidores', 5, 1316030400, 1312522087),
+(5, 'seguridad-web', 'Seguridad web', 6, 1316023200, 1312522087),
+(6, 'seguridad-en-redes', 'Seguridad en redes', 7, 1316116800, 1312522087),
+(7, 'cuidado-nos-atacan-desde-dentro', 'Cuidado nos atacan desde dentro', 8, 1316026800, 1312522087),
+(8, 'politicas-de-seguridad', 'Políticas de seguridad', 9, 1316034000, 1312522087);
 
 UPDATE `exposiciones` SET `abstract` = '' WHERE ident = 1;
 UPDATE `exposiciones` SET `abstract` = '' WHERE ident = 2;

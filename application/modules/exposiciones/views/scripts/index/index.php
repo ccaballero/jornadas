@@ -1,6 +1,6 @@
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '~',
-    'cmd' => 'ls -l /exposiciones',
+    'cmd' => 'ls -ltr /exposiciones',
     'user' => $this->user,
     'role' => $this->role,
 )) ?>

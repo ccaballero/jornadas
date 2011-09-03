@@ -1,10 +1,12 @@
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '~',
-    'cmd' => 'countdown &',
+    'cmd' => 'countdown',
     'sudo' => false,
     'user' => $this->user,
     'role' => $this->role,
 )) ?>
+Para el comienzo de las jornadas faltan:
+<br />
 <br />
 
 <script type="text/javascript">
@@ -44,17 +46,6 @@ $(function(){
 </div>
 
 <br />
-<br />
-
-<?php echo $this->partial('portada/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => 'cacaview /afiches/principal.jpg',
-    'sudo' => false,
-    'user' => $this->user,
-    'role' => $this->role,
-)) ?>
-<br />
-<img src="/media/afiches/afiche-min.jpg" width="100%" alt="" title="" />
 
 <?php echo $this->partial('portada/views/scripts/prompt.php', array(
     'pwd' => '~',

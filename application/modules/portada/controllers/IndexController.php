@@ -24,4 +24,8 @@ class IndexController extends Jornadas_Controllers_Action
 
         $this->view->countdown = "$days:$hours:$minutes:$seconds";
     }
+
+    public function auspiciadoresAction() {}
+
+    public function propagandaAction() {}
 }
