@@ -50,8 +50,21 @@ class Jornadas_Controllers_Action extends Zend_Controller_Action
 
     public function requireLogin() {
         if ($this->auth == null) {
-            $this->_helper->flashMessenger->addMessage('You must be logged');
-            $this->_helper->redirector('in', 'index', 'auth');
+            $this->_helper->flashMessenger->addMessage(array(
+                'only_message' => true,
+                'message' => 'Tu debes estar logeado',
+            ));
+            $this->_helper->redirector('acceder', 'autentificar', 'usuarios');
+        }
+    }
+
+    public function requireAdmin() {
+        if ($this->role <> 'admin') {
+            $this->_helper->flashMessenger->addMessage(array(
+                'only_message' => true,
+                'message' => 'Tu debes tener privilegios de administración',
+            ));
+            $this->_helper->redirector('index', 'index', 'portada');
         }
     }
 }

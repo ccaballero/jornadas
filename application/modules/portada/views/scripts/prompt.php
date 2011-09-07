@@ -1,4 +1,8 @@
-<?php if ($this->role == 'admin') { ?>
+<?php if (isset($this->only_message)) { ?>
+    <?php echo $this->message ?>
+    <br />
+    <br />
+<?php } else if ($this->role == 'admin') { ?>
     <span class="red bold"><?php echo $this->user->username ?>@jornadas</span>
     <span class="blue bold"><?php echo $this->pwd ?># </span>
     <?php if (isset($this->cmd)) { ?>
@@ -7,6 +11,10 @@
         _
     <?php } ?>
     <br />
+    <?php if (isset($this->message)) { ?>
+        <?php echo $this->message ?>
+        <br />
+    <?php } ?>
 <?php } else { ?>
     <span class="green bold"><?php if (is_object($this->user)) { ?><?php echo $this->user->username ?><?php } else { ?><?php echo $this->user ?><?php } ?>@jornadas</span>
     <span class="blue bold"><?php echo $this->pwd ?>$ </span>
@@ -21,4 +29,8 @@
         _
     <?php } ?>
     <br />
+    <?php if (isset($this->message)) { ?>
+        <?php echo $this->message ?>
+        <br />
+    <?php } ?>
 <?php } ?>

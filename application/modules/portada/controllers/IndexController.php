@@ -4,7 +4,8 @@ class IndexController extends Jornadas_Controllers_Action
 {
     public function indexAction() {
         $now = time();
-        $tow = mktime(14, 0, 0, 9, 8, 2011);
+        //$tow = mktime(14, 0, 0, 9, 8, 2011);
+        $tow = mktime(2, 25, 0, 9, 7, 2011);
 
         $dif = $tow - $now;
         $days = floor($dif / (60 * 60 * 24));

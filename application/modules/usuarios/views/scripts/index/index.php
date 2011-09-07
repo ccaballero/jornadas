@@ -3,6 +3,7 @@
     'cmd' => 'ls -l /participantes',
     'sudo' => false,
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>
 <br />
 total <?php echo count($this->usuarios) * 4 ?>
@@ -22,7 +23,16 @@ total <?php echo count($this->usuarios) * 4 ?>
     <td><?php echo $this->user->username ?></td>
     <td>3260</td>
     <td><?php echo $this->timestamp(time()) ?></td>
-    <td><a class="bold yellow" href="<?php echo $this->url(array(), 'usuarios_nuevo') ?>">crear participante.sh</a></td>
+    <td><a class="bold yellow" href="<?php echo $this->url(array(), 'usuarios_agregar') ?>">crear participante.sh</a></td>
+</tr>
+<tr>
+    <td>-r-xr--r--</td>
+    <td>2</td>
+    <td><?php echo $this->user->username ?></td>
+    <td><?php echo $this->user->username ?></td>
+    <td>3260</td>
+    <td><?php echo $this->timestamp(time()) ?></td>
+    <td><a class="bold yellow" href="<?php echo $this->url(array(), 'usuarios_credenciales') ?>">credenciales.pdf</a></td>
 </tr>
 <?php } ?>
 
@@ -35,4 +45,5 @@ total <?php echo count($this->usuarios) * 4 ?>
     'cmd' => '_',
     'sudo' => false,
     'user' => $this->user,
+    'role' => $this->role,
 )) ?>
