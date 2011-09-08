@@ -59,7 +59,7 @@ class Usuarios_IndexController extends Jornadas_Controllers_Action
 
             $ch = curl_init();
             $fp = fopen($image_file, 'wb');
-            curl_setopt ($ch, CURLOPT_URL, 'http://' . $_SERVER['HTTP_HOST'] . '/icon.php?hash=' . sha1($usuario->hash) . '&size=512');
+            curl_setopt ($ch, CURLOPT_URL, 'http://' . $_SERVER['HTTP_HOST'] . '/icon.php?hash=' . sha1($usuario->fullname) . '&size=512');
             curl_setopt($ch, CURLOPT_FILE, $fp);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_exec($ch);
@@ -81,7 +81,7 @@ class Usuarios_IndexController extends Jornadas_Controllers_Action
         $modelo_usuarios = new Usuarios();
         $usuarios = $modelo_usuarios->fetchAll();
 
-        $scale = 200;
+        $scale = 160;
         $proportion = (1 + sqrt(5) ) / 2;
 
         $pdf = new Zend_Pdf();
@@ -97,26 +97,27 @@ class Usuarios_IndexController extends Jornadas_Controllers_Action
 
             $image_file = APPLICATION_PATH . '/../data/tmp/' . $usuario->ident . '.png';
             $logo = Zend_Pdf_Image::imageWithPath($image_file);
-            $page->drawImage($logo, intval($width/2 - 64), $height - 132, intval($width/2 + 64), $height - 4);
-
-            $page->setLineWidth(1);
-            $page->drawCircle($width - 10, $height - 10, 4, Zend_Pdf_Page::SHAPE_DRAW_STROKE);
-            $page->drawCircle($width - 10, $height - 24, 4, Zend_Pdf_Page::SHAPE_DRAW_STROKE);
-
-            $page->setLineWidth(3);
-            $page->drawLine(0, $height - 153, $width, $height - 153);
-
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 13);
-            $page->drawText('Jornadas de seguridad informática', 33, $height - 146);
+            $page->drawImage($logo, intval($width/2 - 40), $height - 88, intval($width/2 + 40), $height - 8);
+            
+            $scesi_file = APPLICATION_PATH . '/../public/media/scesi.jpg';
+            $scesi = Zend_Pdf_Image::imageWithPath($scesi_file);
+            $page->drawImage($scesi, $width - 40, 4, $width - 5, intval((35 * 354) / 509) + 4);
 
             $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 11);
-            $page->drawText($usuario->fullname, 6, $height - 167);
-            $page->drawText('Usuario: ', 6, $height - 180);
-            $page->drawText('Clave: ', 6, $height - 193);
+            $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
+            $page->drawText('Jornadas de seguridad informática', 20, $height - 102);
 
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 11);
-            $page->drawText($usuario->username, 80, $height - 180);
-            $page->drawText($usuario->hash, 80, $height - 193);
+            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 10);
+            $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
+            $page->drawText($usuario->fullname, 8, $height - 126);
+            $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
+            $page->drawText('Usuario: ', 8, $height - 138);
+            $page->drawText('Clave: ', 8, $height - 150);
+
+            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 10);
+            $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
+            $page->drawText($usuario->username, 60, $height - 138);
+            $page->drawText($usuario->hash, 60, $height - 150);
 
             $pdf->pages[] = $page;
         }
@@ -133,15 +134,3 @@ class Usuarios_IndexController extends Jornadas_Controllers_Action
         die;
     }
 }
-
-/*$page->setLineColor(new Zend_Pdf_Color_Rgb(0, 0, 0));
-$page->setFillColor(new Zend_Pdf_Color_Rgb(255, 255, 255));
-$page->setLineWidth(2);
-$page->drawRectangle(0, 0, $width, $height, Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE);
-$page->drawLine($scale, 0, $scale, $height);
-$page->drawLine(0, intval((($scale * $proportion) - $scale) / $proportion), $width, intval((($scale * $proportion) - $scale) / $proportion));
-$page->drawLine(0, $height, $width, 0);
-$page->drawLine($scale, 0, $width, $height);
-$page->setFillColor(new Zend_Pdf_Color_Rgb(0, 0, 0));
-$page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 11);
-$page->drawText('Jornadas de seguridad informática', 0, $height / 2);*/
