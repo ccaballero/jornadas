@@ -1,16 +1,18 @@
-DROP TABLE IF EXISTS `visitas`;
-CREATE TABLE `visitas` (
+DROP TABLE IF EXISTS `stats`;
+CREATE TABLE `stats` (
     `user_agent`       text                                                        NOT NULL DEFAULT '',
     `remote_addr`      text                                                        NOT NULL DEFAULT '',
     `request_uri`      text                                                        NOT NULL DEFAULT '',
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0
 ) DEFAULT CHARACTER SET UTF8;
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
-    `role`             enum('admin', 'exponent', 'participant')                    NOT NULL DEFAULT 'participant',
-    `fullname`         varchar(1024)                                               NOT NULL DEFAULT '',
+    `role`             enum('admin', 'organizer', 'exhibitor', 'assistant')        NOT NULL DEFAULT 'assistant',
+    `title`            varchar(1024)                                               NOT NULL DEFAULT '',
+    `name`             varchar(1024)                                               NOT NULL DEFAULT '',
+    `surname`          varchar(1024)                                               NOT NULL DEFAULT '',
     `username`         varchar(1024)                                               NOT NULL DEFAULT '',
     `password`         varchar(40)                                                 NOT NULL,
     `email`            varchar(128)                                                NOT NULL DEFAULT '',
@@ -20,26 +22,25 @@ CREATE TABLE `usuarios` (
     PRIMARY KEY (`ident`)
 ) DEFAULT CHARACTER SET UTF8;
 
-DROP TABLE IF EXISTS `usuarios_expositores`;
-CREATE TABLE `usuarios_expositores` (
-    `usuario`          int unsigned                                                NOT NULL,
+DROP TABLE IF EXISTS `users_exhibitors`;
+CREATE TABLE `users_exhibitors` (
+    `user`             int unsigned                                                NOT NULL,
     `curriculum`       text                                                        NOT NULL DEFAULT '',
-    INDEX (`usuario`),
-    FOREIGN KEY (`usuario`) REFERENCES `usuarios`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
+    INDEX (`user`),
+    FOREIGN KEY (`user`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
 
-DROP TABLE IF EXISTS `exposiciones`;
-CREATE TABLE `exposiciones` (
+DROP TABLE IF EXISTS `exhibitions`;
+CREATE TABLE `exhibitions` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
     `url`              varchar(128)                                                NOT NULL,
     `title`            varchar(128)                                                NOT NULL,
     `abstract`         text                                                        NOT NULL DEFAULT '',
-    `avatar`           boolean                                                     NOT NULL DEFAULT false,
-    `exponent`         int unsigned                                                NOT NULL,
+    `exhibitor`         int unsigned                                                NOT NULL,
     `tsstart`          int unsigned                                                NOT NULL DEFAULT 0,
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
     UNIQUE INDEX (`url`),
-    INDEX (`exponent`),
-    FOREIGN KEY (`exponent`) REFERENCES `usuarios`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
+    INDEX (`exhibitor`),
+    FOREIGN KEY (`exhibitor`) REFERENCES `users_exhibitors`(`user`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;

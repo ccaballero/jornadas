@@ -1,5 +1,6 @@
-body, input {
+* {
     font-family: "Courier New", Courier, monospace;
+    font-size: 0.987em;
 }
 
 body {
@@ -27,121 +28,109 @@ dd li {
     list-style: none outside none;
 }
 
+td, tr {
+    padding: 0;
+    margin: 0;
+}
+
+td {
+    padding-right: 10px;
+    vertical-align: top;
+}
+
 a {
     color: #ffffff;
+    font-weight: bold;
     text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+p {
+    text-align: justify;
 }
 
 img {
     border: 0pt;
 }
 
-header, nav, footer, article, section {
+#header {
+    background: transparent url('/media/usuario-short.png') no-repeat 14px 100%;
+    padding-top: 16px;
+}
+
+#header h1 {
+    font-size: 2.2em;
+}
+
+#header, #main, #footer {
+    width: 960px;
     display: block;
     margin: 0pt auto;
 }
 
-header, nav, footer {
-    width: 960px;
+#header > .nav, #main, #footer > .nav {
+    -moz-box-shadow: 0.3em 0.3em 0.45em #707070;
 }
 
-header {
-    position: relative;
+#header #banner {
+    margin-left: 170px;
+    text-shadow: 0.1em 0.1em 0.1em #aaaaaa;
+    height: 50px;
 }
 
-#logo {
-    position: absolute;
-    width: 128px;
-    height: 127px;
-    top: -1.6em;
-    left: 0.5em;
-    background-image: url('/media/usuario-short.png');
+#header .nav {
+    -moz-border-radius: 1.0em 1.0em 0em 0em;
 }
 
-#banner {
-    margin-left: 150px;
+#header .nav, #main, #footer .nav {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#header .nav ul li, #footer .nav ul li {
+    display: inline;
+}
+
+#header .nav ul li a, #footer .nav ul li a {
+    padding: 0.30em 0.36em;
+    display: inline-block;
+}
+
+#header .nav ul li a.active {
+    background: -moz-linear-gradient(top, #eeeeee, #999999);
+    text-shadow: 0.1em 0.1em 0.1em #ffffff;
+    -moz-border-radius: 0px 0px 8px 8px;
+    color: #000000;
 }
 
 #main {
     min-height: 25.0em;
 }
 
-header > nav, #main, footer > nav {
-    -moz-box-shadow: 0.3em 0.3em 0.45em #707070;
+#content {
+    margin: 0pt;
+    padding: 10px 10px;
 }
 
-article, section {
-    width: 940px;
-    padding: 1.0em 10px 0.5em 10px;
-    font-size: 0.912em;
-}
-
-section p {
+#content p {
+    margin: 0pt;
+    padding: 0pt;
     line-height: 1.25em;
-    margin: 0em 0em;
 }
 
-section td, section tr {
-    padding: 0;
-    margin: 0;
-}
-
-section td {
-    padding-right: 1.0em;
-}
-
-header nav ul li a:hover, footer nav ul li a:hover, section a:hover {
+#content a:hover {
     text-decoration: underline;
 }
 
-header nav, article, section, footer nav {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-header h1 {
-    font-size: 2.6em;
-    margin: 1.0em 0em 0.2em 0em;
-    text-shadow: 0.1em 0.1em 0.1em #aaaaaa;
-}
-
-header nav {
-    -moz-border-radius: 0.6em 0.6em 0em 0em;
-}
-
-footer nav {
-    -moz-border-radius: 0em 0em 0.6em 0.6em;
-}
-
-header nav ul, footer nav ul {
-    list-style: none outside none;
-}
-
-header nav ul li, footer nav ul li {
-    display: inline;
-}
-
-header nav ul li a, footer nav ul li a {
-    padding: 0.3em;
-    display: inline-block;
-}
-
-header nav ul li a {
-    font-weight: bold;
-}
-
-a:focus, header nav ul li a.active {
-    background: -moz-linear-gradient(top, #ffffff, #bbbbbb);
-    color: #000000;
-    outline: none;
-}
-
-footer nav {
-    margin-top: 1.0em;
+#footer .nav {
+    -moz-border-radius: 0em 0em 1.0em 1.0em;
     text-align: right;
 }
 
-footer nav ul {
+#footer .nav ul {
     padding: 0em 1.0em 0em 0em;
 }
 
@@ -156,12 +145,43 @@ footer nav ul {
 
 .bold { font-weight: bold; }
 .form { margin: 15.0em; }
-.block {
-    padding: 1.0em 0em;
-    min-height: 5.0em;
-    border-bottom: 0.2em dashed #ffffff;
+
+#countdown {
+    margin: 0pt auto;
+    width: 574px;
+    height: 105px;
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #ffffff;
+    -moz-border-radius: 10px;
 }
 
-.no-decoration:hover {
-    text-decoration: none;
+#countdown .cntSeparator {
+    margin: 10px 10px;
+}
+
+#countdown .desc {
+    margin: 7px 3px;
+}
+
+#countdown .desc div {
+    float: left;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+}
+
+#countdown .days { margin-left: 122px; }
+#countdown .hours { margin-left: 100px; }
+#countdown .minutes { margin-left: 86px; }
+#countdown .seconds { margin-left: 72px; }
+
+.center {
+    width: 655px;
+    margin: 0pt auto;
+}
+
+.right {
+    text-align: right;
 }

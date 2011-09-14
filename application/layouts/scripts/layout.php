@@ -8,23 +8,22 @@
         <?php echo $this->headScript() ?>
     </head>
     <body>
-        <header>
-            <h1 id="banner">jornadas de seguridad</h1>
-            <nav>
+        <div id="header">
+            <h1 id="banner">jornadas de seguridad informática</h1>
+            <div class="nav">
                 <?php echo $this->placeholder('menu') ?>
-            </nav>
-            <div id="logo"></div>
-        </header>
-        <section id="main">
-            <p>
+            </div>
+        </div>
+        <div id="main">
+            <div id="content">
                 <?php echo $this->placeholder('messages') ?>
                 <?php echo $this->layout()->content ?>
-            </p>
-        </section>
-        <footer>
-            <nav>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="nav">
                 <?php echo $this->placeholder('footer') ?>
-            </nav>
-        </footer>
+            </div>
+        </div>
     </body>
 </html>

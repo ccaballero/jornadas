@@ -6,7 +6,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $loader = Zend_Loader_Autoloader::getInstance();
 
         $resourceTypes = array('form' => array('path' => 'forms/', 'namespace' => 'Form',),);
-        $modules = array('portada', 'usuarios', 'exposiciones', 'noticias');
+        $modules = array('frontpage', 'users', 'auth', 'exhibitions', 'news', 'gallery');
 
         foreach ($modules as $module) {
             $loader->pushAutoloader(new Zend_Application_Module_Autoloader(
@@ -16,7 +16,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             ));
         }
 
-        $loader->pushAutoloader(new Jornadas_Models_Loader());
+        $loader->pushAutoloader(new Application_Models_Loader());
         return $loader;
     }
 
@@ -32,6 +32,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     protected function _initSession() {
         Zend_Session::start();
+    }
+
+    protected function _initConfig() {
+        $config = new Zend_Config($this->getOptions());
+        Zend_Registry::set('config', $config);
+        return $config;
     }
 
     protected function _initTranslate() {
@@ -62,9 +68,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $renderer->setViewSuffix('php');
         Zend_Controller_Action_HelperBroker::addHelper($renderer);
 
+        $options = $this->getOptions();
+
         $view = new Zend_View();
-        $view->headTitle('Jornadas de seguridad');
-        $view->doctype('HTML5');
+
+        $view->headTitle($options['system']['name']);
+        $view->doctype($options['resources']['layout']['doctype']);
         $view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
         $view->headScript()->appendFile('/js/jquery-1.6.2.min.js', 'text/javascript')
                            ->appendFile('/js/jquery.countdown.min.js', 'text/javascript')
