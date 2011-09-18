@@ -25,6 +25,22 @@
     <br />
 <?php } ?>
 
+<?php echo $this->partial('frontpage/views/scripts/index/_tools_news.php', array('role' => $this->role, 'user' => $this->user)); ?>
+<?php if (count($this->news) <> 0) { ?>
+    <?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
+        'pwd' => '~',
+        'cmd' => 'cat /noticias/*',
+        'sudo' => false,
+        'user' => $this->user,
+        'role' => $this->role,
+    )) ?>
+    <br/>
+
+    <?php foreach ($this->news as $new) { ?>
+        <?php echo $this->partial('news/views/scripts/new.php', array('new' => $new, 'author' => $new->getAuthor())) ?>
+    <?php } ?>
+<?php } ?>
+
 <?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
     'pwd' => '~',
     'cmd' => '_',

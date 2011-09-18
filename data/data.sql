@@ -36,11 +36,23 @@ CREATE TABLE `exhibitions` (
     `url`              varchar(128)                                                NOT NULL,
     `title`            varchar(128)                                                NOT NULL,
     `abstract`         text                                                        NOT NULL DEFAULT '',
-    `exhibitor`         int unsigned                                                NOT NULL,
+    `exhibitor`        int unsigned                                                NOT NULL,
     `tsstart`          int unsigned                                                NOT NULL DEFAULT 0,
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
     UNIQUE INDEX (`url`),
     INDEX (`exhibitor`),
     FOREIGN KEY (`exhibitor`) REFERENCES `users_exhibitors`(`user`) ON UPDATE CASCADE ON DELETE RESTRICT
+) DEFAULT CHARACTER SET UTF8;
+
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
+    `ident`            int unsigned                                                NOT NULL auto_increment,
+    `title`            varchar(512)                                                NOT NULL,
+    `text`             text                                                        NOT NULL DEFAULT '',
+    `author`           int unsigned                                                NOT NULL,
+    `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
+    PRIMARY KEY (`ident`),
+    INDEX (`author`),
+    FOREIGN KEY (`author`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;

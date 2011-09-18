@@ -144,6 +144,7 @@ img {
 .gray { color: #4f4f4f; }
 
 .bold { font-weight: bold; }
+.plain { font-weight: none; }
 .form { margin: 15.0em; }
 
 #countdown {
@@ -184,4 +185,30 @@ img {
 
 .right {
     text-align: right;
+}
+
+.exhibition {
+    width: 800px;
+    margin: 0pt auto;
+}
+
+.exhibition .video {
+    float: right; width: 1.0em; text-align: center; background-color: #ff4fff; color: #000000; font-weight: bold;
+}
+
+.exhibition .slideshow {
+    float: right; width: 1.0em; text-align: center; background-color: #ffff7f; color: #000000; font-weight: bold;
+}
+
+.new .title {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0.09em 0.5em 0.05em 0.5em;
+    margin: 0.2em 0em;
+}
+
+.new .description {
+    padding: 0.5em;
+    margin: 0.1em;
+    min-height: 135px;
 }

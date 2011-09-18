@@ -54,17 +54,20 @@ class Application_Controllers_Action extends Zend_Controller_Action
                 'only_message' => true,
                 'message' => 'Tu debes estar logeado',
             ));
-            $this->_helper->redirector('acceder', 'autentificar', 'users');
+            $this->_helper->redirector('in', 'index', 'users');
         }
     }
 
     public function requireAdmin() {
-        if ($this->role <> 'admin') {
-            $this->_helper->flashMessenger->addMessage(array(
-                'only_message' => true,
-                'message' => 'Tu debes tener privilegios de administración',
-            ));
-            $this->_helper->redirector('index', 'index', 'portada');
-        }
+        $role = $this->role;
+
+        if ($this->role == 'admin') { return; }
+        if ($this->role == 'organizer') { return; }
+
+        $this->_helper->flashMessenger->addMessage(array(
+            'only_message' => true,
+            'message' => 'Tu debes tener privilegios de administración',
+        ));
+        $this->_helper->redirector('index', 'index', 'frontpage');
     }
 }

@@ -1,12 +1,12 @@
 INSERT INTO `exhibitions` (`ident`, `url`, `title`, `exhibitor`, `tsstart`, `tsregister`) VALUES
-(1, 'analisis-forense-en-sistema-windows', 'Análisis forense en sistemas windows', 2, 1316109600, 1312522087),
-(2, 'iso-27001-orientado-a-entidades-financieras', 'ISO 27001 orientado a entidades financieras', 3, 1316113200, 1312522087),
-(3, 'itil-27000', 'ITIL 27000', 4, 1316116800, 1312522087),
-(4, 'seguridad-en-la-administracion-y-configuracion-de-servidores', 'Seguridad y configuración de servidores', 5, 1316034000, 1312522087),
-(5, 'seguridad-web', 'Seguridad web', 6, 1316023200, 1312522087),
-(6, 'seguridad-en-redes', 'Seguridad en redes', 7, 1316026800, 1312522087),
-(7, 'cuidado-nos-atacan-desde-dentro', 'Cuidado nos atacan desde dentro', 8, 1316120400, 1312522087),
-(8, 'politicas-de-seguridad', 'Políticas de seguridad', 9, 1316030400, 1312522087);
+(1, 'analisis-forense-en-sistema-windows', 'Análisis forense en sistemas windows', 2, 1315591200, 1312522087),
+(2, 'iso-27001-orientado-a-entidades-financieras', 'ISO 27001 orientado a entidades financieras', 3, 1315594800, 1312522087),
+(3, 'itil-v3', 'ITIL v3 - Gestión de seguridad de la información', 4, 1315598400, 1312522087),
+(4, 'seguridad-en-la-administracion-y-configuracion-de-servidores', 'Seguridad y configuración de servidores', 5, 1315515600, 1312522087),
+(5, 'seguridad-web', 'Seguridad web', 6, 1315504800, 1312522087),
+(6, 'seguridad-en-redes', 'Seguridad en redes', 7, 1315508400, 1312522087),
+(7, 'cuidado-nos-atacan-desde-dentro', 'Cuidado nos atacan desde dentro', 8, 1315602000, 1312522087),
+(8, 'politicas-de-seguridad', 'Políticas de seguridad', 9, 1315512000, 1312522087);
 
 UPDATE `exhibitions` SET `abstract` =
 'La seguridad forense esta ligada a la respuesta de incidentes y a la gestión de evidencias digitales, en ella se trata de recoger trazas y evidencias digitales de computadoras o red (datos abiertos, desconocidos, potencialmente desconocidos y ocultos) y utilizar dicha información digital tanto para procedimientos legales, administrativos como para mejorar la seguridad de una organización.' WHERE ident = 1;

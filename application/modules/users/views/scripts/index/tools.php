@@ -1,4 +1,4 @@
-<?php if ($this->role == 'admin') { ?>
+<?php if ($this->role == 'developer') { ?>
 <tr>
     <td>-r-xr--r--</td>
     <td>2</td>

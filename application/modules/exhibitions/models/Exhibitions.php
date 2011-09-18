@@ -4,6 +4,7 @@ class Exhibitions extends Application_Models_Table
 {
     protected $_name = 'exhibitions';
     protected $_primary = 'ident';
+    protected $_rowClass = 'Exhibitions_Exhibition';
 
     protected $_dependentTables = array();
     protected $_referenceMap = array(

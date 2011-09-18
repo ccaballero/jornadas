@@ -3,6 +3,8 @@
 class Users_ProfileController extends Application_Controllers_Action
 {
     public function indexAction() {
+        $this->requireLogin();
+
         $request = $this->getRequest();
 
         $form = new Users_Form_Profile($this->user->ident);

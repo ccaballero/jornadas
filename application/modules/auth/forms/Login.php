@@ -8,6 +8,7 @@ class Auth_Form_Login extends Zend_Form
         $email = $this->createElement('text', 'username');
         $email->setRequired(true)
               ->setLabel('usuario:')
+              ->setAttrib('class', 'focus')
               ->addFilter('StringTrim')
               ->addFilter('StripTags')
               ->addValidator('StringLength', false, array(1, 128));

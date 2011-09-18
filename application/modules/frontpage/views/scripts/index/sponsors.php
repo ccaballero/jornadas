@@ -45,7 +45,7 @@ nuestro agradecimiento y el de todos a los que este evento les sea útil para el
     </tr>
     <tr><td colspan="2">&nbsp;</td></tr>
     <tr>
-        <td class="right"><img src="/media/auspiciadores/truesoft.gif" alt="" title="" /></td>
+        <td class="right"><img src="/media/auspiciadores/TrueSoft.jpg" width="360" alt="" title="" /></td>
         <td>
             <span class="bold">TrueSoft S.R.L.</span>
             <br/>Desarrollo, soporte técnico, invención, manutención, importación, exportación, distribución, consignación, comercialización, transformación de soportes logicos y hardware de cualquier tipo.

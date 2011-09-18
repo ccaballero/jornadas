@@ -23,7 +23,6 @@ class Users_Form_Profile extends Zend_Form
         $name = $this->createElement('text', 'name');
         $name->setRequired(true)
              ->setLabel('nombres:')
-             ->setAttrib('class', 'focus')
              ->addFilter('StringTrim')
              ->addFilter('StripTags')
              ->addValidator('StringLength', false, array(1, 1024));

@@ -9,8 +9,11 @@ syntax: glob
 .cache/
 .settings/
 .buildpath
-.gitgnore
+.gitignore
 .project
 .htaccess
 library/Zend
+data/backup.sql
+data/tmp/
+application/configs/application.ini
 

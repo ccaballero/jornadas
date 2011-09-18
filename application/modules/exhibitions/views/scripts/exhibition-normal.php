@@ -1,4 +1,6 @@
-<div style="width:800px; margin: 0pt auto;">
+<div class="exhibition" style="border-top: 1px solid #ffffff; padding-top: 1.0em;">
+    <?php if ($this->exhibition->hasVideo()) { ?><div class="video">v</div><?php } ?>
+    <?php if ($this->exhibition->hasSlideshow()) { ?><div class="slideshow">p</div><?php } ?>
     <span class="bold red">TÍTULO: </span><a class="bold no-decoration" name="<?php echo $this->exhibition->url ?>"><?php echo $this->exhibition->title ?></a>
     <br />
     <span class="bold red">EXPOSITOR: </span><a class="bold" href="<?php echo $this->url(array('user' => $this->exhibition->username), 'users_user_view') ?>"><?php echo $this->exhibition->fullname ?></a>
