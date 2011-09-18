@@ -54,7 +54,7 @@ class Application_Controllers_Action extends Zend_Controller_Action
                 'only_message' => true,
                 'message' => 'Tu debes estar logeado',
             ));
-            $this->_helper->redirector('in', 'index', 'users');
+            $this->_helper->redirector('in', 'index', 'auth');
         }
     }
 

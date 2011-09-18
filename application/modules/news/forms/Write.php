@@ -24,4 +24,9 @@ class News_Form_Write extends Zend_Form
 
         $this->addElement('submit', 'submit', array('ignore' => true, 'label' => 'guardar',));
     }
+
+    public function setNew($new) {
+        $this->getElement('title')->setValue($new->title);
+        $this->getElement('text')->setValue($new->text);
+    }
 }

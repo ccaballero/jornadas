@@ -13,9 +13,11 @@ syntax: glob
 .project
 .htaccess
 library/Zend
+data/backup
 data/backup.sql
 data/slideshows
 data/videos
 data/tmp/
 application/configs/application.ini
+application/configs/application_saguez.ini
 

@@ -11,4 +11,3 @@
     <br />
     <p style="text-align:justify;"><?php echo $this->specialEscape($this->exhibition->abstract) ?></p>
 </div>
-<br />

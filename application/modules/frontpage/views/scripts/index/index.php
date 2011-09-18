@@ -37,7 +37,7 @@
     <br/>
 
     <?php foreach ($this->news as $new) { ?>
-        <?php echo $this->partial('news/views/scripts/new.php', array('new' => $new, 'author' => $new->getAuthor())) ?>
+        <?php echo $this->partial('news/views/scripts/new.php', array('new' => $new, 'author' => $new->getAuthor(), 'user' => $this->user)) ?>
     <?php } ?>
 <?php } ?>
 

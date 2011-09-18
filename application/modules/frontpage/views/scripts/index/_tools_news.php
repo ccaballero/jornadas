@@ -17,7 +17,7 @@
         <tr><td>drwxr-xr-x</td><td>2</td><td>root</td><td>organizador</td><td>4096</td><td>2011-08-01 12:50</td><td><a class="blue" href="<?php echo $this->url(array(), 'frontpage') ?>">noticias</a></td></tr>
         <tr><td>drwxr-xr-x</td><td>2</td><td>root</td><td>organizador</td><td>4096</td><td>2011-08-01 12:50</td><td><a class="blue" href="<?php echo $this->url(array(), 'users') ?>">organizadores</a></td></tr>
         <tr><td>drwxr-xr-x</td><td>2</td><td>root</td><td>organizador</td><td>4096</td><td>2011-08-01 12:50</td><td><a class="blue" href="<?php echo $this->url(array(), 'users') ?>">usuarios</a></td></tr>
-        <tr><td>-rw-r-xr-x</td><td>2</td><td>root</td><td>organizador</td><td>4096</td><td>2011-08-01 12:50</td><td><a href="<?php echo $this->url(array(), 'news_add') ?>">crear_noticia.sh</a></td></tr>
+        <tr><td>-rw-r-xr-x</td><td>2</td><td>root</td><td>organizador</td><td>4096</td><td>2011-08-01 12:50</td><td><a href="<?php echo $this->url(array(), 'news_new_add') ?>">crear_noticia.sh</a></td></tr>
     </table>
     <br />
 <?php } ?>
