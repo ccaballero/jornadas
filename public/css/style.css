@@ -192,12 +192,16 @@ img {
     margin: 0pt auto;
 }
 
-.exhibition .video {
+.exhibition .audio {
     float: right; width: 1.0em; text-align: center; background-color: #ff4fff; color: #000000; font-weight: bold;
 }
 
-.exhibition .slideshow {
+.exhibition .video {
     float: right; width: 1.0em; text-align: center; background-color: #ffff7f; color: #000000; font-weight: bold;
+}
+
+.exhibition .slideshow {
+    float: right; width: 1.0em; text-align: center; background-color: #4fffff; color: #000000; font-weight: bold;
 }
 
 .new .title {

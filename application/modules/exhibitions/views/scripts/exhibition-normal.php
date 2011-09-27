@@ -1,5 +1,6 @@
 <div class="exhibition" style="border-top: 1px solid #ffffff; padding-top: 1.0em;">
     <?php if ($this->exhibition->hasVideo()) { ?><div class="video">v</div><?php } ?>
+    <?php if ($this->exhibition->hasAudio()) { ?><div class="audio">a</div><?php } ?>
     <?php if ($this->exhibition->hasSlideshow()) { ?><div class="slideshow">p</div><?php } ?>
     <span class="bold red">TÍTULO: </span><a class="bold no-decoration" name="<?php echo $this->exhibition->url ?>"><?php echo $this->exhibition->title ?></a>
     <br />

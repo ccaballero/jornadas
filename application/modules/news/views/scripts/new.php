@@ -11,7 +11,7 @@
     </div>
     <div class="description">
         <div style="float: left; width: 128px; margin: 0.5em 0.8em 0em 0.3em;">
-            <img src="/icon.php?size=256&hash=<?php echo sha1($this->author->getFullname()) ?>" width="128px" alt="" title="" />
+            <img src="/icon.php?size=256&hash=<?php echo $this->author->getHash() ?>" width="128px" alt="" title="" />
         </div>
         <p style="text-align:justify;"><?php echo $this->specialEscape($this->escape($this->new->text)) ?></p>
     </div>

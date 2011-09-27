@@ -1,5 +1,5 @@
 <div style="float: left; width: 148px; margin-left: 16px;">
-    <img src="/icon.php?size=256&hash=<?php echo sha1($this->user->getFullname()) ?>" width="128px" alt="" title="" />
+    <img src="/icon.php?size=256&hash=<?php echo $this->user->getHash() ?>" width="128px" alt="" title="" />
 </div>
 
 <div style="min-height: 142px;">
