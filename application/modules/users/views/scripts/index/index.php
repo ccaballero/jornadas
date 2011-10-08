@@ -1,3 +1,5 @@
+<?php echo $this->partial('users/views/scripts/index/_tools_users.php', array('role' => $this->role, 'user' => $this->user)); ?>
+
 <?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
     'pwd' => '~',
     'cmd' => 'ls -l /expositores',

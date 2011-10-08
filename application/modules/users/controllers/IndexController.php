@@ -10,7 +10,7 @@ class Users_IndexController extends Application_Controllers_Action
         $this->view->assistants = $model_users->selectByRole('assistant');
     }
 
-    public function agregarAction() {
+    /*public function agregarAction() {
         $request = $this->getRequest();
         $form = new Usuarios_Form_Register();
 
@@ -46,6 +46,31 @@ class Users_IndexController extends Application_Controllers_Action
         }
 
         $this->view->form = $form;
+    }*/
+
+    public function exportAction() {
+        header("HTTP/1.1 200 OK"); //mandamos código de OK
+        header("Status: 200 OK"); //sirve para corregir un bug de IE (fuente: php.net)
+        header('Content-Type: text/plain; charset=utf-8');
+
+        $model_users = new Users();
+
+
+        echo '"NOMBRE COMPLETO","TIPO"' . PHP_EOL;
+
+        foreach ($model_users->selectByRole('exhibitor') as $us) {
+            echo '"' . $us->getFullname() . '","Expositor"' . PHP_EOL;
+        }
+        
+        foreach ($model_users->selectByRole('organizer') as $us) {
+            echo '"' . $us->getFullname() . '","Organizador"' . PHP_EOL;
+        }
+
+        foreach ($model_users->selectByRole('assistant') as $us) {
+            echo '"' . $us->getFullname() . '","Asistente"' . PHP_EOL;
+        }
+
+        die;
     }
 
     public function generateAction() {
