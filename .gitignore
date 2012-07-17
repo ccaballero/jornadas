@@ -11,14 +11,10 @@ syntax: glob
 .buildpath
 .gitignore
 .project
-.htaccess
 library/Zend
-data/backup
-data/backup.sql
 data/slideshows
 data/audios
 data/videos
 data/tmp/
 application/configs/application.ini
-application/configs/application_saguez.ini
 

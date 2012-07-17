@@ -9,7 +9,7 @@
     </head>
     <body>
         <div id="header">
-            <h1 id="banner">jornadas de seguridad informática</h1>
+            <h1 id="banner">II jornadas de seguridad informática</h1>
             <div class="nav">
                 <?php echo $this->placeholder('menu') ?>
             </div>
