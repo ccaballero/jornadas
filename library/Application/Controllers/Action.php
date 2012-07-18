@@ -33,7 +33,7 @@ class Application_Controllers_Action extends Zend_Controller_Action
             'tsregister' => time(),
         ));
 
-        $this->view->addHelperPath(APPLICATION_PATH . '/../library/Application/Views/Helpers', 'Application_Views_Helpers');
+        $this->view->addHelperPath(APPLICATION_PATH . '/library/Application/Views/Helpers', 'Application_Views_Helpers');
 
         $this->view->route = $this->getFrontController()->getRouter()->getCurrentRouteName();
         $this->route = $this->view->route;

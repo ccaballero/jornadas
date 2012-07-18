@@ -102,7 +102,6 @@ img {
 #header .nav ul li a.active {
     background: -moz-linear-gradient(top, #eeeeee, #999999);
     text-shadow: 0.1em 0.1em 0.1em #ffffff;
-    -moz-border-radius: 0px 0px 8px 8px;
     color: #000000;
 }
 
@@ -144,12 +143,12 @@ img {
 .gray { color: #4f4f4f; }
 
 .bold { font-weight: bold; }
-.plain { font-weight: none; }
+.plain { font-weight: normal; }
 .form { margin: 15.0em; }
 
 #countdown {
     margin: 0pt auto;
-    width: 574px;
+    width: 524px;
     height: 105px;
     padding-left: 10px;
     padding-top: 10px;
@@ -173,7 +172,7 @@ img {
     color: #000;
 }
 
-#countdown .days { margin-left: 122px; }
+#countdown .days { margin-left: 72px; }
 #countdown .hours { margin-left: 100px; }
 #countdown .minutes { margin-left: 86px; }
 #countdown .seconds { margin-left: 72px; }

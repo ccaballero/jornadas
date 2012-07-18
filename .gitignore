@@ -16,5 +16,5 @@ data/slideshows
 data/audios
 data/videos
 data/tmp/
-application/configs/application.ini
+configs/application.ini
 
