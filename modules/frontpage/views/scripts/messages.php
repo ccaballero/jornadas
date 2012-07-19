@@ -1,7 +1,7 @@
 <?php $this->placeholder('messages')->captureStart() ?>
 <?php if (!empty($this->messages)) { ?>
     <?php foreach ($this->messages as $message) { ?>
-        <?php echo $message // echo $this->partial('frontpage/views/scripts/prompt.php', $message) ?>
+        <p><?php echo $message ?></p>
     <?php } ?>
 <?php } ?>
 <?php $this->placeholder('messages')->captureEnd() ?>

@@ -24,17 +24,7 @@ class Users_ProfileController extends Application_Controllers_Action
                 $this->user->email = $email;
                 $this->user->save();
 
-                $this->_helper->flashMessenger->addMessage(array(
-                    'pwd' => '~',
-                    'cmd' => './update_user.sh',
-                    'user' => $this->user->username,
-                    'message' => 'Configurando la información del usuario ' . '<br />' .
-                                 str_pad('Estableciendo el nombre completo ', 99, '.', STR_PAD_RIGHT) . '<span class="bold green">[OK]</span><br />' .
-                                 str_pad('Verificando el nombre de usuario ', 99, '.', STR_PAD_RIGHT) . '<span class="bold green">[OK]</span><br />' .
-                                 str_pad('Verificando el correo electronico ', 99, '.', STR_PAD_RIGHT) . '<span class="bold green">[OK]</span><br />' .
-                                 '<br />' .
-                                 'Tu nombre completo es: ' . '<span class="bold">' . $this->user->getFullname() . '</span><br />' ,
-                ));
+                $this->_helper->flashMessenger->addMessage('Perfil actualizado correctamente');
                 $this->_helper->redirector('index', 'profile', 'users');
             }
         }

@@ -19,6 +19,7 @@
 
 <div class="tasks">
 <a href="<?php echo $this->url(array(), 'news_new_add') ?>">Agregar noticia</a>
+<a href="<?php echo $this->url(array(), 'activities') ?>">Agregar actividad</a>
 </div>
 
 <?php if (count($this->news) <> 0) { ?>

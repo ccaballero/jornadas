@@ -56,3 +56,11 @@ CREATE TABLE `news` (
     INDEX (`author`),
     FOREIGN KEY (`author`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
+
+DROP TABLE IF EXISTS `activities`;
+CREATE TABLE `activities` (
+    `ident`            int unsigned                                                NOT NULL auto_increment,
+    `label`            varchar(256)                                                NOT NULL,
+    PRIMARY KEY (`ident`),
+    UNIQUE INDEX (`label`)
+) DEFAULT CHARACTER SET UTF8;

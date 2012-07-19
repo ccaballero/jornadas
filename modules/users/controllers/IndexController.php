@@ -10,64 +10,53 @@ class Users_IndexController extends Application_Controllers_Action
     }
 
     public function organizerAction() {
-        $model_users = new Users();
-        $user = $model_users->createRow();
-        
-        $form = new Users_Form_Profile($user);
-        $this->view->form = $form;
-        
-        $this->render('agregar');
+        $this->agregarUsuario('organizer');
     }
 
     public function assistantAction() {
-        $model_users = new Users();
-        $user = $model_users->createRow();
-        
-        $form = new Users_Form_Profile($user);
-        $this->view->form = $form;
-        
-        $this->render('agregar');        
+        $this->agregarUsuario('assistant');
     }
 
-    /*public function agregarAction() {
+    private function agregarUsuario($rol) {
         $request = $this->getRequest();
-        $form = new Usuarios_Form_Register();
+
+        $model_users = new Users();
+        $user = $model_users->createRow();
+
+        $form = new Users_Form_Profile(0);
+        $form->setUser($user);
 
         if ($request->isPost()) {
             if ($form->isValid($request->getPost())) {
-                $fullname = $form->getElement('fullname')->getValue();
+                $surname = $form->getElement('surname')->getValue();
+                $name = $form->getElement('name')->getValue();
                 $username = $form->getElement('username')->getValue();
                 $email = $form->getElement('email')->getValue();
 
-                $hash_generator = new Jornadas_Views_Helpers_Password();
+                $hash_generator = new Application_Views_Helpers_Password();
                 $hash = $hash_generator->password(8);
 
-                $modelo_usuarios = new Usuarios();
-                $usuario = $modelo_usuarios->createRow();
+                $user->role = $rol;
+                $user->surname = $surname;
+                $user->name = $name;
+                $user->username = $username;
+                $user->email = $email;
+                $user->hash = $hash;
+                $user->password = sha1(md5($hash));
+                
+                $user->tsregister = time();
 
-                $usuario->fullname = $fullname;
-                $usuario->username = $username;
-                $usuario->hash = $hash;
-                $usuario->password = sha1(md5("...$hash..."));
-                $usuario->email = $email;
-                $usuario->tsregister = time();
+                $user->save();
 
-                $usuario->save();
-
-                $this->_helper->flashMessenger->addMessage(array(
-                        'pwd' => '~',
-                        'cmd' => 'sudo useradd ' . $usuario->username,
-                        'su' => true,
-                        'user' => $this->user->username,
-                    ));
-                $this->_helper->redirector('index', 'index', 'usuarios');
+                $this->_helper->flashMessenger->addMessage('Usuario agregado');
+                $this->_helper->redirector('index', 'index', 'users');
             }
         }
 
         $this->view->form = $form;
-    }*/
+    }
 
-    public function exportAction() {
+/*    public function exportAction() {
         header("HTTP/1.1 200 OK"); //mandamos código de OK
         header("Status: 200 OK"); //sirve para corregir un bug de IE (fuente: php.net)
         header('Content-Type: text/plain; charset=utf-8');
@@ -80,7 +69,7 @@ class Users_IndexController extends Application_Controllers_Action
         foreach ($model_users->selectByRole('exhibitor') as $us) {
             echo '"' . $us->getFullname() . '","Expositor"' . PHP_EOL;
         }
-        
+
         foreach ($model_users->selectByRole('organizer') as $us) {
             echo '"' . $us->getFullname() . '","Organizador"' . PHP_EOL;
         }
@@ -154,7 +143,7 @@ class Users_IndexController extends Application_Controllers_Action
             $image_file = APPLICATION_PATH . '/data/tmp/' . $usuario->ident . '.png';
             $logo = Zend_Pdf_Image::imageWithPath($image_file);
             $page->drawImage($logo, intval($width/2 - 40), $height - 88, intval($width/2 + 40), $height - 8);
-            
+
             $scesi_file = APPLICATION_PATH . '/public/media/scesi.jpg';
             $scesi = Zend_Pdf_Image::imageWithPath($scesi_file);
             $page->drawImage($scesi, $width - 40, 4, $width - 5, intval((35 * 354) / 509) + 4);
@@ -247,5 +236,5 @@ class Users_IndexController extends Application_Controllers_Action
         header('Content-Length: '. strlen($render));
         echo $render;
         die;
-    }
+    }*/
 }

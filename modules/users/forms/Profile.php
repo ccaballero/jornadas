@@ -14,7 +14,7 @@ class Users_Form_Profile extends Zend_Form
 
         $surname = $this->createElement('text', 'surname');
         $surname->setRequired(true)
-                ->setLabel('Apellidos:')
+                ->setLabel('Apellidos')
                 ->setAttrib('class', 'focus')
                 ->addFilter('StringTrim')
                 ->addFilter('StripTags')
@@ -22,14 +22,14 @@ class Users_Form_Profile extends Zend_Form
 
         $name = $this->createElement('text', 'name');
         $name->setRequired(true)
-             ->setLabel('Nombres:')
+             ->setLabel('Nombres')
              ->addFilter('StringTrim')
              ->addFilter('StripTags')
              ->addValidator('StringLength', false, array(1, 1024));
 
         $username = $this->createElement('text', 'username');
         $username->setRequired(true)
-                 ->setLabel('Usuario:')
+                 ->setLabel('Usuario')
                  ->addFilter('StringTrim')
                  ->addFilter('StripTags')
                  ->addValidator('StringLength', false, array(1, 128))
@@ -38,7 +38,7 @@ class Users_Form_Profile extends Zend_Form
 
         $email = $this->createElement('text', 'email');
         $email->setRequired(false)
-              ->setLabel('Email:')
+              ->setLabel('Email')
               ->addFilter('StringTrim')
               ->addValidator('StringLength', false, array(1, 128))
               ->addValidator('EmailAddress')
