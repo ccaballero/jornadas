@@ -1,18 +1,17 @@
-<div class="new">
-    <div class="title">
-        <span class="bold blue"><?php echo $this->new->title ?></span><br />
-        <span class="plain"><?php echo $this->author->getFullname() ?></span>
-        <div style="float:right;">
-            <?php echo $this->timestamp($this->new->tsregister) ?>
-            <?php if ($this->author->ident == $this->user->ident) { ?>
-                <a class="bold magenta" href="<?php echo $this->url(array('new' => $this->new->ident), 'news_new_edit') ?>">[editar]</a>
-            <?php } ?>
-        </div>
+<div class="post">
+    <h2><?php echo $this->new->title ?></h2>
+    <div class="photo">
+        <img src="/icon.php?size=96&hash=<?php echo $this->author->getHash() ?>"
+             alt="<?php echo $this->author->getFullname() ?>"
+             title="<?php echo $this->author->getFullname() ?>" />
     </div>
-    <div class="description">
-        <div style="float: left; width: 128px; margin: 0.5em 0.8em 0em 0.3em;">
-            <img src="/icon.php?size=256&hash=<?php echo $this->author->getHash() ?>" width="128px" alt="" title="" />
-        </div>
-        <p style="text-align:justify;"><?php echo $this->specialEscape($this->escape($this->new->text)) ?></p>
+    <p><?php echo $this->specialEscape($this->escape($this->new->text)) ?></p>
+    <div class="time">
+        <span class="month"><?php echo $this->timestamp($this->new->tsregister, 'F') ?></span><span class="day"><?php echo $this->timestamp($this->new->tsregister, 'd') ?></span>
+    </div>
+    <div class="tools">
+        <?php if ($this->author->ident == $this->user->ident) { ?>
+            <a href="<?php echo $this->url(array('new' => $this->new->ident), 'news_new_edit') ?>">[editar]</a>
+        <?php } ?>
     </div>
 </div>

@@ -1,6 +1,6 @@
-<h1>An error occurred</h1>
+<h2>An error occurred</h2>
 
-<h2><?php echo $this->message ?></h2>
+<p><?php echo $this->message ?></p>
 
 <?php if (isset($this->exception)) { ?>
     <h3>Exception information:</h3>

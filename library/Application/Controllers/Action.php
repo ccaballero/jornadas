@@ -8,14 +8,19 @@ class Application_Controllers_Action extends Zend_Controller_Action
     public $route = null;
 
     public function preDispatch() {
-        $this->view->addScriptPath(APPLICATION_PATH . '/modules');
-
         $this->view->auth = Zend_Auth::getInstance();
         $this->auth = $this->view->auth->getIdentity();
 
         if (!empty($this->auth)) {
             $model_users = new Users();
             $this->user = $model_users->findByIdent($this->auth->ident);
+
+            if (empty($this->user->hash)) {
+                $hash_generator = new Application_Views_Helpers_Password();
+                $hash = $hash_generator->password(8);
+                $this->user->hash = $hash;
+                $this->user->save();
+            }
             $this->view->user = $this->user;
         } else {
             $this->user = new Users_Guest();
@@ -33,7 +38,6 @@ class Application_Controllers_Action extends Zend_Controller_Action
             'tsregister' => time(),
         ));
 
-        $this->view->addHelperPath(APPLICATION_PATH . '/library/Application/Views/Helpers', 'Application_Views_Helpers');
 
         $this->view->route = $this->getFrontController()->getRouter()->getCurrentRouteName();
         $this->route = $this->view->route;
@@ -43,6 +47,7 @@ class Application_Controllers_Action extends Zend_Controller_Action
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
         $this->view->messages = $this->_flashMessenger->getMessages();
 
+        $this->view->render('frontpage/views/scripts/auth.php');
         $this->view->render('frontpage/views/scripts/menu.php');
         $this->view->render('frontpage/views/scripts/footer.php');
         $this->view->render('frontpage/views/scripts/messages.php');

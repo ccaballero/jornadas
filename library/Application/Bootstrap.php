@@ -56,7 +56,6 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         setlocale(LC_CTYPE, 'en_US.UTF8');
         Zend_Locale::setDefault('en_US.UTF8');
 
-        Zend_Registry::set('Zend_Translate', $translate);
         Zend_Form::setDefaultTranslator($translate);
         Zend_Validate_Abstract::setDefaultTranslator($translate);
 
@@ -64,21 +63,34 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     }
 
     protected function _initView() {
-        $renderer = new Zend_Controller_Action_Helper_ViewRenderer();
-        $renderer->setViewSuffix('php');
-        Zend_Controller_Action_HelperBroker::addHelper($renderer);
-
         $options = $this->getOptions();
 
         $view = new Zend_View();
 
         $view->headTitle($options['system']['name']);
         $view->doctype($options['resources']['layout']['doctype']);
-        $view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
-        $view->headScript()->appendFile('/js/jquery-1.6.2.min.js', 'text/javascript')
-                           ->appendFile('/js/jquery.countdown.min.js', 'text/javascript')
-                           ->appendFile('/js/init.js', 'text/javascript');
-        $view->headLink()->appendStylesheet('/css/style.css');
+        $view->headMeta()
+             ->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
+        $view->headScript()
+             ->appendFile('/js/jquery-1.6.2.min.js', 'text/javascript')
+             ->appendFile('/js/jquery.countdown.min.js', 'text/javascript')
+             ->appendFile('/js/init.js', 'text/javascript');
+        $view->headLink()
+             ->appendStylesheet('/css/reset.css')
+             ->appendStylesheet('/css/style.css');
+
+        $view->title = $options['system']['name'];
+
+        $view->addHelperPath(APPLICATION_PATH . '/library/Application/Views/Helpers', 'Application_Views_Helpers');
+        $view->addScriptPath(APPLICATION_PATH . '/modules');
+
+        // Use the php suffix in views
+        $renderer = new Zend_Controller_Action_Helper_ViewRenderer();
+        $renderer->setView($view)
+                 ->setViewSuffix('php');
+
+        Zend_Controller_Action_HelperBroker::addHelper($renderer);
+
         return $view;
     }
 }

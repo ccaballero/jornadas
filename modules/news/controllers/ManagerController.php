@@ -24,12 +24,13 @@ class News_ManagerController extends Application_Controllers_Action
                 $new->tsregister = time();
                 $new->save();
 
-                $this->_helper->flashMessenger->addMessage(array(
-                    'pwd' => '/',
-                    'cmd' => 'sh crear_noticia.sh',
-                    'user' => $this->user->username,
-                    'message' => str_pad('Registrando noticia ', 99, '.', STR_PAD_RIGHT) . '<span class="bold green">[OK]</span><br />',
-                ));
+                $this->_helper->flashMessenger->addMessage('Mensaje agregado');
+//                $this->_helper->flashMessenger->addMessage(array(
+//                    'pwd' => '/',
+//                    'cmd' => 'sh crear_noticia.sh',
+//                    'user' => $this->user->username,
+//                    'message' => str_pad('Registrando noticia ', 99, '.', STR_PAD_RIGHT) . '<span class="bold green">[OK]</span><br />',
+//                ));
                 $this->_helper->redirector('index', 'index', 'frontpage');
             }
         }

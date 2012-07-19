@@ -3,14 +3,11 @@
 class IndexController extends Application_Controllers_Action
 {
     public function indexAction() {
-
         // If countdown is enabled
         $config = Zend_Registry::get('config');
         if ($config->system->countdown) {
             $now = time();
-
             $tow = strtotime($config->system->tsevent);
-            //$tow = mktime(14, 0, 0, 9, 6, 2012);
 
             $dif = $tow - $now;
             if ($dif < 0) {
@@ -44,6 +41,4 @@ class IndexController extends Application_Controllers_Action
     }
 
     public function sponsorsAction() {}
-
-    public function propagandaAction() {}
 }

@@ -5,6 +5,10 @@ class Application_Views_Helpers_SpecialEscape
     public function specialEscape($message) {
         $return = '';
 
+        // URL detection
+        $message = preg_replace('/https?:\/\/[^\s<]+/i', '<a target="_BLANK" href="\0">\0</a>', $message);
+
+        // Indent respect!
         $lines = explode("\n", $message);
         foreach ($lines as $line) {
             $length = strlen($line);
