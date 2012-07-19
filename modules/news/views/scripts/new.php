@@ -1,13 +1,13 @@
 <div class="post">
     <h2><?php echo $this->new->title ?></h2>
     <div class="photo">
-        <img src="/icon.php?size=96&hash=<?php echo $this->author->getHash() ?>"
+        <img src="<?php echo $this->baseUrl ?>/icon.php?size=96&hash=<?php echo $this->author->getHash() ?>"
              alt="<?php echo $this->author->getFullname() ?>"
              title="<?php echo $this->author->getFullname() ?>" />
     </div>
     <p><?php echo $this->specialEscape($this->escape($this->new->text)) ?></p>
     <div class="time">
-        <span class="month"><?php echo $this->timestamp($this->new->tsregister, 'F') ?></span><span class="day"><?php echo $this->timestamp($this->new->tsregister, 'd') ?></span>
+        <span class="month"><?php echo $this->translate($this->timestamp($this->new->tsregister, 'F')) ?></span><span class="day"><?php echo $this->timestamp($this->new->tsregister, 'd') ?></span>
     </div>
     <div class="tools">
         <?php if ($this->author->ident == $this->user->ident) { ?>

@@ -1,4 +1,4 @@
-<?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
+<?php /* echo $this->partial('frontpage/views/scripts/prompt.php', array(
     'pwd' => '~',
     'cmd' => 'cat ~/auspiciadores.html',
     'sudo' => false,
@@ -14,4 +14,4 @@
     'sudo' => false,
     'user' => $this->user,
     'role' => $this->role,
-)) ?>
+))*/ ?>

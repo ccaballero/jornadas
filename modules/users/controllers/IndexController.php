@@ -5,9 +5,28 @@ class Users_IndexController extends Application_Controllers_Action
     public function indexAction() {
         $model_users = new Users();
 
-        $this->view->exhibitors = $model_users->selectByRole('exhibitor');
         $this->view->organizers = $model_users->selectByRole('organizer');
         $this->view->assistants = $model_users->selectByRole('assistant');
+    }
+
+    public function organizerAction() {
+        $model_users = new Users();
+        $user = $model_users->createRow();
+        
+        $form = new Users_Form_Profile($user);
+        $this->view->form = $form;
+        
+        $this->render('agregar');
+    }
+
+    public function assistantAction() {
+        $model_users = new Users();
+        $user = $model_users->createRow();
+        
+        $form = new Users_Form_Profile($user);
+        $this->view->form = $form;
+        
+        $this->render('agregar');        
     }
 
     /*public function agregarAction() {

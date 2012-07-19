@@ -1,67 +1,35 @@
-<?php echo $this->partial('users/views/scripts/index/_tools_users.php', array('role' => $this->role, 'user' => $this->user)); ?>
+<div class="tasks">
+<a href="<?php echo $this->url(array(), 'users_add_organizer') ?>">Agregar organizador</a>
+<a href="<?php echo $this->url(array(), 'users_add_assistant') ?>">Agregar asistente</a>
+</div>
 
-<?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => 'ls -l /expositores',
-    'sudo' => false,
-    'user' => $this->user,
-    'role' => $this->role,
-)) ?>
-<br />
-
-total <?php echo count($this->exhibitors) * 4 ?>
+<h2>Organizadores</h2>
 <table>
-<?php $count = 1 ?>
-<?php foreach($this->exhibitors as $user) { ?>
-    <?php echo $this->partial('users/views/scripts/user-short.php', array('count' => $count++, 'user' => $user)) ?>
+    <tr>
+        <th>Nombre Completo</th>
+        <th>Hash</th>
+    </tr>
+<?php foreach ($this->organizers as $organizer) { ?>
+    <tr>
+        <td>
+            <a href="<?php echo $this->url(array('user' => $organizer->hash), 'users_user_view') ?>"><?php echo $organizer->getFullname() ?></a>
+        </td>
+        <td><?php echo $organizer->hash ?></td>
+    </tr>
 <?php } ?>
-    <tr><td>
-    <?php echo $this->partial('users/views/scripts/index/tools.php', array('role' => $this->role, 'user' => $this->user)); ?>
 </table>
-<br />
 
-<?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => 'ls -l /organizadores',
-    'sudo' => false,
-    'user' => $this->user,
-    'role' => $this->role,
-)) ?>
 <br />
-total <?php echo count($this->organizers) * 4 ?>
+<h2>Participantes</h2>
 <table>
-<?php $count = 1 ?>
-<?php foreach($this->organizers as $user) { ?>
-    <?php echo $this->partial('users/views/scripts/user-short.php', array('count' => $count++, 'user' => $user)) ?>
+    <tr>
+        <th>Nombre Completo</th>
+        <th>Hash</th>
+    </tr>
+<?php foreach ($this->assistants as $assistant) { ?>
+    <tr>
+        <td><?php echo $assistant->getFullname() ?></td>
+        <td><?php echo $assistant->hash ?></td>
+    </tr>
 <?php } ?>
-    <tr><td>
-    <?php echo $this->partial('users/views/scripts/index/tools.php', array('role' => $this->role, 'user' => $this->user)); ?>
 </table>
-<br />
-
-<?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => 'ls -l /asistentes',
-    'sudo' => false,
-    'user' => $this->user,
-    'role' => $this->role,
-)) ?>
-<br />
-total <?php echo count($this->assistants) * 4 ?>
-<table>
-<?php $count = 1 ?>
-<?php foreach($this->assistants as $user) { ?>
-    <?php echo $this->partial('users/views/scripts/user-short.php', array('count' => $count++, 'user' => $user)) ?>
-<?php } ?>
-    <tr><td>
-    <?php echo $this->partial('users/views/scripts/index/tools.php', array('role' => $this->role, 'user' => $this->user)); ?>
-</table>
-<br />
-
-<?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => '_',
-    'sudo' => false,
-    'user' => $this->user,
-    'role' => $this->role,
-)) ?>

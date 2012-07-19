@@ -14,7 +14,7 @@ class Users_Form_Profile extends Zend_Form
 
         $surname = $this->createElement('text', 'surname');
         $surname->setRequired(true)
-                ->setLabel('apellidos:')
+                ->setLabel('Apellidos:')
                 ->setAttrib('class', 'focus')
                 ->addFilter('StringTrim')
                 ->addFilter('StripTags')
@@ -22,14 +22,14 @@ class Users_Form_Profile extends Zend_Form
 
         $name = $this->createElement('text', 'name');
         $name->setRequired(true)
-             ->setLabel('nombres:')
+             ->setLabel('Nombres:')
              ->addFilter('StringTrim')
              ->addFilter('StripTags')
              ->addValidator('StringLength', false, array(1, 1024));
 
         $username = $this->createElement('text', 'username');
         $username->setRequired(true)
-                 ->setLabel('nombre de usuario:')
+                 ->setLabel('Usuario:')
                  ->addFilter('StringTrim')
                  ->addFilter('StripTags')
                  ->addValidator('StringLength', false, array(1, 128))
@@ -38,7 +38,7 @@ class Users_Form_Profile extends Zend_Form
 
         $email = $this->createElement('text', 'email');
         $email->setRequired(false)
-              ->setLabel('correo electrónico:')
+              ->setLabel('Email:')
               ->addFilter('StringTrim')
               ->addValidator('StringLength', false, array(1, 128))
               ->addValidator('EmailAddress')
@@ -49,7 +49,7 @@ class Users_Form_Profile extends Zend_Form
         $this->addElement($username);
         $this->addElement($email);
 
-        $this->addElement('submit', 'submit', array('ignore' => true, 'label' => 'actualizar',));
+        $this->addElement('submit', 'submit', array('ignore' => true, 'label' => 'Actualizar'));
     }
 
     public function setUser($user) {

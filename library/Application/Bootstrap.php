@@ -59,6 +59,8 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_Form::setDefaultTranslator($translate);
         Zend_Validate_Abstract::setDefaultTranslator($translate);
 
+        Zend_Registry::set('Zend_Translate', $translate);
+        
         return $translate;
     }
 
@@ -66,20 +68,23 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $options = $this->getOptions();
 
         $view = new Zend_View();
+        
+        $baseUrl = $options['resources']['frontController']['baseUrl'];
 
         $view->headTitle($options['system']['name']);
         $view->doctype($options['resources']['layout']['doctype']);
         $view->headMeta()
              ->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
         $view->headScript()
-             ->appendFile('/js/jquery-1.6.2.min.js', 'text/javascript')
-             ->appendFile('/js/jquery.countdown.min.js', 'text/javascript')
-             ->appendFile('/js/init.js', 'text/javascript');
+             ->appendFile($baseUrl . '/js/jquery-1.6.2.min.js', 'text/javascript')
+             ->appendFile($baseUrl . '/js/jquery.countdown.min.js', 'text/javascript')
+             ->appendFile($baseUrl . '/js/init.js', 'text/javascript');
         $view->headLink()
-             ->appendStylesheet('/css/reset.css')
-             ->appendStylesheet('/css/style.css');
+             ->appendStylesheet($baseUrl . '/css/reset.css')
+             ->appendStylesheet($baseUrl . '/css/style.css');
 
         $view->title = $options['system']['name'];
+        $view->baseUrl = $baseUrl;
 
         $view->addHelperPath(APPLICATION_PATH . '/library/Application/Views/Helpers', 'Application_Views_Helpers');
         $view->addScriptPath(APPLICATION_PATH . '/modules');
