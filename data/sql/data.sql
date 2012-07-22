@@ -10,16 +10,17 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
     `role`             enum('admin', 'organizer', 'exhibitor', 'assistant')        NOT NULL DEFAULT 'assistant',
-    `title`            varchar(1024)                                               NOT NULL DEFAULT '',
-    `name`             varchar(1024)                                               NOT NULL DEFAULT '',
-    `surname`          varchar(1024)                                               NOT NULL DEFAULT '',
-    `username`         varchar(1024)                                               NOT NULL DEFAULT '',
+    `title`            varchar(512)                                                NOT NULL DEFAULT '',
+    `name`             varchar(512)                                                NOT NULL DEFAULT '',
+    `surname`          varchar(512)                                                NOT NULL DEFAULT '',
+    `username`         varchar(128)                                                NOT NULL DEFAULT '',
     `password`         varchar(40)                                                 NOT NULL,
     `email`            varchar(128)                                                NOT NULL DEFAULT '',
     `hash`             varchar(128)                                                NOT NULL,
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
     `tslastlogin`      int unsigned                                                NOT NULL DEFAULT 0,
-    PRIMARY KEY (`ident`)
+    PRIMARY KEY (`ident`),
+    UNIQUE INDEX (`username`)
 ) DEFAULT CHARACTER SET UTF8;
 
 DROP TABLE IF EXISTS `users_exhibitors`;
@@ -59,8 +60,7 @@ CREATE TABLE `news` (
 
 DROP TABLE IF EXISTS `activities`;
 CREATE TABLE `activities` (
-    `ident`            int unsigned                                                NOT NULL auto_increment,
-    `label`            varchar(256)                                                NOT NULL,
-    PRIMARY KEY (`ident`),
-    UNIQUE INDEX (`label`)
+    `label`            varchar(128)                                                NOT NULL,
+    `order`            int unsigned                                                NOT NULL,
+    PRIMARY KEY (`label`)
 ) DEFAULT CHARACTER SET UTF8;

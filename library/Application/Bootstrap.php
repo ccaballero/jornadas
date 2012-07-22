@@ -6,7 +6,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $loader = Zend_Loader_Autoloader::getInstance();
 
         $resourceTypes = array('form' => array('path' => 'forms/', 'namespace' => 'Form',),);
-        $modules = array('frontpage', 'users', 'auth', 'exhibitions', 'news');
+        $modules = array('frontpage', 'users', 'auth', 'exhibitions', 'news', 'activities');
 
         foreach ($modules as $module) {
             $loader->pushAutoloader(new Zend_Application_Module_Autoloader(
@@ -36,6 +36,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     protected function _initConfig() {
         $config = new Zend_Config($this->getOptions());
+
         Zend_Registry::set('config', $config);
         return $config;
     }
@@ -60,15 +61,17 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_Validate_Abstract::setDefaultTranslator($translate);
 
         Zend_Registry::set('Zend_Translate', $translate);
-        
+
         return $translate;
     }
 
     protected function _initView() {
+        $this->bootstrap(array('user', 'acl'));
+        
         $options = $this->getOptions();
 
         $view = new Zend_View();
-        
+
         $baseUrl = $options['resources']['frontController']['baseUrl'];
 
         $view->headTitle($options['system']['name']);
@@ -86,6 +89,10 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view->title = $options['system']['name'];
         $view->baseUrl = $baseUrl;
 
+        $view->user = Zend_Registry::get('user');
+        $view->role = Zend_Registry::get('role');
+        $view->acl = Zend_Registry::get('acl');
+
         $view->addHelperPath(APPLICATION_PATH . '/library/Application/Views/Helpers', 'Application_Views_Helpers');
         $view->addScriptPath(APPLICATION_PATH . '/modules');
 
@@ -97,5 +104,50 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_Controller_Action_HelperBroker::addHelper($renderer);
 
         return $view;
+    }
+
+    public function _initUser() {
+        $this->bootstrap(array('db', 'autoload'));
+
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
+
+        $user = new Users_Guest();
+
+        if (!empty($identity)) {
+            $model_users = new Users();
+            $logged_user = $model_users->findByIdent($identity->ident);
+
+            if (!empty($logged_user)) {
+                if (empty($logged_user->hash)) {
+                    $hash_generator = new Application_Views_Helpers_Password();
+                    $logged_user->hash = $hash_generator->password(8);
+                    $logged_user->save();
+                }
+                $user = $logged_user;
+            }
+        }
+
+        Zend_Registry::set('user', $user);
+        Zend_Registry::set('role', $user->role);
+        return $user;
+    }
+
+    public function _initAcl() {
+        $acl = new Zend_Acl();
+
+        $acl->addRole(new Zend_Acl_Role('guest'))
+            ->addRole(new Zend_Acl_Role('assistant'))
+            ->addRole(new Zend_Acl_Role('exhibitor'))
+            ->addRole(new Zend_Acl_Role('organizer'))
+            ->addRole(new Zend_Acl_Role('admin'));
+
+        $acl->allow('assistant', null, array('profile', 'credential', 'add:new'));
+        $acl->allow('exhibitor', null, array('add:new'));
+        $acl->allow('organizer', null, array('add:assistant', 'add:new', 'view:assistant', 'profile', 'credential'));
+        $acl->allow('admin', null, array('add:organizer', 'manage:activity', 'view:hash', 'view:organizer', 'view:assistant', 'profile', 'credential'));
+
+        Zend_Registry::set('acl', $acl);
+        return $acl;
     }
 }

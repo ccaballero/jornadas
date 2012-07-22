@@ -18,8 +18,12 @@
 <?php } ?>
 
 <div class="tasks">
+<?php if ($this->allowed('add:new')) { ?>
 <a href="<?php echo $this->url(array(), 'news_new_add') ?>">Agregar noticia</a>
-<a href="<?php echo $this->url(array(), 'activities') ?>">Agregar actividad</a>
+<?php } ?>
+<?php if ($this->allowed('manage:activity')) { ?>
+<a href="<?php echo $this->url(array(), 'activities') ?>">Actividades</a>
+<?php } ?>
 </div>
 
 <?php if (count($this->news) <> 0) { ?>

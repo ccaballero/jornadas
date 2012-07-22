@@ -7,7 +7,7 @@ class News_Form_Write extends Zend_Form
 
         $title = $this->createElement('text', 'title');
         $title->setRequired(true)
-                ->setLabel('Titulo:')
+                ->setLabel('Titulo')
                 ->setAttrib('class', 'focus')
                 ->addFilter('StringTrim')
                 ->addFilter('StripTags')
@@ -15,7 +15,7 @@ class News_Form_Write extends Zend_Form
 
         $text = $this->createElement('textarea', 'text');
         $text->setRequired(false)
-              ->setLabel('Texto:')
+              ->setLabel('Texto')
               ->addFilter('StringTrim')
               ->addValidator('StringLength', false, array(1, 1024 * 3));
 

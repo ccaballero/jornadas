@@ -1,9 +1,10 @@
 <div class="post">
     <h2><?php echo $this->new->title ?></h2>
     <div class="photo">
-        <img src="<?php echo $this->baseUrl ?>/icon.php?size=96&hash=<?php echo $this->author->getHash() ?>"
+        <img src="<?php echo $this->url(array('username' => $this->author->username, 'size' => 64), 'users_user_nineblock') ?>"
              alt="<?php echo $this->author->getFullname() ?>"
-             title="<?php echo $this->author->getFullname() ?>" />
+             title="<?php echo $this->author->getFullname() ?>"
+             width="96" />
     </div>
     <p><?php echo $this->specialEscape($this->escape($this->new->text)) ?></p>
     <div class="time">

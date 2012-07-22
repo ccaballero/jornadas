@@ -40,5 +40,7 @@ class IndexController extends Application_Controllers_Action
         $this->view->news = $model_news->fetchAll($model_news->select()->order('tsregister DESC'));
     }
 
-    public function sponsorsAction() {}
+    public function sponsorsAction() {
+        
+    }
 }

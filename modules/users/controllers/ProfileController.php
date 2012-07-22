@@ -3,15 +3,13 @@
 class Users_ProfileController extends Application_Controllers_Action
 {
     public function indexAction() {
-        $this->requireLogin();
-
-        $request = $this->getRequest();
+        $this->acl('profile');
 
         $form = new Users_Form_Profile($this->user->ident);
         $form->setUser($this->user);
 
-        if ($request->isPost()) {
-            if ($form->isValid($request->getPost())) {
+        if ($this->request->isPost()) {
+            if ($form->isValid($this->request->getPost())) {
 
                 $surname = $form->getElement('surname')->getValue();
                 $name = $form->getElement('name')->getValue();
@@ -30,5 +28,29 @@ class Users_ProfileController extends Application_Controllers_Action
         }
 
         $this->view->form = $form;
+    }
+
+    public function credentialAction() {
+        $this->acl('credential');
+    }
+
+    public function qrAction() {
+        $this->acl('credential');
+
+        $this->getResponse()->setHeader('Content-Type', 'image/png');
+        echo $this->user->getQR();
+
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
+    }
+
+    public function nineblockAction() {
+        $this->acl('credential');
+        
+        $this->getResponse()->setHeader('Content-Type', 'image/png');
+        echo $this->user->getNineBlock();
+
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
     }
 }

@@ -3,7 +3,7 @@
 class News_NewController extends Application_Controllers_Action
 {
     public function editAction() {
-        $this->requireAdmin();
+//        $this->requireAdmin();
 
         $request = $this->getRequest();
         $ident = $request->getParam('new');
@@ -49,7 +49,7 @@ class News_NewController extends Application_Controllers_Action
     }
 
     public function deleteAction() {
-        $this->requireAdmin();
+//        $this->requireAdmin();
 
         $request = $this->getRequest();
         $ident = $request->getParam('new');

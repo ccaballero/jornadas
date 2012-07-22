@@ -1,10 +1,12 @@
-{
+* {
     font-family: "Courier New", Courier, monospace;
     font-size: 1.0em;
 }
 
 a { text-decoration: none; }
 a:focus { outline: none; }
+
+.center { text-align: center; }
 .right { text-align: right; }
 .left { text-align: left; }
 
@@ -48,6 +50,7 @@ p {
 .auth {
     float: right;
     margin-top: 5px;
+    font-size: 0.94em;
 }
 
 .auth a {
@@ -154,7 +157,7 @@ p {
     border-radius: 8px;
     background-color: #ffffff;
     color: #000000;
-    min-height: 104px;
+    min-height: 115px;
 }
 
 .post h2 {
@@ -259,3 +262,13 @@ table {
 table tr a {
     color: #000000;
 } 
+
+/*-------------------------------------------*/
+/*               CREDENCIALES                */
+/*-------------------------------------------*/
+.aureal {
+    width: 542px;
+    height: 335px;
+    background-color: #ffffff;
+    color: #000000;
+}

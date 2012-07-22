@@ -15,6 +15,7 @@ library/Zend
 data/slideshows
 data/audios
 data/videos
-data/tmp/
+data/qrcode/*.png
+data/9block/*.png
 configs/application.ini
 

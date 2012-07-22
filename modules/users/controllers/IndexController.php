@@ -43,7 +43,6 @@ class Users_IndexController extends Application_Controllers_Action
                 $user->email = $email;
                 $user->hash = $hash;
                 $user->password = sha1(md5($hash));
-                
                 $user->tsregister = time();
 
                 $user->save();
@@ -82,8 +81,8 @@ class Users_IndexController extends Application_Controllers_Action
     }
 
     public function generateAction() {
-        $this->requireLogin();
-        $this->requireAdmin();
+//        $this->requireLogin();
+//        $this->requireAdmin();
 
         $modelo_usuarios = new Usuarios();
         $usuarios = $modelo_usuarios->fetchAll();

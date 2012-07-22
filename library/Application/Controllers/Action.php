@@ -2,33 +2,18 @@
 
 class Application_Controllers_Action extends Zend_Controller_Action
 {
-    public $auth = null;
     public $user = null;
     public $role = null;
-    public $route = null;
+    public $acl = null;
+
+    public $request = null;
 
     public function preDispatch() {
-        $this->view->auth = Zend_Auth::getInstance();
-        $this->auth = $this->view->auth->getIdentity();
+        $this->user = Zend_Registry::get('user');
+        $this->role = Zend_Registry::get('role');
+        $this->acl = Zend_Registry::get('acl');
 
-        if (!empty($this->auth)) {
-            $model_users = new Users();
-            $this->user = $model_users->findByIdent($this->auth->ident);
-
-            if (empty($this->user->hash)) {
-                $hash_generator = new Application_Views_Helpers_Password();
-                $hash = $hash_generator->password(8);
-                $this->user->hash = $hash;
-                $this->user->save();
-            }
-            $this->view->user = $this->user;
-        } else {
-            $this->user = new Users_Guest();
-            $this->view->user = $this->user;
-        }
-
-        $this->role = $this->user->role;
-        $this->view->role = $this->role;
+        $this->request = $this->getRequest();
 
         $db = Zend_Db_Table::getDefaultAdapter();
         $db->insert('stats', array(
@@ -37,42 +22,29 @@ class Application_Controllers_Action extends Zend_Controller_Action
             'request_uri' => $_SERVER['REQUEST_URI'],
             'tsregister' => time(),
         ));
-
-
-        $this->view->route = $this->getFrontController()->getRouter()->getCurrentRouteName();
-        $this->route = $this->view->route;
     }
 
     public function postDispatch() {
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
         $this->view->messages = $this->_flashMessenger->getMessages();
 
-        $this->view->render('frontpage/views/scripts/auth.php');
-        $this->view->render('frontpage/views/scripts/menu.php');
+        $this->view->partial('frontpage/views/scripts/toolbar.php', array(
+            'auth' => Zend_Auth::getInstance(),
+            'user' => $this->user,
+        ));
+
+        $this->view->partial('frontpage/views/scripts/menu.php', array(
+            'route' => $this->getFrontController()->getRouter()->getCurrentRouteName(),
+        ));
+
         $this->view->render('frontpage/views/scripts/footer.php');
         $this->view->render('frontpage/views/scripts/messages.php');
     }
 
-    public function requireLogin() {
-        if ($this->auth == null) {
-            $this->_helper->flashMessenger->addMessage(array(
-                'only_message' => true,
-                'message' => 'Tu debes estar logeado',
-            ));
+    public function acl($resource) {
+        if (!$this->acl->isAllowed($this->role, null, $resource)) {
+            $this->_helper->flashMessenger->addMessage('Tu no tienes los privilegios suficientes');
             $this->_helper->redirector('in', 'index', 'auth');
         }
-    }
-
-    public function requireAdmin() {
-        $role = $this->role;
-
-        if ($this->role == 'admin') { return; }
-        if ($this->role == 'organizer') { return; }
-
-        $this->_helper->flashMessenger->addMessage(array(
-            'only_message' => true,
-            'message' => 'Tu debes tener privilegios de administración',
-        ));
-        $this->_helper->redirector('index', 'index', 'frontpage');
     }
 }

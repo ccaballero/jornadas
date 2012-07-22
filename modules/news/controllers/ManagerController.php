@@ -3,7 +3,7 @@
 class News_ManagerController extends Application_Controllers_Action
 {
     public function addAction() {
-        $this->requireAdmin();
+        //$this->requireAdmin();
 
         $request = $this->getRequest();
 
