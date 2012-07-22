@@ -7,6 +7,13 @@ class Users_IndexController extends Application_Controllers_Action
 
         $this->view->organizers = $model_users->selectByRole('organizer');
         $this->view->assistants = $model_users->selectByRole('assistant');
+
+        $config = Zend_Registry::get('config');
+        $this->view->max_organizers = intval($config->system->capacity->organizers);
+        $this->view->max_assistants = intval($config->system->capacity->assistants);
+        
+        $this->view->count_organizers = intval($model_users->countByRole('organizer'));
+        $this->view->count_assistants = intval($model_users->countByRole('assistant'));
     }
 
     public function organizerAction() {

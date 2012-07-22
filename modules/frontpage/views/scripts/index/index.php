@@ -5,7 +5,8 @@
                 image:'<?php echo $this->baseUrl ?>/media/digits.png',
                 startTime:'<?php echo $this->countdown ?>'
             });
-        });</script>
+        });
+    </script>
     <div id="countdown">
         <div id="counter"></div>
         <div class="desc">

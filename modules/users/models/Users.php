@@ -22,7 +22,10 @@ class Users extends Application_Models_Table
     }
 
     public function selectByRole($role) {
-        //return $this->fetchAll($this->select()->where('role = ?', $role)->order('CONCAT(title,name,surname) ASC'));
         return $this->fetchAll($this->select()->where('role = ?', $role)->order('surname ASC')->order('name ASC'));
+    }
+
+    public function countByRole($role) {
+        return $this->db->fetchOne($this->select()->from(array('u' => 'users'), 'count(ident)')->where('role = ?', $role));
     }
 }
