@@ -20,7 +20,7 @@ class Users_User extends Zend_Db_Table_Row_Abstract
     }
 
     public function getQR() {
-        $file = APPLICATION_PATH . "/{$this->_qr_path}/{$this->ident}.png";
+        $file = APPLICATION_PATH . "{$this->_qr_path}/{$this->ident}.png";
         if (!file_exists($file)) {
             include APPLICATION_PATH . '/library/QRCode/qrlib.php';
             QRcode::png($this->hash, $file, 'L', 10, 0);
@@ -30,7 +30,7 @@ class Users_User extends Zend_Db_Table_Row_Abstract
     }
 
     public function getNineBlock() {
-        $file = APPLICATION_PATH . "/{$this->_nb_path}/{$this->ident}.png";
+        $file = APPLICATION_PATH . "{$this->_nb_path}/{$this->ident}.png";
         if (!file_exists($file)) {
             include APPLICATION_PATH . '/library/9Block/identicon.php';
             Identicon::png(sha1($this->getFullname()), $file, 210);
