@@ -28,4 +28,8 @@ class Users extends Application_Models_Table
     public function countByRole($role) {
         return $this->db->fetchOne($this->select()->from(array('u' => 'users'), 'count(ident)')->where('role = ?', $role));
     }
+
+    public function getUser($username, $hash) {
+        return $this->db->fetchRow($this->select()->where('username = ?', $username)->where('password = ?', $hash));
+    }
 }

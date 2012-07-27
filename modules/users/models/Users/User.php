@@ -23,7 +23,7 @@ class Users_User extends Zend_Db_Table_Row_Abstract
         $file = APPLICATION_PATH . "{$this->_qr_path}/{$this->ident}.png";
         if (!file_exists($file)) {
             include APPLICATION_PATH . '/library/QRCode/qrlib.php';
-            QRcode::png($this->hash, $file, 'L', 10, 0);
+            QRcode::png($this->username . ':' . md5($this->hash), $file, 'L', 10, 0);
         }
 
         return file_get_contents($file);
