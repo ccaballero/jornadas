@@ -3,6 +3,8 @@
 class Activities_IndexController extends Application_Controllers_Action
 {
     public function indexAction() {
+        $this->acl('manage:activity');
+
         $model_activities = new Activities();
 
         $request = $this->getRequest();

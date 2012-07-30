@@ -3,16 +3,24 @@
 class Users_IndexController extends Application_Controllers_Action
 {
     public function indexAction() {
+        if ($this->request->isPost()) {
+            $this->_forward('index', 'index', 'credentials');
+        }
+        
         $model_users = new Users();
 
         $this->view->organizers = $model_users->selectByRole('organizer');
+        $this->view->protocols  = $model_users->selectByRole('protocol');
         $this->view->assistants = $model_users->selectByRole('assistant');
 
         $config = Zend_Registry::get('config');
+
         $this->view->max_organizers = intval($config->system->capacity->organizers);
+        $this->view->max_protocols  = intval($config->system->capacity->protocols);
         $this->view->max_assistants = intval($config->system->capacity->assistants);
         
         $this->view->count_organizers = intval($model_users->countByRole('organizer'));
+        $this->view->count_protocols  = intval($model_users->countByRole('protocol'));
         $this->view->count_assistants = intval($model_users->countByRole('assistant'));
     }
 
@@ -115,132 +123,5 @@ class Users_IndexController extends Application_Controllers_Action
             'message' => 'Imagenes generadas correctamente',
         ));
         $this->_helper->redirector('index', 'index', 'portada');
-    }
-
-    public function credencialesAction() {
-        $request = $this->getRequest();
-
-        $page = $request->getParam('page', 1);
-        $size = $request->getParam('size', 96);
-
-        $modelo_usuarios = new Usuarios();
-
-        $paginator = Zend_Paginator::factory($modelo_usuarios->fetchAll());
-        $paginator->setItemCountPerPage($size);
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setPageRange(10);
-
-        $usuarios= $paginator;
-
-        $scale = 160;
-        $proportion = (1 + sqrt(5) ) / 2;
-
-        $pdf = new Zend_Pdf();
-        $template = $pdf->newPage(intval($scale * $proportion) . ':' . $scale);
-        $width = $template->getWidth();
-        $height = $template->getHeight();
-
-        foreach ($usuarios as $usuario) {
-            $page = new Zend_Pdf_Page($template);
-
-            $page->setLineWidth(3);
-            $page->drawRectangle(0, 0, $width, $height, Zend_Pdf_Page::SHAPE_DRAW_STROKE);
-
-            $image_file = APPLICATION_PATH . '/data/tmp/' . $usuario->ident . '.png';
-            $logo = Zend_Pdf_Image::imageWithPath($image_file);
-            $page->drawImage($logo, intval($width/2 - 40), $height - 88, intval($width/2 + 40), $height - 8);
-
-            $scesi_file = APPLICATION_PATH . '/public/media/scesi.jpg';
-            $scesi = Zend_Pdf_Image::imageWithPath($scesi_file);
-            $page->drawImage($scesi, $width - 40, 4, $width - 5, intval((35 * 354) / 509) + 4);
-
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 11);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
-            $page->drawText('Jornadas de seguridad informática', 20, $height - 102);
-
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 10);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
-            $page->drawText($usuario->fullname, 8, $height - 126);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
-            $page->drawText('Usuario: ', 8, $height - 138);
-            $page->drawText('Clave: ', 8, $height - 150);
-
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 10);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
-            $page->drawText($usuario->username, 60, $height - 138);
-            $page->drawText($usuario->hash, 60, $height - 150);
-
-            $pdf->pages[] = $page;
-        }
-
-
-        $render = $pdf->render();
-
-        header("HTTP/1.1 200 OK"); //mandamos código de OK
-        header("Status: 200 OK"); //sirve para corregir un bug de IE (fuente: php.net)
-        header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="credenciales.pdf"');
-        header('Content-Length: '. strlen($render));
-        echo $render;
-        die;
-    }
-
-    // Mal codigo,, causal de desesperacion consumada,, o ingrata suerte.
-    public function credencialAction() {
-        $request = $this->getRequest();
-
-        $ident = $request->getParam('ident', 1);
-
-        $modelo_usuarios = new Usuarios();
-        $usuario = $modelo_usuarios->findByIdent($ident);
-
-        $scale = 160;
-        $proportion = (1 + sqrt(5) ) / 2;
-
-        $pdf = new Zend_Pdf();
-        $template = $pdf->newPage(intval($scale * $proportion) . ':' . $scale);
-        $width = $template->getWidth();
-        $height = $template->getHeight();
-
-            $page = new Zend_Pdf_Page($template);
-
-            $page->setLineWidth(3);
-            $page->drawRectangle(0, 0, $width, $height, Zend_Pdf_Page::SHAPE_DRAW_STROKE);
-
-            $image_file = APPLICATION_PATH . '/data/tmp/' . $usuario->ident . '.png';
-            $logo = Zend_Pdf_Image::imageWithPath($image_file);
-            $page->drawImage($logo, intval($width/2 - 40), $height - 88, intval($width/2 + 40), $height - 8);
-
-            $scesi_file = APPLICATION_PATH . '/public/media/scesi.jpg';
-            $scesi = Zend_Pdf_Image::imageWithPath($scesi_file);
-            $page->drawImage($scesi, $width - 40, 4, $width - 5, intval((35 * 354) / 509) + 4);
-
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 11);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
-            $page->drawText('Jornadas de seguridad informática', 20, $height - 102);
-
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 10);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
-            $page->drawText($usuario->fullname, 8, $height - 126);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
-            $page->drawText('Usuario: ', 8, $height - 138);
-            $page->drawText('Clave: ', 8, $height - 150);
-
-            $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 10);
-            $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
-            $page->drawText($usuario->username, 60, $height - 138);
-            $page->drawText($usuario->hash, 60, $height - 150);
-
-            $pdf->pages[] = $page;
-
-        $render = $pdf->render();
-
-        header("HTTP/1.1 200 OK"); //mandamos código de OK
-        header("Status: 200 OK"); //sirve para corregir un bug de IE (fuente: php.net)
-        header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="' . $ident . '.pdf"');
-        header('Content-Length: '. strlen($render));
-        echo $render;
-        die;
     }*/
 }

@@ -142,10 +142,31 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             ->addRole(new Zend_Acl_Role('organizer'))
             ->addRole(new Zend_Acl_Role('admin'));
 
-        $acl->allow('assistant', null, array('profile', 'credential', 'add:new'));
-        $acl->allow('exhibitor', null, array('add:new'));
-        $acl->allow('organizer', null, array('add:assistant', 'add:new', 'view:assistant', 'profile', 'credential'));
-        $acl->allow('admin', null, array('add:organizer', 'manage:activity', 'view:hash', 'view:organizer', 'view:assistant', 'profile', 'credential'));
+        $acl->allow('assistant', null, array(
+            'vieW:profile',
+            'vieW:credential',
+            'add:new',
+        ));
+        $acl->allow('exhibitor', null, array(
+            'add:new',
+        ));
+        $acl->allow('organizer', null, array(
+            'add:assistant',
+            'add:new',
+            'view:assistant',
+            'view:profile',
+            'view:credential',
+        ));
+        $acl->allow('admin', null, array(
+            'add:organizer',
+            'manage:activity',
+            'view:hash',
+            'view:organizer',
+            'view:assistant',
+            'view:profile',
+            'view:credential',
+            'print:credential',
+        ));
 
         Zend_Registry::set('acl', $acl);
         return $acl;

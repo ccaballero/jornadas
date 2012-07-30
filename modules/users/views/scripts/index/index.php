@@ -1,69 +1,43 @@
-<div class="tasks">
-<?php if ($this->allowed('add:organizer') && ($this->max_organizers == -1 || $this->max_organizers > $this->count_organizers)) { ?>
-<a href="<?php echo $this->url(array(), 'users_add_organizer') ?>">Agregar organizador</a>
-<?php } ?>
-<?php if ($this->allowed('add:assistant') && ($this->max_assistants == -1 || $this->max_assistants > $this->count_assistants)) { ?>
-<a href="<?php echo $this->url(array(), 'users_add_assistant') ?>">Agregar asistente</a>
-<?php } ?>
-</div>
+<form method="post" action="">
 
-<h2>Organizadores</h2>
-<?php if ($this->max_organizers != -1) { ?>
-<p>Capacidad maxima establecida: <?php echo $this->max_organizers ?></p>
-<p>Total Organizadores: <?php echo $this->count_organizers ?></p>
-<?php } ?>
-<table>
-    <tr>
-        <th>Nombre Completo</th>
-        <?php if ($this->allowed('view:hash')) { ?><th>Hash</th><?php } ?>
-    </tr>
-<?php foreach ($this->organizers as $organizer) { ?>
-    <tr class="<?php echo $this->cycle(array("even", "odd"))->next()?>">
-        <td>
-        <?php if ($this->allowed('view:organizer')) { ?>
-            <a href="<?php echo $this->url(array('username' => $organizer->username), 'users_user_view') ?>">
-        <?php } ?>
-                <?php echo $organizer->getFullname() ?>
-        <?php if ($this->allowed('view:organizer')) { ?>
-            </a>
-        <?php } ?>
-        </td>
-    <?php if ($this->allowed('view:hash')) { ?>
-        <td class="center">
-            <?php echo $organizer->hash ?>
-        </td>
-    <?php } ?>
-    </tr>
-<?php } ?>
-</table>
+<?php echo $this->partial('index/index-tools.php',
+    array(
+        'max_organizers' => $this->max_organizers,
+        'count_organizers' => $this->count_organizers,
+        'max_assistants' => $this->max_assistants,
+        'count_assistants' => $this->count_assistants,
+    )) ?>
 
+<?php echo $this->partial('index/index-table.php',
+    array(
+        'role' => 'Organizadores',
+        'capacity' => $this->max_organizers,
+        'count' => $this->count_organizers,
+        'users' => $this->organizers,
+    )) ?>
 <br />
+<?php echo $this->partial('index/index-table.php',
+    array(
+        'role' => 'Protocolo',
+        'capacity' => $this->max_protocols,
+        'count' => $this->count_protocols,
+        'users' => $this->protocols,
+    )) ?>
+<br />
+<?php echo $this->partial('index/index-table.php',
+    array(
+        'role' => 'Asistentes',
+        'capacity' => $this->max_assistants,
+        'count' => $this->count_assistants,
+        'users' => $this->assistants,
+    )) ?>
 
-<h2>Asistentes</h2>
-<?php if ($this->max_assistants != -1) { ?>
-<p>Capacidad maxima establecida: <?php echo $this->max_assistants ?></p>
-<p>Total Asistentes: <?php echo $this->count_assistants ?></p>
-<?php } ?>
-<table>
-    <tr>
-        <th>Nombre Completo</th>
-        <?php if ($this->allowed('view:hash')) { ?><th>Hash</th><?php } ?>
-    </tr>
-<?php foreach ($this->assistants as $assistant) { ?>
-    <tr class="<?php echo $this->cycle(array("even", "odd"))->next()?>">
-        <td>
-        <?php if ($this->allowed('view:assistant')) { ?>
-            <a href="<?php echo $this->url(array('username' => $assistant->username), 'users_user_view') ?>">
-        <?php } ?>
-            <?php echo $assistant->getFullname() ?></td>
-        <?php if ($this->allowed('view:assistant')) { ?>
-            </a>
-        <?php } ?>
-    <?php if ($this->allowed('view:hash')) { ?>
-        <td class="center">
-            <?php echo $assistant->hash ?>
-        </td>
-    <?php } ?>
-    </tr>
-<?php } ?>
-</table>
+<?php echo $this->partial('index/index-tools.php',
+    array(
+        'max_organizers' => $this->max_organizers,
+        'count_organizers' => $this->count_organizers,
+        'max_assistants' => $this->max_assistants,
+        'count_assistants' => $this->count_assistants,
+    )) ?>
+
+</form>

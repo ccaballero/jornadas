@@ -19,21 +19,33 @@ class Users_User extends Zend_Db_Table_Row_Abstract
         return trim($fullname);
     }
 
+    public function generateQR() {
+        $file = APPLICATION_PATH . "{$this->_qr_path}/{$this->ident}.png";
+
+        include_once APPLICATION_PATH . '/library/QRCode/qrlib.php';
+        QRcode::png($this->username . ':' . md5($this->hash), $file, 'L', 10, 0);
+    }
+    
     public function getQR() {
         $file = APPLICATION_PATH . "{$this->_qr_path}/{$this->ident}.png";
         if (!file_exists($file)) {
-            include APPLICATION_PATH . '/library/QRCode/qrlib.php';
-            QRcode::png($this->username . ':' . md5($this->hash), $file, 'L', 10, 0);
+            $this->generateQR();
         }
 
         return file_get_contents($file);
     }
 
+    public function generateNineBlock() {
+        $file = APPLICATION_PATH . "{$this->_nb_path}/{$this->ident}.png";
+
+        include_once APPLICATION_PATH . '/library/9Block/identicon.php';
+        Identicon::png(sha1($this->getFullname()), $file, 210);
+    }
+
     public function getNineBlock() {
         $file = APPLICATION_PATH . "{$this->_nb_path}/{$this->ident}.png";
         if (!file_exists($file)) {
-            include APPLICATION_PATH . '/library/9Block/identicon.php';
-            Identicon::png(sha1($this->getFullname()), $file, 210);
+            $this->generateNineBlock();
         }
 
         return file_get_contents($file);
