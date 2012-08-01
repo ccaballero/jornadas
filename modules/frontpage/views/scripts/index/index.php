@@ -23,7 +23,13 @@
 <a href="<?php echo $this->url(array(), 'news_new_add') ?>">Agregar noticia</a>
 <?php } ?>
 <?php if ($this->allowed('manage:activity')) { ?>
-<a href="<?php echo $this->url(array(), 'activities') ?>">Actividades</a>
+<a href="<?php echo $this->url(array(), 'activities') ?>">Administrar Actividades</a>
+<?php } ?>
+<?php if ($this->allowed('view:activity')) { ?>
+<a href="<?php echo $this->url(array(), 'activities_assign') ?>">Ver Actividades</a>
+<?php } ?>
+<?php if ($this->allowed('maintenance:images')) { ?>
+<!--<a href="<?php // echo $this->url(array('type' => 'images'), 'maintenance') ?>">Ver Actividades</a>-->
 <?php } ?>
 </div>
 

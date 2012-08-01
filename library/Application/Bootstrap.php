@@ -143,16 +143,19 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             ->addRole(new Zend_Acl_Role('admin'));
 
         $acl->allow('assistant', null, array(
+            'view:activity',
             'vieW:profile',
             'vieW:credential',
             'add:new',
         ));
         $acl->allow('exhibitor', null, array(
             'add:new',
+            'view:activity',
         ));
         $acl->allow('organizer', null, array(
             'add:assistant',
             'add:new',
+            'view:activity',
             'view:assistant',
             'view:profile',
             'view:credential',
@@ -160,11 +163,13 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $acl->allow('admin', null, array(
             'add:organizer',
             'manage:activity',
+            'view:activity',
             'view:hash',
             'view:organizer',
             'view:assistant',
             'view:profile',
             'view:credential',
+            'maintenance:images',
             'print:credential',
         ));
 

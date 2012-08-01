@@ -9,6 +9,7 @@
         <th style="width:30px">&nbsp;</th>
         <th>Nombre Completo</th>
         <?php if ($this->allowed('view:hash')) { ?><th>Hash</th><?php } ?>
+        <?php if ($this->allowed('view:hash')) { ?><th>Key</th><?php } ?>
     </tr>
 <?php foreach ($this->users as $user) { ?>
     <tr class="<?php echo $this->cycle(array("even", "odd"))->next()?>">
@@ -24,6 +25,9 @@
         </td>
     <?php if ($this->allowed('view:hash')) { ?>
         <td class="center"><?php echo $user->hash ?></td>
+    <?php } ?>
+    <?php if ($this->allowed('view:hash')) { ?>
+        <td class="center"><?php echo $user->apikey ?></td>
     <?php } ?>
     </tr>
 <?php } ?>

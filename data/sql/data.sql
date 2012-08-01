@@ -16,7 +16,8 @@ CREATE TABLE `users` (
     `username`         varchar(128)                                                     NOT NULL DEFAULT '',
     `password`         varchar(40)                                                      NOT NULL,
     `email`            varchar(128)                                                     NOT NULL DEFAULT '',
-    `hash`             varchar(128)                                                     NOT NULL,
+    `hash`             char(8)                                                          NOT NULL,
+    `apikey`           char(8)                                                          NOT NULL DEFAULT '',
     `tsregister`       int unsigned                                                     NOT NULL DEFAULT 0,
     `tslastlogin`      int unsigned                                                     NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
@@ -60,7 +61,21 @@ CREATE TABLE `news` (
 
 DROP TABLE IF EXISTS `activities`;
 CREATE TABLE `activities` (
+    `ident`            int unsigned                                                NOT NULL auto_increment,
+    `code`             int unsigned                                                NOT NULL,
     `label`            varchar(128)                                                NOT NULL,
     `order`            int unsigned                                                NOT NULL,
-    PRIMARY KEY (`label`)
+    PRIMARY KEY (`ident`),
+    UNIQUE INDEX (`code`)
+) DEFAULT CHARACTER SET UTF8;
+
+DROP TABLE IF EXISTS `activities_users`;
+CREATE TABLE `activities_users` (
+    `user`             int unsigned                                                NOT NULL,
+    `activity`         int unsigned                                                NOT NULL,
+    PRIMARY KEY (`user`, `activity`),
+    INDEX (`user`),
+    FOREIGN KEY (`user`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT,
+    INDEX (`activity`),
+    FOREIGN KEY (`activity`) REFERENCES `activities`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;

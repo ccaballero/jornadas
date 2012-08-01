@@ -6,7 +6,7 @@ class Users_IndexController extends Application_Controllers_Action
         if ($this->request->isPost()) {
             $this->_forward('index', 'index', 'credentials');
         }
-        
+
         $model_users = new Users();
 
         $this->view->organizers = $model_users->selectByRole('organizer');
@@ -18,7 +18,7 @@ class Users_IndexController extends Application_Controllers_Action
         $this->view->max_organizers = intval($config->system->capacity->organizers);
         $this->view->max_protocols  = intval($config->system->capacity->protocols);
         $this->view->max_assistants = intval($config->system->capacity->assistants);
-        
+
         $this->view->count_organizers = intval($model_users->countByRole('organizer'));
         $this->view->count_protocols  = intval($model_users->countByRole('protocol'));
         $this->view->count_assistants = intval($model_users->countByRole('assistant'));
