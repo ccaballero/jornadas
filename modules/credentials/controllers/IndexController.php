@@ -35,11 +35,11 @@ class Credentials_IndexController extends Application_Controllers_Action
                 $cX = $position % 2;
                 $cY = $position / 2 % 5;
 
-                $height = 142;
+                $height = 152;
                 $proportion = (1 + sqrt(5)) / 2;
                 $width = $height * $proportion;
 
-                $space = 5;
+                $space = 0;
                 
                 $marginX = ($page_w - ($space + ($width * 2))) / 2;
                 $marginY = ($page_h - (($space * 4) + ($height * 5))) / 2;

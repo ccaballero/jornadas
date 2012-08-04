@@ -3,7 +3,7 @@
 class Users_ProfileController extends Application_Controllers_Action
 {
     public function indexAction() {
-        $this->acl('view:profile');
+        $this->acl('profile:view');
 
         $form = new Users_Form_Profile($this->user->ident);
         $form->setUser($this->user);
@@ -31,11 +31,11 @@ class Users_ProfileController extends Application_Controllers_Action
     }
 
     public function credentialAction() {
-        $this->acl('view:credential');
+        $this->acl('credential:view');
     }
 
     public function qrAction() {
-        $this->acl('view:credential');
+        $this->acl('credential:view');
 
         $this->getResponse()->setHeader('Content-Type', 'image/png');
         echo $this->user->getQR();
@@ -45,7 +45,7 @@ class Users_ProfileController extends Application_Controllers_Action
     }
 
     public function nineblockAction() {
-        $this->acl('view:credential');
+        $this->acl('credential:view');
         
         $this->getResponse()->setHeader('Content-Type', 'image/png');
         echo $this->user->getNineBlock();

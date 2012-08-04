@@ -12,20 +12,27 @@ class Users_Form_Profile extends Zend_Form
     public function init() {
         $this->setMethod('post');
 
-        $surname = $this->createElement('text', 'surname');
-        $surname->setRequired(true)
-                ->setLabel('Apellidos (*)')
+        $title = $this->createElement('text', 'title');
+        $title->setRequired(true)
+                ->setLabel('Título')
                 ->setAttrib('class', 'focus')
                 ->addFilter('StringTrim')
                 ->addFilter('StripTags')
-                ->addValidator('StringLength', false, array(1, 1024));
+                ->addValidator('StringLength', false, array(1, 512));
+
+        $surname = $this->createElement('text', 'surname');
+        $surname->setRequired(true)
+                ->setLabel('Apellidos (*)')
+                ->addFilter('StringTrim')
+                ->addFilter('StripTags')
+                ->addValidator('StringLength', false, array(1, 512));
 
         $name = $this->createElement('text', 'name');
         $name->setRequired(true)
              ->setLabel('Nombres (*)')
              ->addFilter('StringTrim')
              ->addFilter('StripTags')
-             ->addValidator('StringLength', false, array(1, 1024));
+             ->addValidator('StringLength', false, array(1, 512));
 
         $username = $this->createElement('text', 'username');
         $username->setRequired(true)
@@ -44,15 +51,17 @@ class Users_Form_Profile extends Zend_Form
               ->addValidator('EmailAddress')
               ->addValidator(new Application_Controllers_Validators_UniqueEmail($this->user), false);
 
+        $this->addElement($title);
         $this->addElement($surname);
         $this->addElement($name);
         $this->addElement($username);
         $this->addElement($email);
 
-        $this->addElement('submit', 'submit', array('ignore' => true, 'label' => 'Actualizar'));
+        $this->addElement('submit', 'submit', array('ignore' => true, 'label' => 'Registrar'));
     }
 
     public function setUser($user) {
+        $this->getElement('title')->setValue($user->title);
         $this->getElement('surname')->setValue($user->surname);
         $this->getElement('name')->setValue($user->name);
         $this->getElement('username')->setValue($user->username);

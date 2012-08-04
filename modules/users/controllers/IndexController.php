@@ -25,10 +25,17 @@ class Users_IndexController extends Application_Controllers_Action
     }
 
     public function organizerAction() {
+        $this->acl('organizer:add');
         $this->agregarUsuario('organizer');
     }
 
+    public function protocolAction() {
+        $this->acl('protocol:add');
+        $this->agregarUsuario('protocol');
+    }
+
     public function assistantAction() {
+        $this->acl('assistant:add');
         $this->agregarUsuario('assistant');
     }
 
@@ -43,19 +50,18 @@ class Users_IndexController extends Application_Controllers_Action
 
         if ($request->isPost()) {
             if ($form->isValid($request->getPost())) {
-                $surname = $form->getElement('surname')->getValue();
-                $name = $form->getElement('name')->getValue();
-                $username = $form->getElement('username')->getValue();
-                $email = $form->getElement('email')->getValue();
 
                 $hash_generator = new Application_Views_Helpers_Password();
                 $hash = $hash_generator->password(8);
 
-                $user->role = $rol;
-                $user->surname = $surname;
-                $user->name = $name;
-                $user->username = $username;
-                $user->email = $email;
+                $user->role     = $rol;
+
+                $user->title    = $form->getElement('title')->getValue();
+                $user->surname  = $form->getElement('surname')->getValue();
+                $user->name     = $form->getElement('name')->getValue();
+                $user->username = $form->getElement('username')->getValue();
+                $user->email    = $form->getElement('email')->getValue();
+
                 $user->hash = $hash;
                 $user->password = sha1(md5($hash));
                 $user->tsregister = time();

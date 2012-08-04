@@ -25,7 +25,13 @@ h1 a {
 h2 {
     font-size: 1.8em;
     font-weight: bold;
-    margin-bottom: 0.6em;
+    margin-bottom: 1.0em;
+}
+
+h3 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 0.3em;
 }
 
 p {
@@ -242,13 +248,19 @@ dd li {
     margin: 1.0em 0em;
 }
 
-.tasks a {
+.tasks a, .tasks input[type="submit"] {
+    font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
     background-color: #ffffff;
     color: #000000;
-    font-weight: bold;
     border-radius: 5px;
     margin: 0.4em 0em;
     padding: 0.2em 0.5em;
+}
+
+.tasks input[type="submit"] {
+    border: none;
 }
 
 /*-------------------------------------------*/
@@ -285,4 +297,22 @@ table td {
     height: 335px;
     background-color: #ffffff;
     color: #000000;
+    margin: 4.0em auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+.aureal dl dt, .aureal dl dd {
+    font-size: 14px;
+}
+
+.aureal dl dt {
+    width: 120px;
+    margin: 0px;
+    font-weight: bold;
+    color: #0000FF;
+}
+
+.aureal dl dd {
+    margin-left: 130px;
 }

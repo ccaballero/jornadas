@@ -1,0 +1,5 @@
+/servicios/consulta/:hash
+
+/servicios/marcar/:apikey/:activity/:hash
+
+/servicios/actividades

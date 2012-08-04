@@ -2,12 +2,15 @@
 
 <?php echo $this->partial('index/index-tools.php',
     array(
-        'max_organizers' => $this->max_organizers,
+        'max_organizers'   => $this->max_organizers,
         'count_organizers' => $this->count_organizers,
-        'max_assistants' => $this->max_assistants,
+        'max_protocols'    => $this->max_protocols,
+        'count_protocols'  => $this->count_protocols,
+        'max_assistants'   => $this->max_assistants,
         'count_assistants' => $this->count_assistants,
     )) ?>
 
+<table>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Organizadores',
@@ -15,7 +18,6 @@
         'count' => $this->count_organizers,
         'users' => $this->organizers,
     )) ?>
-<br />
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Protocolo',
@@ -23,7 +25,6 @@
         'count' => $this->count_protocols,
         'users' => $this->protocols,
     )) ?>
-<br />
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Asistentes',
@@ -31,12 +32,15 @@
         'count' => $this->count_assistants,
         'users' => $this->assistants,
     )) ?>
+</table>
 
 <?php echo $this->partial('index/index-tools.php',
     array(
-        'max_organizers' => $this->max_organizers,
+        'max_organizers'   => $this->max_organizers,
         'count_organizers' => $this->count_organizers,
-        'max_assistants' => $this->max_assistants,
+        'max_protocols'    => $this->max_protocols,
+        'count_protocols'  => $this->count_protocols,
+        'max_assistants'   => $this->max_assistants,
         'count_assistants' => $this->count_assistants,
     )) ?>
 

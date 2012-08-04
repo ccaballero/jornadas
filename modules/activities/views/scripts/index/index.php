@@ -1,27 +1,23 @@
-<h2>Administración de actividades</h2>
+<div class="tasks">
+<?php if ($this->allowed('activity:manage')) { ?>
+<a href="<?php echo $this->url(array(), 'activities') ?>">*administrar</a>
+<?php } ?>
+<?php if ($this->allowed('activity:view')) { ?>
+<a href="<?php echo $this->url(array(), 'activities_assign') ?>">estados</a>
+<?php } ?>
+</div>
 
-<form method="post" action="" accept-charset="utf-8">
-<input type="submit" value="Guardar" />
 <table style="width: 50%">
-    <tr>
-        <th>Código</th>
+    <tr class="nav">
+        <th>Nº</th>
         <th>Actividad</th>
         <th>Orden</th>
     </tr>
-<?php $count = 0 ?>
 <?php foreach ($this->activities as $activity) { ?>
-    <tr>
-        <td><input type="text" name="act[<?php echo $count ?>][code]" value="<?php echo $this->escape($activity->code) ?>" /></td>
-        <td><input type="text" name="act[<?php echo $count ?>][label]" value="<?php echo $this->escape($activity->label) ?>" /></td>
-        <td><input type="text" name="act[<?php echo $count ?>][order]" value="<?php echo $this->escape($activity->order) ?>" /></td>
+    <tr class="<?php echo $this->cycle(array("even", "odd"))->next()?>">
+        <td class="center"><?php echo $this->escape($activity->code) ?></td>
+        <td><?php echo $this->escape($activity->label) ?></td>
+        <td class="center"><?php echo $this->escape($activity->order) ?></td>
     </tr>
-    <?php $count++ ?>
 <?php } ?>
-    <tr>
-        <td><input type="text" name="act[<?php echo $count ?>][code]" value="" /></td>
-        <td><input type="text" name="act[<?php echo $count ?>][label]" value="" /></td>
-        <td><input type="text" name="act[<?php echo $count ?>][order]" value="" /></td>
-    </tr>
 </table>
-<input type="submit" value="Guardar" />
-</form>

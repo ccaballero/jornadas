@@ -6,11 +6,16 @@
 <li<?php echo $this->isActive($this->route, 'exhibitions') ? ' class="active"' : '' ?>>
 <a accesskey="2" href="<?php echo $this->url(array(), 'exhibitions') ?>">exposiciones</a>
 </li>
-<li<?php echo $this->isActive($this->route, 'users') ? ' class="active"' : '' ?>>
-<a accesskey="3" href="<?php echo $this->url(array(), 'users') ?>">participantes</a>
-</li>
 <li<?php echo $this->isActive($this->route, 'sponsors') ? ' class="active"' : '' ?>>
 <a accesskey="4" href="<?php echo $this->url(array(), 'sponsors') ?>">auspiciadores</a>
 </li>
+<li<?php echo $this->isActive($this->route, 'users') ? ' class="active"' : '' ?>>
+<a accesskey="3" href="<?php echo $this->url(array(), 'users') ?>">participantes</a>
+</li>
+<?php if ($this->allowed('activity:view')) { ?>
+<li<?php echo $this->isActive($this->route, 'activities') ? ' class="active"' : '' ?>>
+<a accesskey="3" href="<?php echo $this->url(array(), 'activities') ?>">actividades</a>
+</li>
+<?php } ?>
 </ul>
 <?php $this->placeholder('menu')->captureEnd() ?>

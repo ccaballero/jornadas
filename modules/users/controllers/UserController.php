@@ -2,8 +2,8 @@
 
 class Users_UserController extends Application_Controllers_Action
 {
-    public function viewAction() {
-    }
+//    public function viewAction() {
+//    }
 
     public function nineblockAction() {
         $this->getResponse()->setHeader('Content-Type', 'image/png');
