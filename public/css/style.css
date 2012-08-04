@@ -217,6 +217,7 @@ input[type="password"],
 textarea {
     font-size: 1.0em;
     padding: 0.2em;
+    max-width: 700px;
 }
 
 form {
@@ -315,4 +316,15 @@ table td {
 
 .aureal dl dd {
     margin-left: 130px;
+}
+
+/*-------------------------------------------*/
+/*               ACTIVIDADES                 */
+/*-------------------------------------------*/
+.happy {
+    background-color: #4fff4f;
+}
+
+.sad {
+    background-color: #ff4f4f;
 }

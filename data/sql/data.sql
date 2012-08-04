@@ -21,7 +21,9 @@ CREATE TABLE `users` (
     `tsregister`       int unsigned                                                     NOT NULL DEFAULT 0,
     `tslastlogin`      int unsigned                                                     NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
-    UNIQUE INDEX (`username`)
+    UNIQUE INDEX (`username`),
+    UNIQUE INDEX (`password`),
+    UNIQUE INDEX (`hash`)
 ) DEFAULT CHARACTER SET UTF8;
 
 DROP TABLE IF EXISTS `users_exhibitors`;

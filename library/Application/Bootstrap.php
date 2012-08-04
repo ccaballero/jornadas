@@ -144,20 +144,16 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         $acl->allow('assistant', null, array(
             'credential:view',
-            
             'new:add',
         ));
         $acl->allow('exhibitor', null, array(
             'credential:view',
-            
             'new:add',
         ));
         $acl->allow('organizer', null, array(
             'credential:view',
             'assistant:add',
-
             'activity:view',
-
             'new:add',
         ));
         $acl->allow('admin', null, array(
@@ -168,11 +164,9 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'assistant:add',
             'hash:view',
             'apikey:view',
-
             'activity:view',
-            
             'activity:manage',
-
+            'new:add',
         ));
 
         Zend_Registry::set('acl', $acl);

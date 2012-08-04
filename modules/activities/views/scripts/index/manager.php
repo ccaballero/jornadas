@@ -1,4 +1,5 @@
 <h2>Administración de actividades</h2>
+<?php echo $this->partial('index/index-tools.php', array()) ?>
 
 <form method="post" action="" accept-charset="utf-8">
 <input type="submit" value="Guardar" />

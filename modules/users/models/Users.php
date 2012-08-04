@@ -17,12 +17,20 @@ class Users extends Application_Models_Table
         return $this->fetchRow($this->getAdapter()->quoteInto('email = ?', $email));
     }
 
+    public function findByHash($hash) {
+        return $this->fetchRow($this->getAdapter()->quoteInto('hash = ?', $hash));
+    }
+
+    public function findByApiKey($apikey) {
+        return $this->fetchRow($this->getAdapter()->quoteInto('apikey = ?', $apikey));
+    }
+
     public function findByUsername($username) {
         return $this->fetchRow($this->getAdapter()->quoteInto('username = ?', $username));
     }
 
-    public function findByPassword($hash) {
-        return $this->db->fetchRow($this->select()->where('password = ?', $hash));
+    public function findByQr($hash) {
+        return $this->fetchRow($this->getAdapter()->quoteInto('password = ?', $hash));
     }
 
     public function selectByRole($role) {

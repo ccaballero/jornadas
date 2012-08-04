@@ -2,7 +2,7 @@
 INSERT INTO `users`
 (`role`, `name`, `surname`, `username`, `password`, `email`, `hash`, `tslastlogin`, `tsregister`)
 VALUES
-('admin',     'Admin',     'Lord',      'root',      SHA1(MD5('asdf')), '', 'asdf', UNIX_TIMESTAMP(), UNIX_TIMESTAMP()),
+('admin',     'Admin',     'Lord',      'root',      SHA1(MD5('12345678')), '', '12345678', UNIX_TIMESTAMP(), UNIX_TIMESTAMP()),
 
 ('organizer', 'Alvaro',    'Alvarez',   'alvaro',    SHA1(MD5('234ADSFQ')), '', '234ADSFQ', UNIX_TIMESTAMP(), UNIX_TIMESTAMP()),
 ('organizer', 'Benjamin',  'Bueno',     'benjo',     SHA1(MD5('REWQRQW4')), '', 'REWQRQW4', UNIX_TIMESTAMP(), UNIX_TIMESTAMP()),

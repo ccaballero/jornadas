@@ -19,8 +19,8 @@
 <?php } ?>
 
 <div class="tasks">
-<?php if ($this->allowed('add:new')) { ?>
-<a href="<?php echo $this->url(array(), 'news_new_add') ?>">Agregar noticia</a>
+<?php if ($this->allowed('new:add')) { ?>
+<a href="<?php echo $this->url(array(), 'news_new_add') ?>">+noticia</a>
 <?php } ?>
 </div>
 

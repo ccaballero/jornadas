@@ -1,11 +1,5 @@
-<div class="tasks">
-<?php if ($this->allowed('activity:manage')) { ?>
-<a href="<?php echo $this->url(array(), 'activities') ?>">*administrar</a>
-<?php } ?>
-<?php if ($this->allowed('activity:view')) { ?>
-<a href="<?php echo $this->url(array(), 'activities_assign') ?>">estados</a>
-<?php } ?>
-</div>
+<h2>Actividades</h2>
+<?php echo $this->partial('index/index-tools.php', array()) ?>
 
 <table style="width: 50%">
     <tr class="nav">
