@@ -83,6 +83,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->appendFile($baseUrl . '/js/jquery.countdown.min.js', 'text/javascript')
              ->appendFile($baseUrl . '/js/init.js', 'text/javascript');
         $view->headLink()
+             ->headLink(array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => '/rss', 'title' => 'Canal RSS'))
              ->appendStylesheet($baseUrl . '/css/reset.css')
              ->appendStylesheet($baseUrl . '/css/style.css');
 

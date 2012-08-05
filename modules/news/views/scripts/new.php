@@ -1,5 +1,5 @@
 <div class="post">
-    <h2><?php echo $this->new->title ?></h2>
+    <h2><a href="<?php echo $this->url(array('new' => $this->new->ident), 'news_new_view') ?>"><?php echo $this->new->title ?></a></h2>
     <div class="photo">
         <img src="<?php echo $this->url(array('username' => $this->author->username, 'size' => 64), 'users_user_nineblock') ?>"
              alt="<?php echo $this->author->getFullname() ?>"

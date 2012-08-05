@@ -5,15 +5,19 @@ class Extra_ToXML
     private $_dom = null;
     private $_root = 'service';
 
-    public function  __construct() {
+    public function  __construct($root = null) {
         $implementation = new DOMImplementation();
 
         $this->_dom = $implementation->createDocument('', '');
         $this->_dom->version = '1.0';
         $this->_dom->encoding = 'utf-8';
+
+        if (!empty($root)) {
+            $this->_root = $root;
+        }
     }
 
-//            $key = preg_replace('/[^a-z]/i', '', $key);
+//  $key = preg_replace('/[^a-z]/i', '', $key);
     public function toDOM($content, $parent) {
         if (is_array($content)) {
             $element = $this->_dom->createElement($parent);

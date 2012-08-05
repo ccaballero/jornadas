@@ -3,11 +3,10 @@
 class Auth_IndexController extends Application_Controllers_Action
 {
     public function inAction() {
-        $request = $this->getRequest();
         $form = new Auth_Form_Login();
 
-        if ($request->isPost()) {
-            if ($form->isValid($request->getPost())) {
+        if ($this->request->isPost()) {
+            if ($form->isValid($this->request->getPost())) {
                 $dbAdapter = Zend_Db_Table::getDefaultAdapter();
                 $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
                 $authAdapter->setTableName('users')

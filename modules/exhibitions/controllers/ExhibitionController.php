@@ -3,8 +3,7 @@
 class Exhibitions_ExhibitionController extends Application_Controllers_Action
 {
     public function viewAction() {
-        $request = $this->getRequest();
-        $url = $request->getParam('exhibition');
+        $url = $this->request->getParam('exhibition');
 
         $model_exhibitions = new Exhibitions();
         $exhibition = $model_exhibitions->findByUrl($url);
@@ -14,8 +13,7 @@ class Exhibitions_ExhibitionController extends Application_Controllers_Action
     }
 
     public function slideshowAction() {
-        $request = $this->getRequest();
-        $url = $request->getParam('exhibition');
+        $url = $this->request->getParam('exhibition');
 
         $model_exhibitions = new Exhibitions();
         $exhibition = $model_exhibitions->findByUrl($url);

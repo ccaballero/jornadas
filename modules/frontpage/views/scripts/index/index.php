@@ -18,6 +18,8 @@
     </div>
 <?php } ?>
 
+<a style="float:right;" href="<?php echo $this->url(array(), 'news_rss') ?>"><img src="/media/feed.png" /></a>
+
 <div class="tasks">
 <?php if ($this->allowed('new:add')) { ?>
 <a href="<?php echo $this->url(array(), 'news_new_add') ?>">+noticia</a>

@@ -55,6 +55,7 @@ CREATE TABLE `news` (
     `title`            varchar(512)                                                NOT NULL,
     `text`             text                                                        NOT NULL DEFAULT '',
     `author`           int unsigned                                                NOT NULL,
+    `tsmodified`       int unsigned                                                NOT NULL DEFAULT 0,
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
     INDEX (`author`),

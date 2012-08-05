@@ -14,9 +14,8 @@ class Activities_IndexController extends Application_Controllers_Action
 
         $model_activities = new Activities();
 
-        $request = $this->getRequest();
-        if ($request->isPost()) {
-            $table = $request->getParam('act');
+        if ($this->request->isPost()) {
+            $table = $this->request->getParam('act');
 
             $filter1 = new Zend_Filter();
             $filter1->addFilter(new Zend_Filter_StringTrim())
