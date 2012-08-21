@@ -247,6 +247,7 @@ dd li {
 /*-------------------------------------------*/
 .tasks {
     margin: 1.0em 0em;
+    padding: 0.1em 0em;
 }
 
 .tasks a, .tasks input[type="submit"] {

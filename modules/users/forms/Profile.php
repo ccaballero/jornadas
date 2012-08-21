@@ -13,7 +13,7 @@ class Users_Form_Profile extends Zend_Form
         $this->setMethod('post');
 
         $title = $this->createElement('text', 'title');
-        $title->setRequired(true)
+        $title->setRequired(false)
                 ->setLabel('Título')
                 ->setAttrib('class', 'focus')
                 ->addFilter('StringTrim')
