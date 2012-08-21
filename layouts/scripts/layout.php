@@ -9,16 +9,20 @@
     </head>
     <body>
         <div id="header">
-            <div class="auth"><?php echo $this->placeholder('auth') ?></div>
-            <h1 id="banner"><a href="/"><?php echo $this->title ?></a></h1>
+            <div style="width:960px; margin: 0px auto;">
+                <div class="auth"><?php echo $this->placeholder('auth') ?></div>
+            </div>
         </div>
+        <div class="nav"><div style="width:960px; margin: 0px auto;">
+            <?php echo $this->placeholder('menu') ?>
+        </div></div>
         <div id="main">
-            <div class="nav"><?php echo $this->placeholder('menu') ?></div>
             <div id="content">
                 <?php echo $this->placeholder('messages') ?>
                 <?php echo $this->layout()->content ?>
             </div>
             <div class="nav"><?php echo $this->placeholder('footer') ?></div>
         </div>
+        <div id="footer">&nbsp;</div>
     </body>
 </html>
