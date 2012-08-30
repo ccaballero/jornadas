@@ -1,0 +1,348 @@
+* {
+    font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 1.0em;
+}
+
+body {
+    background-color: #bdc7d8;
+}
+
+a { text-decoration: none; }
+a:focus { outline: none; }
+
+.center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: right;
+    padding: 1.0em 1.0em 0.5em 1.0em;
+    text-shadow: 3px 3px 6px #b0b0b0;
+}
+
+h1 a {
+    color: #000000;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 1.0em;
+}
+
+h3 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 0.3em;
+}
+
+p {
+    margin: 0.5em 0em;
+    line-height: 1.2em;
+}
+
+#header {
+    background: #000000 url('/media/header_2.0.png') no-repeat 50% 0%;
+    height: 250px;
+}
+
+#main {
+    margin: 0 auto;
+    max-width: 960px;
+    box-shadow: 0.3em 0.3em 0.45em #808080;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#content {
+    padding: 10px 10px;
+}
+
+#footer {
+    width: 50px;
+}
+
+/*-------------------------------------------*/
+/*             BARRA DE USUARIO              */
+/*-------------------------------------------*/
+.auth {
+    float: right;
+    margin-top: 5px;
+    font-size: 0.94em;
+}
+
+.auth a {
+    font-size: 0.94em;
+    color: #ffffff;
+}
+
+/*-------------------------------------------*/
+/*                   MENUS                   */
+/*-------------------------------------------*/
+.nav {
+    background-color: #d0d0d0;
+    background-image: -moz-linear-gradient(center top , #d0d0d0, #909090);
+    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#d0d0d0), to(#909090));
+    height: 24px;
+    overflow: hidden;
+    padding: 0px 8px;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    float: left;
+    height: 20px;
+    padding: 4px 6px;
+}
+
+.nav ul li.active {
+    background-color: #ffffff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.nav ul li a {
+    color: #000000;
+    text-shadow: 1px 1px 1px #b0b0b0;
+}
+
+.nav ul li.active a {
+    color: #000000;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+/*-------------------------------------------*/
+/*   ELEMENTO CONTADOR EN PAGINA PRINCIPAL   */
+/*-------------------------------------------*/
+#countdown {
+    width: 524px;
+    height: 105px;
+    margin: 10px auto;
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 5px solid #000000;
+}
+
+#countdown .cntSeparator {
+    margin: 10px 10px;
+}
+
+#countdown .desc {
+    margin: 7px 3px;
+}
+
+#countdown .desc div {
+    float: left;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+}
+
+#countdown .days { margin-left: 72px; }
+#countdown .hours { margin-left: 100px; }
+#countdown .minutes { margin-left: 86px; }
+#countdown .seconds { margin-left: 72px; }
+
+/*-------------------------------------------*/
+/*           COLORES TIPO TERMINAL           */
+/*-------------------------------------------*/
+.red { color: #ff4f4f; }
+.blue { color: #4f4fff; }
+.green { color: #4fff4f; }
+.yellow { color: #ffff7f; }
+.magenta { color: #ff4fff; }
+.cyan { color: #4fffff; }
+.white { color: #ffffff }
+.gray { color: #4f4f4f; }
+
+.bold { font-weight: bold; }
+.plain { font-weight: normal; }
+.form { margin: 15.0em; }
+
+/*-------------------------------------------*/
+/*           BLOQUES RENDERIZABLES           */
+/*-------------------------------------------*/
+.post {
+    position: relative;
+    margin: 16px 0px;
+    padding: 10px 10px 35px 10px;
+    border-radius: 8px;
+    background-color: #cfcfcf;
+    color: #000000;
+    min-height: 125px;
+}
+
+.post h2 {
+    font-size: 1.4em;
+}
+
+.post p {
+    text-align: justify;
+    padding: 5px 0px;
+}
+
+.post a {
+    color: #b32d47;
+    font-weight: bold;
+}
+
+.photo {
+    background-color: #ffffff;
+    float: left;
+    margin: 5px 10px 10px 5px;
+    width: 96px;
+    height: 96px;
+}
+
+.time {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+}
+
+.time .day {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.time .month {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-right: 0.25em;
+}
+
+.tools {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/*-------------------------------------------*/
+/*               FORMULARIOS                 */
+/*-------------------------------------------*/
+input[type="text"],
+input[type="password"],
+textarea {
+    font-size: 1.0em;
+    padding: 0.2em;
+    max-width: 700px;
+}
+
+form {
+    margin: 0 auto;
+}
+
+dt {
+    float: left;
+    width: 7.0em;
+    text-align: right;
+    font-size: 1.0em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+dd {
+    margin-left: 7.3em;
+    margin-bottom: 0.3em;
+}
+
+dd li {
+    list-style: none outside none;
+}
+
+/*-------------------------------------------*/
+/*           FUNCIONES DISPONIBLES           */
+/*-------------------------------------------*/
+.tasks {
+    margin: 1.0em 0em;
+    padding: 0.1em 0em;
+}
+
+.tasks a, .tasks input[type="submit"] {
+    font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    margin: 0.4em 0em;
+    padding: 0.2em 0.5em;
+}
+
+.tasks input[type="submit"] {
+    border: none;
+}
+
+/*-------------------------------------------*/
+/*                  TABLAS                   */
+/*-------------------------------------------*/
+table {
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+}
+
+table tr a {
+    color: #000000;
+} 
+
+table th {
+    font-size: 1.1em;
+    padding: 0.25em;
+}
+
+table td {
+    padding: 0.2em;
+}
+
+.even {
+    background-color: #dfdfdf;
+}
+
+/*-------------------------------------------*/
+/*               CREDENCIALES                */
+/*-------------------------------------------*/
+.aureal {
+    width: 542px;
+    height: 335px;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 4.0em auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+.aureal dl dt, .aureal dl dd {
+    font-size: 14px;
+}
+
+.aureal dl dt {
+    width: 120px;
+    margin: 0px;
+    font-weight: bold;
+    color: #0000FF;
+}
+
+.aureal dl dd {
+    margin-left: 130px;
+}
+
+/*-------------------------------------------*/
+/*               ACTIVIDADES                 */
+/*-------------------------------------------*/
+.happy {
+    background-color: #4fff4f;
+}
+
+.sad {
+    background-color: #ff4f4f;
+}

@@ -84,9 +84,13 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->appendFile($baseUrl . '/js/init.js', 'text/javascript');
         $view->headLink()
              ->headLink(array('rel' => 'favicon', 'href' => $view->baseUrl('favicon.png')))
-             ->headLink(array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => '/rss', 'title' => 'Canal RSS'))
-             ->appendStylesheet($baseUrl . '/css/reset.css')
-             ->appendStylesheet($baseUrl . '/css/style.css');
+             ->headLink(array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => '/rss', 'title' => 'Canal RSS'));
+        
+        $css_styles = $options['template']['css'];
+        foreach ($css_styles as $css_style) {
+             $view->headLink()
+                  ->appendStylesheet($baseUrl . '/css/' . $css_style);
+        }
 
         $view->title = $options['system']['name'];
         $view->baseUrl = $baseUrl;

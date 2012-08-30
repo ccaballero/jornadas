@@ -2,20 +2,18 @@
 
 class Services_IndexController extends Application_Controllers_Action
 {
-
-    public function __construct() {
-        parent::__construct();
+    public $xml;
+    
+    public function init() {
+        $this->xml = new Extra_ToXML();
+        
+        parent::init();
     }
 
     public function queryAction() {
-        $hash = $this->request->getParam('hash');
-
-        $model_users = new Users();
-        $user = $model_users->findByQr(sha1($hash));
-
         $stdClass = new stdClass();
 
-        if (empty($user)) {
+        if ($this->getUser() == null) {
             $stdClass->result = 0;
         } else {
             $stdClass->result = 1;
@@ -28,20 +26,15 @@ class Services_IndexController extends Application_Controllers_Action
             $stdClass->email = $user->email;
         }
 
-        $xml = new Extra_ToXML();
-
-        $response = $this->getResponse();
-        $response->setHeader('Content-Type', 'application/xml');
-        $response->setBody($xml->toXML($stdClass));
-
-        $this->_helper->layout->disableLayout();
-        $this->_helper->viewRenderer->setNoRender();
+        $this->sendXML($stdClass);
     }
 
     public function activitiesAction() {
         $model_activities = new Activities();
 
-        $activities = $model_activities->fetchAll($model_activities->select()->order('order ASC'));
+        $activities = $model_activities->fetchAll(
+            $model_activities->select()->order('order ASC')
+        );
 
         $list = array();
         foreach ($activities as $activity) {
@@ -51,98 +44,124 @@ class Services_IndexController extends Application_Controllers_Action
             $list[] = $stdClass;
         }
 
-        $xml = new Extra_ToXML();
-
-        $response = $this->getResponse();
-        $response->setHeader('Content-Type', 'application/xml');
-        $response->setBody($xml->toXML($list));
-
-        $this->_helper->layout->disableLayout();
-        $this->_helper->viewRenderer->setNoRender();
-    }
-
-    public function getHash() {
-        $hash = $this->request->getParam('hash');
+        $this->sendXML($list);
     }
 
     public function markAction() {
-        $apikey = $this->request->getParam('apikey');
-        $id_activity = $this->request->getParam('activity');
-        $hash = $this->request->getParam('hash');
-
-        $xml = new Extra_ToXML();
+        return $this->_markAction('add');
+    }
+    
+    public function unmarkAction() {
+        return $this->_markAction('del');
+    }
+    
+    private function _markAction($status) {
         $stdClass = new stdClass();
 
-        $model_users = new Users();
-        $model_activities = new Activities();
+        $organizer = $this->getOrganizer($stdClass);
+        $user = $this->getUser($stdClass);
+        $activity = $this->getActivity($stdClass);
 
         // POST verification
         $valid_post = false;
-        //if ($this->request->isPost()) {
+//        if ($this->request->isPost()) {
             $valid_post = true;
 //        } else {
 //            $stdClass->messages[] = 'Debe utilizar el metodo POST';
 //        }
-        
-        // API KEY verification
-        $valid_apikey = false;
-        if (!empty($apikey)) {
-            $organizer = $model_users->findByApiKey($apikey);
-            if (!empty($organizer)) {
-                $valid_apikey = true;
-            } else {
-                $stdClass->messages[] = 'API KEY erroneo';
-            }
-        } else {
-            $stdClass->message[] = 'API KEY no provisto';
-        }
 
-        // Activity verification
-        $valid_activity = false;
-        if (!empty($id_activity)) {
-            $activity = $model_activities->findByIdent($id_activity);
-            if (!empty($activity)) {
-                $valid_activity = true;
-            } else {
-                $stdClass->messages[] = 'Actividad inexistente';
-            }
-        } else {
-            $stdClass->messages[] = 'Actividad no provista';
-        }
-
-        // Hash verification
-        $valid_hash = false;
-        if (!empty($hash)) {
-            $assistant = $model_users->findByQr(sha1($hash));
-            if (!empty($assistant)) {
-                $valid_hash = true;
-            } else {
-                $stdClass->messages[] = 'Hash incorrecto';
-            }
-        } else {
-            $stdClass->messages[] = 'Hash no provisto';
-        }
-
-        if ($valid_post && $valid_apikey && $valid_activity && $valid_hash) {
+        if (!empty($organizer) && !empty($user) &&
+            !empty($activity) && $valid_post) {
             $model_activities_users = new Activities_Users();
 
             try {
-                $model_activities_users->insert(array(
-                    'user' => $assistant['ident'],
-                    'activity' => $activity->ident,
-                ));
-                $stdClass->result = 1;
+                if ($status == 'add') {
+                    $model_activities_users->insert(array(
+                        'user' => $user->ident,
+                        'activity' => $activity->ident,
+                    ));
+                    $stdClass->result = 1;
+                } else if ($status == 'del') {
+                    $model_activities_users->delete(array(
+                        'user = ?' => $user->ident,
+                        'activity = ?' => $activity->ident
+                    ));
+                    $stdClass->result = 1;
+                }
             } catch (Exception $e) {
                 $stdClass->result = 0;
-                $stdClass->messages[] = $assistant->getFullname() . ' ya fue marcado en esta actividad.';
+                $stdClass->messages[] = $organizer->getFullname() .
+                    ' ya fue marcado en esta actividad.';
             }
         } else {
             $stdClass->result = 0;
         }
 
+        $this->sendXML($stdClass);
+    }
+
+    public function getHash($container = null) {
+        $hash = $this->request->getParam('hash');
+        if (empty($hash)) {
+            $container->messages[] = 'Hash no provisto';
+        }
+        return $hash;
+    }
+    
+    public function getApikey($container = null) {
+        $apikey = $this->request->getParam('apikey');
+        if (empty($apikey)) {
+            $container->messages[] = 'API no provisto';
+        }
+        return $apikey;
+    }
+    
+    public function getActivity($container = null) {
+        $id_activity = $this->request->getParam('activity');
+        if (empty($id_activity)) {
+            $container->messages[] = 'Actividad no provista';
+        } else {
+            $model_activities = new Activities();
+            
+            $activity = $model_activities->findByIdent($id_activity);
+            if (empty($activity)) {
+                $container->messages[] = 'Actividad inexistente';
+            }
+        }
+
+        return $activity;
+    }
+
+    public function getUser($container = null) {
+        $model_users = new Users();
+        $user = $model_users->findByQr(sha1($this->getHash()));
+        
+        if (empty($user)) {
+            $container->messages[] = 'Usuario incorrecto';
+        }
+        
+        return $user;
+    }
+
+    public function getOrganizer($container = null) {
+        $apikey = $this->getApikey();
+
+        $model_users = new Users();
+        
+        $organizer = $model_users->findByApiKey($apikey);
+        if (empty($organizer)) {
+            if (empty($container)) {
+                $container->messages[] = 'API KEY erroneo';
+            }
+        }
+        
+        return $organizer;
+    }
+
+    public function sendXML($container) {
         $response = $this->getResponse();
         $response->setHeader('Content-Type', 'application/xml');
-        $response->setBody($xml->toXML($stdClass));
+        $response->setBody($this->xml->toXML($container));
 
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender();
