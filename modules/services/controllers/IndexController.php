@@ -2,6 +2,11 @@
 
 class Services_IndexController extends Application_Controllers_Action
 {
+
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function queryAction() {
         $hash = $this->request->getParam('hash');
 
@@ -56,6 +61,10 @@ class Services_IndexController extends Application_Controllers_Action
         $this->_helper->viewRenderer->setNoRender();
     }
 
+    public function getHash() {
+        $hash = $this->request->getParam('hash');
+    }
+
     public function markAction() {
         $apikey = $this->request->getParam('apikey');
         $id_activity = $this->request->getParam('activity');
@@ -69,11 +78,11 @@ class Services_IndexController extends Application_Controllers_Action
 
         // POST verification
         $valid_post = false;
-        if ($this->request->isPost()) {
+        //if ($this->request->isPost()) {
             $valid_post = true;
-        } else {
-            $stdClass->messages[] = 'Debe utilizar el metodo POST';
-        }
+//        } else {
+//            $stdClass->messages[] = 'Debe utilizar el metodo POST';
+//        }
         
         // API KEY verification
         $valid_apikey = false;
