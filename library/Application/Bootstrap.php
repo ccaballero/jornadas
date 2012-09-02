@@ -169,6 +169,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'exhibitor:add',
             'protocol:add',
             'assistant:add',
+            'user:edit',
             'hash:view',
             'apikey:view',
             'activity:view',

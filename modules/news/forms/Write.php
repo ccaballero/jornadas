@@ -16,8 +16,7 @@ class News_Form_Write extends Zend_Form
         $text = $this->createElement('textarea', 'text');
         $text->setRequired(false)
               ->setLabel('Texto')
-              ->addFilter('StringTrim')
-              ->addValidator('StringLength', false, array(1, 1024 * 3));
+              ->addFilter('StringTrim');
 
         $this->addElement($title);
         $this->addElement($text);

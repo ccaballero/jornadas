@@ -10,9 +10,7 @@
     <body>
         <div id="wrapper">
             <div id="header">
-                <div style="width:960px; margin: 0px auto;">
-                    <div class="auth"><?php echo $this->placeholder('auth') ?></div>
-                </div>
+                <div class="auth"><?php echo $this->placeholder('auth') ?></div>
             </div>
             <div id="main">
                 <div class="nav">

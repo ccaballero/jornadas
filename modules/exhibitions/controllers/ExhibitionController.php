@@ -9,7 +9,7 @@ class Exhibitions_ExhibitionController extends Application_Controllers_Action
         $exhibition = $model_exhibitions->findByUrl($url);
 
         $this->view->exhibition = $exhibition;
-        $this->view->exhibitor = $exhibition->findParentUsers();
+        $this->view->exhibitors = $exhibition->getExhibitors();
     }
 
     public function slideshowAction() {

@@ -15,6 +15,7 @@
         <th>Nombre Completo</th>
         <?php if ($this->allowed('hash:view')) { ?><th>Hash</th><?php } ?>
         <?php if ($this->allowed('apikey:view')) { ?><th>Key</th><?php } ?>
+        <?php if ($this->allowed('user:edit')) { ?><th>Editar</th><?php } ?>
     </tr>
 <?php foreach ($this->users as $user) { ?>
     <tr class="<?php echo $this->cycle(array("even", "odd"))->next()?>">
@@ -32,6 +33,9 @@
             <a href="<?php echo $this->url(array('username' => $user->username), 'users_add_apikey') ?>">[+]</a>
         <?php } ?>
         </td>
+    <?php } ?>
+    <?php if ($this->allowed('user:edit')) { ?>
+        <td class="center">[<a href="<?php echo $this->url(array('username' => $user->username), 'users_user_edit') ?>">editar</a>]</td>
     <?php } ?>
     </tr>
 <?php } ?>
