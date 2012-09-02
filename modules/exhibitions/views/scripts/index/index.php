@@ -1,34 +1,14 @@
-<?php /*echo $this->partial('frontpage/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => 'ls -ltr /exposiciones',
-    'user' => $this->user,
-    'role' => $this->role,
-)) ?>
-
-total <?php echo count($this->exhibitions) * 4 ?>
-<table>
-<?php $count = 1 ?>
-<?php foreach($this->exhibitions as $exhibition) { ?>
-    <?php echo $this->partial('exhibitions/views/scripts/exhibition-short.php', array('count' => $count++, 'exhibition' => $exhibition)) ?>
+<?php
+/*<div class="tasks">
+<?php if ($this->allowed('exhibitions:add')) { ?>
+<a href="<?php echo $this->url(array(), 'news_new_add') ?>">+exposición</a>
 <?php } ?>
-</table>
-<br />
+</div>
+*/
+?>
 
-<?php echo $this->partial('frontpage/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => 'cat detalles',
-    'user' => $this->user,
-    'role' => $this->role,
-))*/ ?>
-
-<?php foreach($this->exhibitions as $exhibition) { ?>
-    <?php echo $this->partial('exhibitions/views/scripts/exhibition-normal.php', array('exhibition' => $exhibition)) ?>
+<?php if (count($this->exhibitions) <> 0) { ?>
+    <?php foreach($this->exhibitions as $exhibition) { ?>
+        <?php echo $this->partial('exhibitions/views/scripts/exhibition.php', array('exhibition' => $exhibition[0], 'exhibitors' => $exhibition[1])) ?>
+    <?php } ?>
 <?php } ?>
-<br />
-
-<?php /*echo $this->partial('frontpage/views/scripts/prompt.php', array(
-    'pwd' => '~',
-    'cmd' => '_',
-    'user' => $this->user,
-    'role' => $this->role,
-))*/ ?>

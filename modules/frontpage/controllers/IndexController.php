@@ -35,6 +35,8 @@ class IndexController extends Application_Controllers_Action
             $this->view->preview = false;
         }
 
+        $this->view->facebook = $config->services->facebook;
+
         // show the news
         $model_news = new News();
         $this->view->news = $model_news->fetchAll($model_news->select()->order('tsregister DESC'));

@@ -20,4 +20,8 @@ class Exhibitions_Exhibition extends Zend_Db_Table_Row_Abstract
     public function tsSlideshow() { if ($this->hasSlideshow()) { return filectime(APPLICATION_PATH . '/data/slideshows/' . $this->ident . '.pdf'); } }
     public function tsAudio() {     if ($this->hasAudio()) {     return filectime(APPLICATION_PATH . '/data/audios/' . $this->ident . '.mp3'); } }
     public function tsVideo() {     if ($this->hasVideo()) {     return filectime(APPLICATION_PATH . '/data/videos/' . $this->ident . '.avi'); } }
+
+    public function getExhibitors() {
+        return $this->findUsersViaExhibitions_Users();
+    }
 }

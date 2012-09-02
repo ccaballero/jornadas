@@ -4,8 +4,15 @@ class Exhibitions_IndexController extends Application_Controllers_Action
 {
     public function indexAction() {
         $model_exhibitions = new Exhibitions();
-        $exhibitions = $model_exhibitions->selectWithExponents();
 
-        $this->view->exhibitions= $exhibitions;
+        $exhibitions = array();
+        foreach ($model_exhibitions->fetchAll() as $exhibition) {
+            $exhibitions[] = array(
+                $exhibition,
+                $exhibition->getExhibitors(),
+            );
+        }
+        
+        $this->view->exhibitions = $exhibitions;
     }
 }

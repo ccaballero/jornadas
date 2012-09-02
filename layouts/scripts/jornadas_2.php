@@ -8,21 +8,23 @@
         <?php echo $this->headScript() ?>
     </head>
     <body>
-        <div id="header">
-            <div style="width:960px; margin: 0px auto;">
-                <div class="auth"><?php echo $this->placeholder('auth') ?></div>
+        <div id="wrapper">
+            <div id="header">
+                <div style="width:960px; margin: 0px auto;">
+                    <div class="auth"><?php echo $this->placeholder('auth') ?></div>
+                </div>
             </div>
-        </div>
-        <div class="nav"><div style="width:960px; margin: 0px auto;">
-            <?php echo $this->placeholder('menu') ?>
-        </div></div>
-        <div id="main">
-            <div id="content">
-                <?php echo $this->placeholder('messages') ?>
-                <?php echo $this->layout()->content ?>
+            <div id="main">
+                <div class="nav">
+                    <?php echo $this->placeholder('menu') ?>
+                </div>
+                <div id="content">
+                    <?php echo $this->placeholder('messages') ?>
+                    <?php echo $this->layout()->content ?>
+                </div>
+                <div class="nav inverse"><?php echo $this->placeholder('footer') ?></div>
             </div>
-            <div class="nav"><?php echo $this->placeholder('footer') ?></div>
+            <div id="footer" />
         </div>
-        <div id="footer">&nbsp;</div>
     </body>
 </html>

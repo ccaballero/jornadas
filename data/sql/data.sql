@@ -26,27 +26,27 @@ CREATE TABLE `users` (
     UNIQUE INDEX (`hash`)
 ) DEFAULT CHARACTER SET UTF8;
 
-DROP TABLE IF EXISTS `users_exhibitors`;
-CREATE TABLE `users_exhibitors` (
-    `user`             int unsigned                                                NOT NULL,
-    `curriculum`       text                                                        NOT NULL DEFAULT '',
-    INDEX (`user`),
-    FOREIGN KEY (`user`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
-) DEFAULT CHARACTER SET UTF8;
-
 DROP TABLE IF EXISTS `exhibitions`;
 CREATE TABLE `exhibitions` (
     `ident`            int unsigned                                                NOT NULL auto_increment,
     `url`              varchar(128)                                                NOT NULL,
     `title`            varchar(128)                                                NOT NULL,
     `abstract`         text                                                        NOT NULL DEFAULT '',
-    `exhibitor`        int unsigned                                                NOT NULL,
     `tsstart`          int unsigned                                                NOT NULL DEFAULT 0,
     `tsregister`       int unsigned                                                NOT NULL DEFAULT 0,
     PRIMARY KEY (`ident`),
-    UNIQUE INDEX (`url`),
-    INDEX (`exhibitor`),
-    FOREIGN KEY (`exhibitor`) REFERENCES `users_exhibitors`(`user`) ON UPDATE CASCADE ON DELETE RESTRICT
+    UNIQUE INDEX (`url`)
+) DEFAULT CHARACTER SET UTF8;
+
+DROP TABLE IF EXISTS `exhibitions_users`;
+CREATE TABLE `exhibitions_users` (
+    `exhibition`       int unsigned                                                NOT NULL,
+    `user`             int unsigned                                                NOT NULL,
+    `curriculum`       text                                                        NOT NULL DEFAULT '',
+    INDEX (`exhibition`),
+    FOREIGN KEY (`exhibition`) REFERENCES `exhibitors`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT,
+    INDEX (`user`),
+    FOREIGN KEY (`user`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
 
 DROP TABLE IF EXISTS `news`;

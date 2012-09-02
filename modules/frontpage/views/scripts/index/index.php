@@ -18,7 +18,10 @@
     </div>
 <?php } ?>
 
-<a style="float:right;" href="<?php echo $this->url(array(), 'news_rss') ?>"><img src="/media/feed.png" /></a>
+<a style="float:right; margin: 0.1em;" href="<?php echo $this->url(array(), 'news_rss') ?>"><img src="/media/feed.png" /></a>
+<?php if (!empty($this->facebook)) { ?>
+<a style="float:right; margin: 0.1em;" href="<?php echo $this->url(array(), 'news_rss') ?>"><img src="/media/facebook.png" /></a>
+<?php } ?>
 
 <div class="tasks">
 <?php if ($this->allowed('new:add')) { ?>

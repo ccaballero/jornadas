@@ -173,6 +173,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'activity:view',
             'activity:manage',
             'new:add',
+            'exhibitions:add',
         ));
 
         Zend_Registry::set('acl', $acl);

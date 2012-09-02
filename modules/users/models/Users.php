@@ -6,8 +6,7 @@ class Users extends Application_Models_Table
     protected $_primary = 'ident';
     protected $_rowClass = 'Users_User';
 
-    protected $_dependentTables = array('Exhibitions');
-    protected $_referenceMap = array();
+    protected $_dependentTables = array('Exhibitions_Users');
 
     public function findByIdent($ident) {
         return $this->fetchRow($this->getAdapter()->quoteInto('ident = ?', $ident));
