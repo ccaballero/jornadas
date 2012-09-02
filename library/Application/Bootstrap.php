@@ -166,6 +166,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'credential:view',
             'credential:print',
             'organizer:add',
+            'exhibitor:add',
             'protocol:add',
             'assistant:add',
             'hash:view',

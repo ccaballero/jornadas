@@ -1,11 +1,11 @@
-<?php
-/*<div class="tasks">
+<div class="tasks">
 <?php if ($this->allowed('exhibitions:add')) { ?>
 <a href="<?php echo $this->url(array(), 'news_new_add') ?>">+exposición</a>
 <?php } ?>
+<?php if ($this->allowed('exhibitor:add')) { ?>
+    <a href="<?php echo $this->url(array(), 'users_add_exhibitor') ?>">+expositor</a>
+<?php } ?>
 </div>
-*/
-?>
 
 <?php if (count($this->exhibitions) <> 0) { ?>
     <?php foreach($this->exhibitions as $exhibition) { ?>

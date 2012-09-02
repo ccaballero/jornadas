@@ -10,6 +10,7 @@ class Users_IndexController extends Application_Controllers_Action
         $model_users = new Users();
 
         $this->view->organizers = $model_users->selectByRole('organizer');
+        $this->view->exhibitors = $model_users->selectByRole('exhibitor');
         $this->view->protocols  = $model_users->selectByRole('protocol');
         $this->view->assistants = $model_users->selectByRole('assistant');
 
@@ -26,20 +27,25 @@ class Users_IndexController extends Application_Controllers_Action
 
     public function organizerAction() {
         $this->acl('organizer:add');
-        $this->agregarUsuario('organizer');
+        $this->addUser('organizer');
+    }
+
+    public function exhibitorAction() {
+        $this->acl('exhibitor:add');
+        $this->addUser('exhibitor');
     }
 
     public function protocolAction() {
         $this->acl('protocol:add');
-        $this->agregarUsuario('protocol');
+        $this->addUser('protocol');
     }
 
     public function assistantAction() {
         $this->acl('assistant:add');
-        $this->agregarUsuario('assistant');
+        $this->addUser('assistant');
     }
 
-    private function agregarUsuario($rol) {
+    private function addUser($rol) {
         $model_users = new Users();
         $user = $model_users->createRow();
 

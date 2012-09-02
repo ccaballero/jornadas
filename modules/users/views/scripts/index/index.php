@@ -20,6 +20,13 @@
     )) ?>
 <?php echo $this->partial('index/index-table.php',
     array(
+        'role' => 'Expositores',
+        'capacity' => -1,
+        'count' => -1,
+        'users' => $this->exhibitors,
+    )) ?>
+<?php echo $this->partial('index/index-table.php',
+    array(
         'role' => 'Protocolo',
         'capacity' => $this->max_protocols,
         'count' => $this->count_protocols,
