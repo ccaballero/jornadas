@@ -9,6 +9,7 @@ class Users_IndexController extends Application_Controllers_Action
 
         $model_users = new Users();
 
+        $this->view->admins     = $model_users->selectByRole('admin');
         $this->view->organizers = $model_users->selectByRole('organizer');
         $this->view->exhibitors = $model_users->selectByRole('exhibitor');
         $this->view->protocols  = $model_users->selectByRole('protocol');

@@ -13,6 +13,13 @@
 <table>
 <?php echo $this->partial('index/index-table.php',
     array(
+        'role' => 'Administradores',
+        'capacity' => -1,
+        'count' => -1,
+        'users' => $this->admins,
+    )) ?>
+<?php echo $this->partial('index/index-table.php',
+    array(
         'role' => 'Organizadores',
         'capacity' => $this->max_organizers,
         'count' => $this->count_organizers,

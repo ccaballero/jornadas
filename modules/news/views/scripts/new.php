@@ -6,7 +6,7 @@
              title="<?php echo $this->author->getFullname() ?>"
              width="96" />
     </div>
-        <p><?php echo $this->specialEscape($this->escape($this->new->text)) ?></p>
+    <p><?php echo $this->specialEscape($this->escape($this->new->text)) ?></p>
     <div class="time">
         <span class="month"><?php echo $this->translate($this->timestamp($this->new->tsregister, 'F')) ?></span><span class="day"><?php echo $this->timestamp($this->new->tsregister, 'd') ?></span>
     </div>

@@ -4,6 +4,7 @@
 }
 
 body {
+    /*background: #ffffff url('/media/bck.png');*/
     background-color: #ffffff;
 }
 
@@ -62,7 +63,8 @@ p {
 }
 
 #main {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
+    background: #ffffff url('/media/bck.png');
     color: #000000;
     border-left: 5px solid #000000;
     border-right: 5px solid #000000;
