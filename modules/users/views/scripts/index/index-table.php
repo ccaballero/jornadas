@@ -1,4 +1,4 @@
-<tr style="border-top: 1px solid #000000;">
+<tr>
     <td colspan="3"><h3><?php echo $this->role ?></h3></td>
 </tr>
 <?php if ($this->capacity != -1) { ?>
@@ -11,7 +11,9 @@
 <?php } ?>
 
     <tr class="nav">
+    <?php if ($this->allowed('hash:view') || $this->allowed('apikey:view') || $this->allowed('user:edit')) { ?>
         <th style="width:30px">&nbsp;</th>
+    <?php } ?>
         <th>Nombre Completo</th>
         <?php if ($this->allowed('hash:view')) { ?><th>Hash</th><?php } ?>
         <?php if ($this->allowed('apikey:view')) { ?><th>Key</th><?php } ?>
@@ -19,7 +21,9 @@
     </tr>
 <?php foreach ($this->users as $user) { ?>
     <tr class="<?php echo $this->cycle(array("even", "odd"))->next()?>">
+    <?php if ($this->allowed('hash:view') || $this->allowed('apikey:view') || $this->allowed('user:edit')) { ?>
         <td><input type="checkbox" name="users[]" value="<?php echo $user->ident ?>" /></td>
+    <?php } ?>
         <td><?php echo $user->getFullname() ?></td>
     <?php if ($this->allowed('hash:view')) { ?>
         <td class="center"><?php echo $user->hash ?></td>

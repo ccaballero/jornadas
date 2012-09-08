@@ -11,6 +11,7 @@
     )) ?>
 
 <table>
+<?php if (in_array($this->role, array('admin'))) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Administradores',
@@ -18,6 +19,8 @@
         'count' => -1,
         'users' => $this->admins,
     )) ?>
+<?php } ?>
+<?php if (in_array($this->role, array('admin', 'organizer'))) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Organizadores',
@@ -25,6 +28,8 @@
         'count' => $this->count_organizers,
         'users' => $this->organizers,
     )) ?>
+<?php } ?>
+<?php if (in_array($this->role, array('admin', 'organizer', 'exhibitor'))) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Expositores',
@@ -32,6 +37,8 @@
         'count' => -1,
         'users' => $this->exhibitors,
     )) ?>
+<?php } ?>
+<?php if (in_array($this->role, array('admin', 'organizer', 'exhibitor', 'protocol'))) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Protocolo',
@@ -39,6 +46,7 @@
         'count' => $this->count_protocols,
         'users' => $this->protocols,
     )) ?>
+<?php } ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Asistentes',

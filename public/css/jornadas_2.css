@@ -116,7 +116,8 @@ p {
 }
 
 .nav ul li.active {
-    background-color: #ffffff;
+/*    background-color: #ffffff;*/
+    background: #ffffff url('/media/bck.png');
     border-radius: 1.0em 1.0em 0em 0em;
 }
 
@@ -319,7 +320,7 @@ form dd li {
 /*                  TABLAS                   */
 /*-------------------------------------------*/
 table {
-    background-color: #ffffff;
+/*    background-color: #ffffff;*/
     color: #000000;
     width: 100%;
 }
@@ -338,6 +339,10 @@ table td {
 }
 
 .even {
+    background-color: #efefef;
+}
+
+.odd {
     background-color: #dfdfdf;
 }
 

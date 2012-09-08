@@ -2,6 +2,9 @@
 
 class Credentials_IndexController extends Application_Controllers_Action
 {
+    public $header;
+    public $scesi;
+
     public function indexAction() {
         if ($this->request->isPost()) {
             $model_users = new Users();
@@ -21,6 +24,12 @@ class Credentials_IndexController extends Application_Controllers_Action
             $page = $pdf->newPage(Zend_Pdf_Page::SIZE_LETTER);
             $page_w = $page->getWidth();
             $page_h = $page->getHeight();
+
+            $header_file = APPLICATION_PATH . '/public/media/header_2.0.png';
+            $this->header = Zend_Pdf_Image::imageWithPath($header_file);
+
+            $scesi_file = APPLICATION_PATH . '/public/media/scesi.jpg';
+            $this->scesi = Zend_Pdf_Image::imageWithPath($scesi_file);
 
             foreach ($list_users as $i => $user) {
                 $user->generateQR();
@@ -66,37 +75,33 @@ class Credentials_IndexController extends Application_Controllers_Action
     }
 
     private function drawCredential($user, $page, $x1, $y1, $x2, $y2) {
+        $page->setFillColor(new Zend_Pdf_Color_Html('#FFCB05'));
+        $page->drawRectangle($x1, $y1+84, $x2, $y1+110, Zend_Pdf_Page::SHAPE_DRAW_FILL);
+
+        $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
+        $page->drawRectangle($x1, $y1+110, $x2, $y2, Zend_Pdf_Page::SHAPE_DRAW_FILL);
+        $page->drawImage($this->header, $x1+5, $y1+115, $x2-50, $y2-5);
+
+        $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
         $page->setLineWidth(1);
         $page->drawRectangle($x1, $y1, $x2, $y2, Zend_Pdf_Page::SHAPE_DRAW_STROKE);
 
+        $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 10);
+
+        $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
+        $page->drawText($user->username, $x1+5, $y1+100);
+        $page->drawText($user->hash, $x2-50, $y1+100);
+
+        $page->drawText($user->getFullname(), $x1+5, $y1+88);
+
         $image_file = APPLICATION_PATH . '/data/9block/' . $user->ident . '.png';
         $logo = Zend_Pdf_Image::imageWithPath($image_file);
-        $page->drawImage($logo, $x1+10, $y2-80, $x1+80, $y2-10);
+        $page->drawImage($logo, $x1+20, $y1+10, $x1+84, $y1+74);
 
         $image_file = APPLICATION_PATH . '/data/qrcode/' . $user->ident . '.png';
         $logo = Zend_Pdf_Image::imageWithPath($image_file);
-        $page->drawImage($logo, $x2-80, $y2-80, $x2-10, $y2-10);
+        $page->drawImage($logo, $x2-84, $y1+10, $x2-20, $y1+74);
 
-        $scesi_file = APPLICATION_PATH . '/public/media/scesi.jpg';
-        $scesi = Zend_Pdf_Image::imageWithPath($scesi_file);
-        $page->drawImage($scesi, $x2-20, $y1+5, $x2-5, $y1+15);
-
-        $config = Zend_Registry::get('config');
-        
-        $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 9);
-        $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
-        $page->drawText($config->system->name, $x1 + 10, $y1 + 30);
-
-//        $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER_BOLD), 10);
-//        $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
-//        $page->drawText($user->getFullname(), 8, $height - 126);
-//        $page->setFillColor(new Zend_Pdf_Color_Html('#0000FF'));
-//        $page->drawText('Usuario: ', 8, $height - 138);
-//        $page->drawText('Clave: ', 8, $height - 150);
-//
-//        $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 10);
-//        $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
-//        $page->drawText($user->username, 60, $height - 138);
-//        $page->drawText($user->hash, 60, $height - 150);
+        $page->drawImage($this->scesi, $x1+105, $y1+5, $x2-105, $y1+30);
     }
 }
