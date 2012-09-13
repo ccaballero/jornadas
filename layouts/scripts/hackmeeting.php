@@ -24,5 +24,6 @@
             </div>
             <div id="footer">&nbsp;</div>
         </div>
+        <div id="binary"><?php echo $this->tile() ?></div>
     </body>
 </html>

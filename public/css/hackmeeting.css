@@ -49,7 +49,6 @@ p {
 }
 
 #header {
-    background-color: #000000;
     background-image: url('/templates/hackmeeting/header_2.0.png');
     background-repeat: no-repeat;
     background-position: 0% 100%;
@@ -72,6 +71,17 @@ p {
     width: 50px;
 }
 
+#binary {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    color: #4fff4f;
+    opacity: 0.20;
+    z-index: -100;
+}
+
 /*-------------------------------------------*/
 /*             BARRA DE USUARIO              */
 /*-------------------------------------------*/
@@ -84,6 +94,7 @@ p {
 .auth a {
     font-size: 0.94em;
     color: #ffffff;
+    background-color: #000000;
 }
 
 /*-------------------------------------------*/
