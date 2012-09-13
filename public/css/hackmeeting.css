@@ -78,9 +78,10 @@ p {
     bottom: 0px;
     right: 0px;
     color: #4fff4f;
-    opacity: 0.20;
+    opacity: 0.33;
     z-index: -100;
     text-align: justify;
+    overflow: hidden;
 }
 
 /*-------------------------------------------*/

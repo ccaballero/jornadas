@@ -35,7 +35,9 @@ class IndexController extends Application_Controllers_Action
             $this->view->preview = false;
         }
 
-        $this->view->facebook = $config->services->facebook;
+        if (isset($config->services->facebook)) {
+            $this->view->facebook = $config->services->facebook;
+        }
 
         // show the news
         $model_news = new News();
