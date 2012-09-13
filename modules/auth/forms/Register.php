@@ -1,42 +1,33 @@
 <?php
 
-class Users_Form_Profile extends Zend_Form
+class Auth_Form_Register extends Zend_Form
 {
     public function init() {
         $this->setMethod('post');
 
-        $fullname = $this->createElement('text', 'fullname');
-        $fullname->setRequired(true)
-                 ->setLabel('nombre completo:')
-                 ->setAttrib('class', 'focus')
-                 ->addFilter('StringTrim')
-                 ->addFilter('StripTags')
-                 ->addValidator('StringLength', false, array(1, 1024));
-
         $username = $this->createElement('text', 'username');
         $username->setRequired(true)
-                 ->setLabel('nombre de usuario:')
+                 ->setLabel('Usuario (*):')
                  ->addFilter('StringTrim')
                  ->addFilter('StripTags')
                  ->addValidator('StringLength', false, array(1, 128))
                  ->addValidator('Alnum', false, array('allowWhiteSpace' => false))
-                 ->addValidator(new Jornadas_Controllers_Validators_UniqueUsername(), false);
+                 ->addValidator(new Application_Controllers_Validators_UniqueUsername($this->user), false);
 
         $email = $this->createElement('text', 'email');
         $email->setRequired(false)
-              ->setLabel('correo electrónico:')
+              ->setLabel('Email (*):')
               ->addFilter('StringTrim')
               ->addValidator('StringLength', false, array(1, 128))
               ->addValidator('EmailAddress')
-              ->addValidator(new Jornadas_Controllers_Validators_UniqueEmail(), false);
+              ->addValidator(new Application_Controllers_Validators_UniqueEmail($this->user), false);
 
         $captcha = $this->createElement('captcha', 'captcha', array('captcha' => array('captcha' => 'Figlet', 'wordLen' => 5, 'timeout' => 300)));
         $captcha->setRequired(true)
-                ->setLabel('ingrese los 5 caracteres presentados:');
+                ->setLabel('Ingrese los 5 caracteres presentados:');
 
         $csrf = $this->createElement('hash', 'csrf', array('ignore' => true));
 
-        $this->addElement($fullname);
         $this->addElement($username);
         $this->addElement($email);
         $this->addElement($captcha);

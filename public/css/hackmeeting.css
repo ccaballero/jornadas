@@ -1,6 +1,8 @@
 * {
     font-family: monospace;
-    font-size: 1.0em;
+    font-size: 10pt;
+    padding: 0;
+    margin: 0;
 }
 
 body {
@@ -19,7 +21,6 @@ h1 {
     font-weight: bold;
     text-align: right;
     padding: 1.0em 1.0em 0.5em 1.0em;
-    text-shadow: 3px 3px 6px #b0b0b0;
 }
 
 h1 a {
@@ -29,7 +30,6 @@ h1 a {
 h2 {
     font-size: 1.8em;
     font-weight: bold;
-    margin-bottom: 1.0em;
 }
 
 h3 {
@@ -43,9 +43,18 @@ p {
     line-height: 1.2em;
 }
 
+#wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
 #header {
-    background: #000000 url('/templates/hackmeeting/header_2.0.png') no-repeat 50% 0%;
+    background-color: #000000;
+    background-image: url('/templates/hackmeeting/header_2.0.png');
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
     height: 340px;
+    color: #ffffff;
 }
 
 #main {
@@ -83,7 +92,6 @@ p {
 .nav {
     height: 24px;
     overflow: hidden;
-    padding: 0px 8px;
 }
 
 .nav ul {
@@ -96,26 +104,21 @@ p {
     padding: 4px 6px;
     margin: 0px 2px 0px 0px;
     background-color: #d0d0d0;
-    background-image: -moz-linear-gradient(center top , #d0d0d0, #909090);
-    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#d0d0d0), to(#909090));
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
 
 .nav ul li.active {
     background-color: #ffffff;
-    background-image: none;
 }
 
 .nav ul li a {
     color: #000000;
-    text-shadow: 1px 1px 1px #b0b0b0;
 }
 
 .nav ul li.active a {
     color: #000000;
     font-weight: bold;
-    text-shadow: none;
 }
 
 #main .nav {
@@ -188,16 +191,19 @@ p {
 /*-------------------------------------------*/
 .post {
     position: relative;
-    margin: 16px 0px;
+    margin: 11px 0px;
     padding: 10px 10px 35px 10px;
-    border-radius: 8px;
-    background-color: #cfcfcf;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
     min-height: 125px;
 }
 
-.post h2 {
-    font-size: 1.4em;
+.post h2, .post a {
+    color: #77ff77;
+}
+
+.post h2 a {
+    font-size: 1.2em;
 }
 
 .post p {
@@ -206,7 +212,6 @@ p {
 }
 
 .post a {
-    color: #b32d47;
     font-weight: bold;
 }
 
@@ -249,6 +254,7 @@ input[type="password"],
 textarea {
     font-size: 1.0em;
     padding: 0.2em;
+    min-width: 350px;
     max-width: 700px;
 }
 
@@ -258,7 +264,7 @@ form {
 
 dt {
     float: left;
-    width: 7.0em;
+    width: 12.0em;
     text-align: right;
     font-size: 1.0em;
     margin-top: 0.3em;
@@ -266,7 +272,7 @@ dt {
 }
 
 dd {
-    margin-left: 7.3em;
+    margin-left: 14.0em;
     margin-bottom: 0.3em;
 }
 

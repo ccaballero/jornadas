@@ -11,6 +11,9 @@
     [<a accesskey="6" href="<?php echo $this->url(array(), 'auth_out') ?>">salir</a>]
 <?php } else { ?>
     [<a accesskey="5" href="<?php echo $this->url(array(), 'auth_in') ?>">ingresar</a>]
+    <?php if ($this->register) { ?>
+    [<a accesskey="6" href="<?php echo $this->url(array(), 'auth_register') ?>">registro</a>]
+    <?php } ?>
 <?php } ?>
 
 <?php $this->placeholder('auth')->captureEnd() ?>

@@ -2,6 +2,7 @@
 
 class Application_Controllers_Action extends Zend_Controller_Action
 {
+    public $config = null;
     public $user = null;
     public $role = null;
     public $acl = null;
@@ -9,6 +10,7 @@ class Application_Controllers_Action extends Zend_Controller_Action
     public $request = null;
 
     public function preDispatch() {
+        $this->config = Zend_Registry::get('config');
         $this->user = Zend_Registry::get('user');
         $this->role = Zend_Registry::get('role');
         $this->acl = Zend_Registry::get('acl');
@@ -31,6 +33,7 @@ class Application_Controllers_Action extends Zend_Controller_Action
         $this->view->partial('frontpage/views/scripts/toolbar.php', array(
             'auth' => Zend_Auth::getInstance(),
             'user' => $this->user,
+            'register' => $this->config->system->register->open,
         ));
 
         $this->view->partial('frontpage/views/scripts/menu.php', array(
