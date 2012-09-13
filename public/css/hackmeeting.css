@@ -80,6 +80,7 @@ p {
     color: #4fff4f;
     opacity: 0.20;
     z-index: -100;
+    text-align: justify;
 }
 
 /*-------------------------------------------*/

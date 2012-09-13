@@ -11,9 +11,8 @@ class Auth_IndexController extends Application_Controllers_Action
         $model_users = new Users();
         $user = $model_users->createRow();
 
-        $form = new Auth_Form_Register();
-//        $form = new Users_Form_Profile(0);
-//        $form->setUser($user);
+        $form = new Auth_Form_Register(0);
+        $form->setUser($user);
 
         if ($this->request->isPost()) {
             if ($form->isValid($this->request->getPost())) {
@@ -21,21 +20,23 @@ class Auth_IndexController extends Application_Controllers_Action
                 $hash = $hash_generator->password(8);
 
                 $user->role = 'assistant';
+                $user->surname = $form->getElement('surname')->getValue();
+                $user->name = $form->getElement('name')->getValue();
                 $user->username = $form->getElement('username')->getValue();
                 $user->email = $form->getElement('email')->getValue();
                 $user->hash = $hash;
                 $user->password = sha1(md5($hash));
                 $user->tsregister = time();
                 $user->save();
-
                 
                 // email notification
                 $view = new Zend_View();
+                $view->addHelperPath(APPLICATION_PATH . '/library/Application/Views/Helpers', 'Application_Views_Helpers');
                 $view->setScriptPath($this->config->resources->frontController->moduleDirectory . '/auth/views/scripts/mail/');
 
-                $view->user       = $user;
+                $view->user = $user;
+                $view->password = $hash;
                 $view->servername = $this->config->system->servername;
-                $view->password   = $password;
 
                 $content = $view->render('register.php');
                 $mail = new Zend_Mail('UTF-8');

@@ -44,8 +44,8 @@ class Users_Form_Profile extends Zend_Form
                  ->addValidator(new Application_Controllers_Validators_UniqueUsername($this->user), false);
 
         $email = $this->createElement('text', 'email');
-        $email->setRequired(false)
-              ->setLabel('Email')
+        $email->setRequired(true)
+              ->setLabel('Email (*)')
               ->addFilter('StringTrim')
               ->addValidator('StringLength', false, array(1, 128))
               ->addValidator('EmailAddress')
