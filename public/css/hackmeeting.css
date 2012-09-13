@@ -1,10 +1,10 @@
 * {
-    font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+    font-family: monospace;
     font-size: 1.0em;
 }
 
 body {
-    background-color: #bdc7d8;
+    background-color: #000000;
 }
 
 a { text-decoration: none; }
@@ -44,14 +44,13 @@ p {
 }
 
 #header {
-    background: #000000 url('/media/header_2.0.png') no-repeat 50% 0%;
-    height: 250px;
+    background: #000000 url('/templates/hackmeeting/header_2.0.png') no-repeat 50% 0%;
+    height: 340px;
 }
 
 #main {
     margin: 0 auto;
     max-width: 960px;
-    box-shadow: 0.3em 0.3em 0.45em #808080;
     background-color: #ffffff;
     color: #000000;
 }
@@ -82,9 +81,6 @@ p {
 /*                   MENUS                   */
 /*-------------------------------------------*/
 .nav {
-    background-color: #d0d0d0;
-    background-image: -moz-linear-gradient(center top , #d0d0d0, #909090);
-    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#d0d0d0), to(#909090));
     height: 24px;
     overflow: hidden;
     padding: 0px 8px;
@@ -98,12 +94,17 @@ p {
     float: left;
     height: 20px;
     padding: 4px 6px;
+    margin: 0px 2px 0px 0px;
+    background-color: #d0d0d0;
+    background-image: -moz-linear-gradient(center top , #d0d0d0, #909090);
+    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#d0d0d0), to(#909090));
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .nav ul li.active {
     background-color: #ffffff;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    background-image: none;
 }
 
 .nav ul li a {
@@ -117,11 +118,25 @@ p {
     text-shadow: none;
 }
 
+#main .nav {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#main .nav ul li {
+    background-color: #000000;
+    background-image: none;
+}
+
+#main .nav ul li a {
+    color: #ffffff;
+}
+
 /*-------------------------------------------*/
 /*   ELEMENTO CONTADOR EN PAGINA PRINCIPAL   */
 /*-------------------------------------------*/
 #countdown {
-    width: 524px;
+    width: 510px;
     height: 105px;
     margin: 10px auto;
     padding-left: 10px;
@@ -132,7 +147,7 @@ p {
 }
 
 #countdown .cntSeparator {
-    margin: 10px 10px;
+    margin: 30px 10px;
 }
 
 #countdown .desc {
@@ -147,10 +162,10 @@ p {
     color: #000;
 }
 
-#countdown .days { margin-left: 72px; }
-#countdown .hours { margin-left: 100px; }
-#countdown .minutes { margin-left: 86px; }
-#countdown .seconds { margin-left: 72px; }
+#countdown .days { margin-left: 5px; }
+#countdown .hours { margin-left: 105px; }
+#countdown .minutes { margin-left: 95px; }
+#countdown .seconds { margin-left: 80px; }
 
 /*-------------------------------------------*/
 /*           COLORES TIPO TERMINAL           */

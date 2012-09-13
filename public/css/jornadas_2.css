@@ -4,7 +4,6 @@
 }
 
 body {
-    /*background: #ffffff url('/media/bck.png');*/
     background-color: #ffffff;
 }
 
@@ -54,7 +53,7 @@ p {
 
 #header {
     background-color: #000000;
-    background-image: url('/media/header_2.0.png');
+    background-image: url('/templates/jornadas_2/header_2.0.png');
     background-repeat: no-repeat;
     background-position: 0% 100%;
     background-size: 70%;
@@ -63,8 +62,8 @@ p {
 }
 
 #main {
-    /*background-color: #ffffff;*/
-    background: #ffffff url('/media/bck.png');
+    background-color: #ffffff;
+    background-image: url('/templates/jornadas_2/bck.png');
     color: #000000;
     border-left: 5px solid #000000;
     border-right: 5px solid #000000;
@@ -116,8 +115,8 @@ p {
 }
 
 .nav ul li.active {
-/*    background-color: #ffffff;*/
-    background: #ffffff url('/media/bck.png');
+    background-color: #ffffff;
+    background-image: url('/templates/jornadas_2/bck.png');
     border-radius: 1.0em 1.0em 0em 0em;
 }
 

@@ -73,6 +73,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view = new Zend_View();
 
         $baseUrl = $options['resources']['frontController']['baseUrl'];
+        $layout = $options['resources']['layout']['layout'];
 
         $view->headTitle($options['system']['name']);
         $view->doctype($options['resources']['layout']['doctype']);
@@ -83,7 +84,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->appendFile($baseUrl . '/js/jquery.countdown.min.js', 'text/javascript')
              ->appendFile($baseUrl . '/js/init.js', 'text/javascript');
         $view->headLink()
-             ->headLink(array('rel' => 'favicon', 'href' => $view->baseUrl('favicon.png')))
+             ->headLink(array('rel' => 'favicon', 'href' => $view->baseUrl('templates/' . $layout . '/favicon.png')))
              ->headLink(array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => '/rss', 'title' => 'Canal RSS'));
         
         $css_styles = $options['template']['css'];
