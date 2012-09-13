@@ -59,11 +59,12 @@ class News_NewController extends Application_Controllers_Action
             $this->_helper->redirector('index', 'index', 'frontpage');
         }
 
-        if ($this->request->isPost()) {
+        // FIXME
+//        if ($this->request->isPost()) {
             $new->delete();
 
             $this->_helper->flashMessenger->addMessage('Mensaje eliminado');
-        }
+//        }
 
         $this->_helper->redirector('index', 'index', 'frontpage');
     }
