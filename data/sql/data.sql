@@ -82,3 +82,13 @@ CREATE TABLE `activities_users` (
     INDEX (`activity`),
     FOREIGN KEY (`activity`) REFERENCES `activities`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
+
+DROP TABLE IF EXISTS `sponsors`;
+CREATE TABLE `sponsors` (
+    `ident`            int unsigned                                                NOT NULL auto_increment,
+    `label`            varchar(512)                                                NOT NULL,
+    `url`              varchar(512)                                                NOT NULL DEFAULT '',
+    `logo`             varchar(512)                                                NOT NULL DEFAULT '',
+    `text`             text                                                        NOT NULL DEFAULT '',
+    PRIMARY KEY (`ident`)
+) DEFAULT CHARACTER SET UTF8;

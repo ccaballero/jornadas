@@ -20,6 +20,19 @@ VALUES
 (5, 14, ''),
 (6, 15, 'Universidad Utrecht, Holanda');
 
+INSERT INTO `sponsors`
+(`ident`, `label`, `logo`, `url`)
+VALUES
+(1, 'Genso, Iniciativas Web', '/media/auspiciadores/jornadas_v2/genso.png', 'http://www.genso.com.bo/'),
+(2, 'TRUEXTEND. Software Engineering Services', '/media/auspiciadores/jornadas_v2/truextend.png', 'http://www.truextend.com/'),
+(3, 'IdeaSoft', '/media/auspiciadores/jornadas_v2/ideasoft.png', 'http://www.ideasoftinc.com/profile/index_es.html'),
+(4, 'ASFODIN', '/media/auspiciadores/jornadas_v2/asfodin.png', '');
+
+UPDATE `sponsors` SET `text` = 'Brindamos soluciones multidisciplinarias basadas en las TIC’s a los nuevos problemas y requerimientos de información y comunicación, a través de la planificación, desarrollo e implementación de aplicaciones informáticas: sitios web, aplicaciones para plataformas móviles, gestores de inventarios, entre otros.' WHERE `ident` = 1;
+UPDATE `sponsors` SET `text` = 'TRUEXTEND, Inc. is a California-based company that specializes in extending the engineering capabilities of any business throughout the United States. We increase the intellectual production of our clients by providing them the best human resources through the Nearshore model. Headquartered in Silicon Valley, TRUEXTEND runs Nearshore R&D centers in Latin America to provide cost effective solutions to our clients.' WHERE `ident` = 2;
+UPDATE `sponsors` SET `text` = 'IdeaSoft es una empresa boliviana que ofrece servicios en tecnologías de la información orientados a cumplir con los requisitos del cliente a tiempo y con la más alta calidad. Nuestros servicios se centran en el desarrollo de software y control de calidad.' WHERE `ident` = 3;
+UPDATE `sponsors` SET `text` = 'Asociación forense de derecho informático.' WHERE `ident` = 4;
+
 -- UPDATE `exhibitions` SET `abstract` =
 -- 'La seguridad de una web es necesaria porque es una ventana por la que una empresa se muestra a sus clientes. Si un atacante modifica malintencionadamente la página o accede a información privada a través de ella, la imagen de la compañia se vería seriamente dañada pudiendo acarrear consecuencias legales y económicas.' WHERE ident = 1;
 -- 

@@ -20,10 +20,9 @@
                     <?php echo $this->placeholder('messages') ?>
                     <?php echo $this->layout()->content ?>
                 </div>
-                <div class="nav"><?php echo $this->placeholder('footer') ?></div>
             </div>
-            <div id="footer">&nbsp;</div>
+            <div id="footer"><?php echo $this->placeholder('footer') ?></div>
         </div>
-        <div id="binary"><?php echo $this->tile() ?></div>
+        <div id="binary"><?php echo $this->tile('+-0123456789abcedfgh', pow(2, 14), rand(1, 6)) ?></div>
     </body>
 </html>

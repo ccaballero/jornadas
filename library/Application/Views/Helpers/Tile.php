@@ -2,11 +2,7 @@
 
 class Application_Views_Helpers_Tile
 {
-    public function tile() {
-        $size = pow(2, 14);
-        $space = 4;
-
-        $values = '+-*/';
+    public function tile($values = '01', $size = 16, $space = 4) {
         $length = strlen($values);
         $code = '';
         for ($i = 0; $i < $size; $i++) {

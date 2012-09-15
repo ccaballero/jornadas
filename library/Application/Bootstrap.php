@@ -5,14 +5,30 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initAutoload() {
         $loader = Zend_Loader_Autoloader::getInstance();
 
-        $resourceTypes = array('form' => array('path' => 'forms/', 'namespace' => 'Form',),);
-        $modules = array('frontpage', 'users', 'auth', 'services', 'exhibitions', 'news', 'activities');
+        $resourceTypes = array(
+            'form' => array(
+                'path' => 'forms/',
+                'namespace' => 'Form',
+            ),
+        );
+        $modules = array(
+            'activities',
+            'auth',
+            'exhibitions',
+            'frontpage',
+            'news',
+            'services',
+            'sponsors',
+            'users',
+        );
 
         foreach ($modules as $module) {
             $loader->pushAutoloader(new Zend_Application_Module_Autoloader(
                 array(
                     'namespace' => ucfirst($module),
-                    'basePath' => APPLICATION_PATH . '/modules/' . $module, 'resourceTypes' => $resourceTypes)
+                    'basePath' => APPLICATION_PATH . '/modules/' . $module,
+                    'resourceTypes' => $resourceTypes
+                )
             ));
         }
 
@@ -80,12 +96,19 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view->headMeta()
              ->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
         $view->headScript()
-             ->appendFile($baseUrl . '/js/jquery-1.6.2.min.js', 'text/javascript')
-             ->appendFile($baseUrl . '/js/jquery.countdown.min.js', 'text/javascript')
+             ->appendFile($baseUrl . '/js/jquery-1.6.2.min.js',
+                          'text/javascript')
+             ->appendFile($baseUrl . '/js/jquery.countdown.min.js',
+                          'text/javascript')
              ->appendFile($baseUrl . '/js/init.js', 'text/javascript');
         $view->headLink()
-             ->headLink(array('rel' => 'favicon', 'href' => $view->baseUrl('templates/' . $layout . '/favicon.png')))
-             ->headLink(array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => '/rss', 'title' => 'Canal RSS'));
+             ->headLink(array(
+                 'rel' => 'favicon',
+                 'href' => $view->baseUrl('templates/' . $layout . '/favicon.png')))
+             ->headLink(array(
+                 'rel' => 'alternate',
+                 'type' => 'application/rss+xml',
+                 'href' => '/rss', 'title' => 'Canal RSS'));
         
         $css_styles = $options['template']['css'];
         foreach ($css_styles as $css_style) {

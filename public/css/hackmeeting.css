@@ -32,6 +32,10 @@ h2 {
     font-weight: bold;
 }
 
+h2 a {
+    font-size: 0.73em;
+}
+
 h3 {
     font-size: 1.6em;
     font-weight: bold;
@@ -68,7 +72,7 @@ p {
 }
 
 #footer {
-    width: 50px;
+    margin-bottom: 2.0em;
 }
 
 #binary {
@@ -78,10 +82,11 @@ p {
     bottom: 0px;
     right: 0px;
     color: #4fff4f;
-    opacity: 0.33;
+    opacity: 0.25;
     z-index: -100;
     text-align: justify;
     overflow: hidden;
+    position: fixed;
 }
 
 /*-------------------------------------------*/
@@ -107,15 +112,18 @@ p {
     overflow: hidden;
 }
 
-.nav ul {
+ul {
     list-style: none;
 }
 
-.nav ul li {
+ul li {
     float: left;
     height: 20px;
     padding: 4px 6px;
     margin: 0px 2px 0px 0px;
+}
+
+.nav ul li {
     background-color: #d0d0d0;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -135,7 +143,6 @@ p {
 }
 
 #main .nav {
-    background-color: #000000;
     color: #ffffff;
 }
 
@@ -145,6 +152,10 @@ p {
 }
 
 #main .nav ul li a {
+    color: #ffffff;
+}
+
+#footer ul li a {
     color: #ffffff;
 }
 
