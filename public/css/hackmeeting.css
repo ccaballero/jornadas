@@ -278,7 +278,7 @@ input[type="password"],
 textarea {
     font-size: 1.0em;
     padding: 0.2em;
-    min-width: 350px;
+/*    min-width: 350px;*/
     max-width: 700px;
 }
 
@@ -390,4 +390,13 @@ table td {
 
 .sad {
     background-color: #ff4f4f;
+}
+
+.errors {
+    float: right;
+}
+
+.message {
+    background-color: #d0d0d0;
+    padding: 0.3em;
 }

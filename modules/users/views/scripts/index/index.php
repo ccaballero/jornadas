@@ -8,10 +8,11 @@
         'count_protocols'  => $this->count_protocols,
         'max_assistants'   => $this->max_assistants,
         'count_assistants' => $this->count_assistants,
+        'config' => $this->config,
     )) ?>
 
 <table>
-<?php if (in_array($this->role, array('admin', 'organizer', 'protocol', 'exhibitor', 'assistant'))) { ?>
+<?php if ($this->config->system->view->administrators) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Administradores',
@@ -20,6 +21,7 @@
         'users' => $this->admins,
     )) ?>
 <?php } ?>
+<?php if ($this->config->system->view->organizers) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Organizadores',
@@ -27,6 +29,8 @@
         'count' => $this->count_organizers,
         'users' => $this->organizers,
     )) ?>
+<?php } ?>
+<?php if ($this->config->system->view->exhibitors) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Expositores',
@@ -34,6 +38,8 @@
         'count' => -1,
         'users' => $this->exhibitors,
     )) ?>
+<?php } ?>
+<?php if ($this->config->system->view->protocols) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Protocolo',
@@ -41,6 +47,8 @@
         'count' => $this->count_protocols,
         'users' => $this->protocols,
     )) ?>
+<?php } ?>
+<?php if ($this->config->system->view->assistants) { ?>
 <?php echo $this->partial('index/index-table.php',
     array(
         'role' => 'Asistentes',
@@ -48,6 +56,7 @@
         'count' => $this->count_assistants,
         'users' => $this->assistants,
     )) ?>
+<?php } ?>
 </table>
 
 <?php echo $this->partial('index/index-tools.php',
@@ -58,6 +67,6 @@
         'count_protocols'  => $this->count_protocols,
         'max_assistants'   => $this->max_assistants,
         'count_assistants' => $this->count_assistants,
+        'config' => $this->config,
     )) ?>
-
 </form>

@@ -175,16 +175,19 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $acl->allow('assistant', null, array(
             'credential:view',
             'new:add',
+            'profile:view',
         ));
         $acl->allow('exhibitor', null, array(
             'credential:view',
             'new:add',
+            'profile:view',
         ));
         $acl->allow('organizer', null, array(
             'credential:view',
             'assistant:add',
             'activity:view',
             'new:add',
+            'profile:view',
         ));
         $acl->allow('admin', null, array(
             'credential:view',
@@ -200,6 +203,7 @@ class Application_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'activity:manage',
             'new:add',
             'exhibitions:add',
+            'profile:view',
         ));
 
         Zend_Registry::set('acl', $acl);

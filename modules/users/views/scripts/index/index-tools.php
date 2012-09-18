@@ -12,7 +12,7 @@
 <a href="<?php echo $this->url(array(), 'users_add_assistant') ?>">+asistente</a>
 <?php } ?>
 
-<?php if ($this->allowed('credential:print')) { ?>
+<?php if ($this->allowed('credential:print') && $this->config->system->credentials) { ?>
 <input type="submit" name="credentials" value="imprimir credenciales" />
 <?php } ?>
 </div>

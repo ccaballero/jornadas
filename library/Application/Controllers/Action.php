@@ -29,6 +29,8 @@ class Application_Controllers_Action extends Zend_Controller_Action
     public function postDispatch() {
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
         $this->view->messages = $this->_flashMessenger->getMessages();
+        
+        $this->view->config = $this->config;
 
         $this->view->partial('frontpage/views/scripts/toolbar.php', array(
             'auth' => Zend_Auth::getInstance(),

@@ -4,9 +4,11 @@ class Users_ProfileController extends Application_Controllers_Action
 {
     public function indexAction() {
         $this->acl('profile:view');
+        $this->acl('credential:view');
 
         $form = new Users_Form_Profile($this->user->ident);
         $form->setUser($this->user);
+        $form->removeElement('title');
 
         if ($this->request->isPost()) {
             if ($form->isValid($this->request->getPost())) {
@@ -22,16 +24,14 @@ class Users_ProfileController extends Application_Controllers_Action
                 $this->user->email = $email;
                 $this->user->save();
 
+                $this->user->generateNineBlock();
+
                 $this->_helper->flashMessenger->addMessage('Perfil actualizado correctamente');
                 $this->_helper->redirector('index', 'profile', 'users');
             }
         }
 
         $this->view->form = $form;
-    }
-
-    public function credentialAction() {
-        $this->acl('credential:view');
     }
 
     public function qrAction() {

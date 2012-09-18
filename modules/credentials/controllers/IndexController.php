@@ -25,7 +25,7 @@ class Credentials_IndexController extends Application_Controllers_Action
             $page_w = $page->getWidth();
             $page_h = $page->getHeight();
 
-            $header_file = APPLICATION_PATH . '/public/media/header_2.0.png';
+            $header_file = APPLICATION_PATH . '/public/templates/jornadas_2/header_2.0.png';
             $this->header = Zend_Pdf_Image::imageWithPath($header_file);
 
             $scesi_file = APPLICATION_PATH . '/public/media/scesi.jpg';

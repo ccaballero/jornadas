@@ -20,7 +20,7 @@ class Application_Controllers_Validators_UniqueUsername extends Zend_Validate_Ab
         $model_users = new Users();
         $user = $model_users->findByUsername($username);
 
-        if (!empty($user) && ($this->user->ident <> $user->ident)) {
+        if (!empty($user) && ($this->user <> $user->ident)) {
             $this->_error(self::UNIQUE);
             return false;
         }
