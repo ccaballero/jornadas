@@ -40,6 +40,7 @@ class Application_Controllers_Action extends Zend_Controller_Action
 
         $this->view->partial('frontpage/views/scripts/menu.php', array(
             'route' => $this->getFrontController()->getRouter()->getCurrentRouteName(),
+            'config' => $this->config,
         ));
 
         $this->view->render('frontpage/views/scripts/footer.php');
