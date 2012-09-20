@@ -5,24 +5,37 @@ class Exhibitions_ManagerController extends Application_Controllers_Action
     public function addAction() {
         $this->acl('exhibitions:add');
 
-        $form = new News_Form_Write();
+        $model_users = new Users();
+        
+        $form = new Exhibitions_Form_Write();
+        $form->setExhibitors($model_users->fetchAll());
+        
         if ($this->request->isPost()) {
             if ($form->isValid($this->request->getPost())) {
                 $title = $form->getElement('title')->getValue();
-                $text = $form->getElement('text')->getValue();
+                $exhibitor = $form->getElement('exhibitor')->getValue();
+                $abstract = $form->getElement('abstract')->getValue();
 
-                $model_news = new News();
-                $new = $model_news->createRow();
+                $convert = new Application_Views_Helpers_Convert();
 
-                $new->title = $title;
-                $new->text = $text;
-                $new->author = $this->user->ident;
-                $new->tsmodified = time();
-                $new->tsregister = time();
-                $new->save();
+                $model_exhibitions = new Exhibitions();
+                $exhibition = $model_exhibitions->createRow();
 
-                $this->_helper->flashMessenger->addMessage('Mensaje agregado');
-                $this->_helper->redirector('index', 'index', 'frontpage');
+                $exhibition->title = $title;
+                $exhibition->url = $convert->convert($exhibition->title);
+                $exhibition->abstract = $abstract;
+                $exhibition->tsregister = time();
+                $exhibition->save();
+
+                $model_exhibitions_users = new Exhibitions_Users();
+                $exhibition_user = $model_exhibitions_users->createRow();
+
+                $exhibition_user->exhibition = $exhibition->ident;
+                $exhibition_user->user = $exhibitor;
+                $exhibition_user->save();
+
+                $this->_helper->flashMessenger->addMessage('Exposición agregada');
+                $this->_helper->redirector('index', 'index', 'exhibitions');
             }
         }
 

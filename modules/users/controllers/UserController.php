@@ -8,7 +8,7 @@ class Users_UserController extends Application_Controllers_Action
     public function editAction() {
         $user = $this->getUser();
 
-        $form = new Users_Form_Profile($user);
+        $form = new Users_Form_Profile($user->ident);
         $form->setUser($user);
 
         if ($this->request->isPost()) {

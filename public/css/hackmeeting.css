@@ -12,6 +12,10 @@ body {
 a { text-decoration: none; }
 a:focus { outline: none; }
 
+dl {
+    margin-bottom: 2.0em;
+}
+
 .center { text-align: center; }
 .right { text-align: right; }
 .left { text-align: left; }
