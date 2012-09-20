@@ -69,6 +69,8 @@ class Users_IndexController extends Application_Controllers_Action
 
                 $user->hash = $hash;
                 $user->password = sha1(md5($hash));
+
+                $user->author = $this->user->ident;
                 $user->tsregister = time();
 
                 $user->save();

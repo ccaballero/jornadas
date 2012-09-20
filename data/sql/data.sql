@@ -20,10 +20,13 @@ CREATE TABLE `users` (
     `apikey`           char(8)                                                          NOT NULL DEFAULT '',
     `tsregister`       int unsigned                                                     NOT NULL DEFAULT 0,
     `tslastlogin`      int unsigned                                                     NOT NULL DEFAULT 0,
+    `author`           int unsigned                                                     NOT NULL DEFAULT 1,
     PRIMARY KEY (`ident`),
     UNIQUE INDEX (`username`),
     UNIQUE INDEX (`password`),
-    UNIQUE INDEX (`hash`)
+    UNIQUE INDEX (`hash`),
+    INDEX (`author`),
+    FOREIGN KEY (`author`) REFERENCES `users`(`ident`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
 
 DROP TABLE IF EXISTS `exhibitions`;
