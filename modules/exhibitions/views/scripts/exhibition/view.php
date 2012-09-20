@@ -7,6 +7,7 @@
             alt="<?php echo $this->exhibitor->getFullname() ?>"
             title="<?php echo $this->exhibitor->getFullname() ?>"
             width="96" />
+    <?php break; ?>
     <?php } ?>
 <?php } ?>
 </div>
