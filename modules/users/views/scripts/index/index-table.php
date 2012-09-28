@@ -14,16 +14,18 @@
     <?php if ($this->allowed('hash:view') || $this->allowed('apikey:view') || $this->allowed('user:edit')) { ?>
         <th style="width:30px">&nbsp;</th>
     <?php } ?>
+        <th>#</th>
         <th>Nombre Completo</th>
         <?php if ($this->allowed('hash:view')) { ?><th>Hash</th><?php } ?>
         <?php if ($this->allowed('apikey:view')) { ?><th>Key</th><?php } ?>
         <?php if ($this->allowed('user:edit')) { ?><th>Editar</th><?php } ?>
     </tr>
-<?php foreach ($this->users as $user) { ?>
+<?php foreach ($this->users as $i => $user) { ?>
     <tr class="<?php echo $this->cycle(array("even", "odd"))->next()?>">
     <?php if ($this->allowed('hash:view') || $this->allowed('apikey:view') || $this->allowed('user:edit')) { ?>
         <td><input type="checkbox" name="users[]" value="<?php echo $user->ident ?>" /></td>
     <?php } ?>
+        <td><?php echo $i + 1 ?></td>
         <td><?php echo $user->getFullname() ?></td>
     <?php if ($this->allowed('hash:view')) { ?>
         <td class="center"><?php echo $user->hash ?></td>

@@ -90,7 +90,7 @@ class Services_IndexController extends Application_Controllers_Action
                 }
             } catch (Exception $e) {
                 $stdClass->result = 0;
-                $stdClass->messages[] = $organizer->getFullname() .
+                $stdClass->messages[] = $user->getFullname() .
                     ' ya fue marcado en esta actividad.';
             }
         } else {

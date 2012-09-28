@@ -89,10 +89,10 @@ class Credentials_IndexController extends Application_Controllers_Action
         $page->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER), 10);
 
         $page->setFillColor(new Zend_Pdf_Color_Html('#000000'));
-        $page->drawText($user->username, $x1+5, $y1+100);
-        $page->drawText($user->hash, $x2-50, $y1+100);
+        $page->drawText($user->username, $x1+5, $y1+100, 'UTF-8');
+        $page->drawText($user->hash, $x2-50, $y1+100, 'UTF-8');
 
-        $page->drawText($user->getFullname(), $x1+5, $y1+88);
+        $page->drawText($user->getFullname(), $x1+5, $y1+88, 'UTF-8');
 
         $image_file = APPLICATION_PATH . '/data/9block/' . $user->ident . '.png';
         $logo = Zend_Pdf_Image::imageWithPath($image_file);
