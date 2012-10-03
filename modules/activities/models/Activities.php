@@ -9,6 +9,10 @@ class Activities extends Application_Models_Table
         return $this->fetchRow($this->getAdapter()->quoteInto('ident = ?', $ident));
     }
 
+    public function findByCode($code) {
+        return $this->fetchRow($this->getAdapter()->quoteInto('code = ?', $code));
+    }
+
     public function findByLabel($label) {
         return $this->fetchRow($this->getAdapter()->quoteInto('label = ?', $label));
     }

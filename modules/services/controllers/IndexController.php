@@ -63,7 +63,7 @@ class Services_IndexController extends Application_Controllers_Action
         $activity = $this->getActivity($stdClass);
 
         // POST verification
-        $valid_post = false;
+//        $valid_post = false;
 //        if ($this->request->isPost()) {
             $valid_post = true;
 //        } else {
@@ -123,7 +123,7 @@ class Services_IndexController extends Application_Controllers_Action
         } else {
             $model_activities = new Activities();
             
-            $activity = $model_activities->findByIdent($id_activity);
+            $activity = $model_activities->findByCode($id_activity);
             if (empty($activity)) {
                 $container->messages[] = 'Actividad inexistente';
             }

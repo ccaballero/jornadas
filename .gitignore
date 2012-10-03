@@ -19,4 +19,4 @@ data/qrcode/*.png
 data/9block/*.png
 configs/application.ini
 public/favicon.ico
-
+public/resources
