@@ -18,4 +18,5 @@ data/videos
 data/qrcode/*.png
 data/9block/*.png
 configs/application.ini
+public/favicon.ico
 

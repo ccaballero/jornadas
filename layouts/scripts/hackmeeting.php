@@ -23,6 +23,6 @@
             </div>
             <div id="footer"><?php echo $this->placeholder('footer') ?></div>
         </div>
-        <div id="binary"><?php echo $this->tile('+-0123456789abcedfgh', pow(2, 14), rand(1, 6)) ?></div>
+        <div id="binary"><?php echo $this->tile('0123456789ABCDEF', pow(2, 14), 6) ?></div>
     </body>
 </html>
