@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Grotesk';
+    src: url('fonts/AKZIDENZGROTESKBQ-BDCND.OTF');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('fonts/HelveticaLTStd-Light.otf');
+}
+
+header {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+h1 {
+    font-family: Grotesk, Helvetica, Helvetica Neue, Arial, sans-serif;
+    font-size: 2.0em;
+    padding: 0.5em;
+}
+
+h2 {
+    font-size: 1.6em;
+    padding: 0.5em;
+}
+
+section {
+    margin-bottom: 2.5em;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #000000;
+    color: #ffffff;
+    border-top: 0.2em solid #ffffff;
+}
+
+footer ul {
+    text-align: right;
+}
+
+footer ul li {
+    display: inline-block;
+    padding: 0.3em;
+}
+
+footer ul li a {
+    font-size: 0.7em;
+    color: inherit;
+    text-decoration: none;
+}
+
+footer ul li a:hover {}
+
+article {
+    padding: 1.0em;
+    margin: 0em 1.0em;
+}
+
+article:nth-child(even) {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+article:nth-child(odd) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
