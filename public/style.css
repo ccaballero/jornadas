@@ -8,24 +8,48 @@
     src: url('fonts/HelveticaLTStd-Light.otf');
 }
 
+.clear {
+    clear: both;
+}
+
 header {
     background-color: #000000;
     color: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1.42em;
 }
 
-h1 {
-    font-family: Grotesk, Helvetica, Helvetica Neue, Arial, sans-serif;
-    font-size: 2.0em;
-    padding: 0.5em;
+header div {
+    position: relative;
 }
+  
+header div h1 {
+    font-family: Grotesk,Helvetica,Helvetica Neue,Arial,sans-serif;
+    font-size: 1.3em;
+    left: -10em;
+    position: absolute;
+    top: 10em;
+    transform: rotate(-90deg);
+    width: 21em;
+}
+
 
 h2 {
-    font-size: 1.6em;
+    font-family: Helvetica,Helvetica Neue,Arial,sans-serif;
+    font-size: 1em;
     padding: 0.5em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: bold;
 }
 
 section {
     margin-bottom: 2.5em;
+    margin-left: 1.42em;
 }
 
 footer {
@@ -56,17 +80,44 @@ footer ul li a {
 footer ul li a:hover {}
 
 article {
-    padding: 1.0em;
-    margin: 0em 1.0em;
+    padding: 1.0em 0em;
+    margin: 0em;
+    /*height: 10.0em;*/
 }
 
+article img {
+    height: 9.0em;
+    width: auto;
+}
+article:nth-child(even) img {
+    transform: rotate(180deg);
+    float: right;
+}
+
+article h3 {
+    font-weight: bold;
+    margin: 0em 1em 1em 1em;
+}
+
+article:nth-child(even) h3 {
+    text-align: left;
+    color: #55D400;  
+    
+}
+
+article:nth-child(odd) h3 {
+    text-align: right;
+    color: #008080;
+}
 article:nth-child(even) {
     background-color: #000000;
+    /*background-image: url('len-white.png');*/
     color: #ffffff;
 }
 
 article:nth-child(odd) {
     background-color: #ffffff;
+    /*background-image: url('len-black.png');*/
     color: #000000;
 }
 
