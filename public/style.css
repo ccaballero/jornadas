@@ -19,13 +19,14 @@ header {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 1.42em;
+    width: 2.0em;
+    z-index: 10;
 }
 
 header div {
     position: relative;
 }
-  
+
 header div h1 {
     font-family: Grotesk,Helvetica,Helvetica Neue,Arial,sans-serif;
     font-size: 1.3em;
@@ -53,6 +54,7 @@ section {
 }
 
 footer {
+    display: none;
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -101,8 +103,8 @@ article h3 {
 
 article:nth-child(even) h3 {
     text-align: left;
-    color: #55D400;  
-    
+    color: #55D400;
+
 }
 
 article:nth-child(odd) h3 {
