@@ -77,8 +77,8 @@
                 <div class="clear"></div>
                 <div class="fill"></div>
                 <article>
-                    <h2>Hackeando redes inalambricas</h2>
-                    <h3>XXX XXX XXX</h3>
+                    <h2>Hackeando redes inalámbricas</h2>
+                    <h3>Christian Lima Saravia</h3>
                     <p>La presencia cada vez mayor de redes de comunicaciones
 inalámbricas, asi como el uso de equipos portatiles y dispositivos
 móviles, conectados a redes domésticas y corporativas, expone el
@@ -92,31 +92,13 @@ Assessment Methodology).</p>
                 </article>
                 <article class="fill-top">
                     <h2>Hackeando sitios web</h2>
-                    <h3>XXX XXX XXX</h3>
-                    <p>La presencia cada vez mayor de redes de comunicaciones
-inalámbricas, asi como el uso de equipos portatiles y dispositivos
-móviles, conectados a redes domésticas y corporativas, expone el
-perímetro de las organizaciones a un gran número de ataques contra
-su infraestructura.
-Este taller surge con el objetivo de cubrir conocimientos sobre
-técnicas de ataque y defensa, mediante un enfoque metodologico,
-agil y usable que ayude a realizar con exito un analisis de seguridad,
-mediante el uso de la metodologia OWISAM (Open Wireless Security
-Assessment Methodology).</p>
+                    <h3>Gonzalo Nina Mamani</h3>
+                    <p style="height: 15.06em;">&nbsp;</p>
                 </article>
                 <article>
                     <h2>Informática forense</h2>
-                    <h3>XXX XXX XXX</h3>
-                    <p>La presencia cada vez mayor de redes de comunicaciones
-inalámbricas, asi como el uso de equipos portatiles y dispositivos
-móviles, conectados a redes domésticas y corporativas, expone el
-perímetro de las organizaciones a un gran número de ataques contra
-su infraestructura.
-Este taller surge con el objetivo de cubrir conocimientos sobre
-técnicas de ataque y defensa, mediante un enfoque metodologico,
-agil y usable que ayude a realizar con exito un analisis de seguridad,
-mediante el uso de la metodologia OWISAM (Open Wireless Security
-Assessment Methodology).</p>
+                    <h3>Rodolfo Negron Manchego</h3>
+                    <p>&nbsp;</p>
                 </article>
                 <div class="fill-2"></div>
                 <div class="clear"></div>
@@ -126,17 +108,30 @@ Assessment Methodology).</p>
                 <div class="clear"></div>
                 <div class="fill"></div>
                 <article>
-                    <p>TruExtend</p>
+                    <ul>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/tekhne.png" /></a></li>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/truextend.png" /></a></li>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/cosimti.png" /></a></li>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/koalasoft.png" /></a></li>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/sec.png" /></a></li>
+                    </ul>
                 </article>
                 <article>
-                    <p>TruExtend</p>
+                    <ul>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/forward.png" /></a></li>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/smartica.png" /></a></li>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/supersoft.png" /></a></li>
+                        <li><a href=""><img src="/media/auspiciadores/jornadas_v3/0xsecurity.png" /></a></li>
+                    </ul>
                 </article>
-                <article>
-                    <p>TruExtend</p>
-                </article>
-                <div class="fill-2"></div>
+                <div class="fill-3" style="padding-bottom: 0.687em;"></div>
                 <div class="clear"></div>
             </section>
+            <footer>
+                <ul>
+                    <li><a href="">SCESI</a></li>
+                </ul>
+            </footer>
         </div>
     </body>
 </html>

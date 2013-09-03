@@ -81,7 +81,11 @@ article:nth-child(even) {
 
 section {
     padding-left: 2.20em;
-    padding-right: 2.20em;
+    padding-right: 2.18em;
+}
+
+section:nth-child(odd) h1 {
+    float: right;
 }
 
 section h1 {
@@ -133,6 +137,13 @@ article:nth-of-type(even) {
     background-color: #000000;
 }
 
+.fill-3 {
+    float: right;
+    height: 6.0em;
+    width: 50%;
+    background-color: #ffffff;
+}
+
 article h2 {
     font-family: Helvetica,Helvetica Neue,Arial,sans-serif;
     font-size: 1.1em;
@@ -180,4 +191,34 @@ article:nth-child(even) p {
 article:nth-child(odd) p {
     text-align: right;
     padding-left: 8.0em;
+}
+
+article ul {
+    float: left;
+}
+
+article:nth-child(even) ul {
+    padding: 0.8em 7.0em 0.8em 0.8em;
+}
+
+article:nth-child(odd) ul {
+    padding: 0.8em 0.8em 0.8em 7.0em;
+}
+
+article ul li {
+    padding: 0.25em 0.25em 0.5em 0.25em;
+}
+
+article:nth-child(even) ul li {
+    float: right;
+}
+
+article:nth-child(odd) ul li {
+    float: left;
+}
+
+article ul li a {}
+
+footer {
+    background-color: #000000;
 }
