@@ -115,6 +115,7 @@ Assessment Methodology).</p>
                         <li><a href=""><img src="/media/auspiciadores/jornadas_v3/koalasoft.png" /></a></li>
                         <li><a href=""><img src="/media/auspiciadores/jornadas_v3/sec.png" /></a></li>
                     </ul>
+                    <div class="clear"></div>
                 </article>
                 <article>
                     <ul>
@@ -123,6 +124,7 @@ Assessment Methodology).</p>
                         <li><a href=""><img src="/media/auspiciadores/jornadas_v3/supersoft.png" /></a></li>
                         <li><a href=""><img src="/media/auspiciadores/jornadas_v3/0xsecurity.png" /></a></li>
                     </ul>
+                    <div class="clear"></div>
                 </article>
                 <div class="fill-3" style="padding-bottom: 0.687em;"></div>
                 <div class="clear"></div>
