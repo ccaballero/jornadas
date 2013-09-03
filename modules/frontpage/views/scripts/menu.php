@@ -13,9 +13,11 @@
 <a accesskey="4" href="<?php echo $this->url(array(), 'sponsors') ?>">auspiciadores</a>
 </li>
 <?php } ?>
+<?php if ($this->config->system->sponsors) { ?>
 <li<?php echo $this->isActive($this->route, 'users') ? ' class="active"' : '' ?>>
 <a accesskey="3" href="<?php echo $this->url(array(), 'users') ?>">participantes</a>
 </li>
+<?php } ?>
 <?php if ($this->allowed('activity:view')) { ?>
 <li<?php echo $this->isActive($this->route, 'activities') ? ' class="active"' : '' ?>>
 <a accesskey="3" href="<?php echo $this->url(array(), 'activities') ?>">actividades</a>
