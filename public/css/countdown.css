@@ -1,0 +1,34 @@
+/*-------------------------------------------*/
+/*   ELEMENTO CONTADOR EN PAGINA PRINCIPAL   */
+/*-------------------------------------------*/
+#countdown {
+    width: 510px;
+    height: 105px;
+    margin: 10px auto;
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 5px solid #000000;
+}
+
+#countdown .cntSeparator {
+    margin: 30px 10px;
+}
+
+#countdown .desc {
+    margin: 7px 3px;
+}
+
+#countdown .desc div {
+    float: left;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+}
+
+#countdown .days { margin-left: 5px; }
+#countdown .hours { margin-left: 105px; }
+#countdown .minutes { margin-left: 95px; }
+#countdown .seconds { margin-left: 80px; }

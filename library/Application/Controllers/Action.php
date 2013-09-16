@@ -32,6 +32,10 @@ class Application_Controllers_Action extends Zend_Controller_Action
         
         $this->view->config = $this->config;
 
+        if (isset($this->config->services->facebook)) {
+            $facebook_url = $this->config->services->facebook;
+        }
+
         $this->view->partial('frontpage/views/scripts/toolbar.php', array(
             'auth' => Zend_Auth::getInstance(),
             'user' => $this->user,
@@ -41,6 +45,7 @@ class Application_Controllers_Action extends Zend_Controller_Action
         $this->view->partial('frontpage/views/scripts/menu.php', array(
             'route' => $this->getFrontController()->getRouter()->getCurrentRouteName(),
             'config' => $this->config,
+            'facebook' => $facebook_url,
         ));
 
         $this->view->render('frontpage/views/scripts/footer.php');
